@@ -1,4 +1,4 @@
-package it.unibs.ing;
+package it.unibs.ing.module;
 
 import java.util.ArrayList;
 import java.util.HashSet;

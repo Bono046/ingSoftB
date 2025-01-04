@@ -1,4 +1,4 @@
-package it.unibs.ing;
+package it.unibs.ing.controller;
 
 //File: Main.java
 public class Main {

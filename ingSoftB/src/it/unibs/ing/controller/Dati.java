@@ -1,8 +1,13 @@
-package it.unibs.ing;
+package it.unibs.ing.controller;
 
-import java.io.Serializable;
+import it.unibs.ing.module.FattoreConversione;
+import it.unibs.ing.module.Fruitore;
+import it.unibs.ing.module.GerarchiaCategorie;
+import it.unibs.ing.module.Proposta;
+import it.unibs.ing.module.ComprensorioGeografico;
+import it.unibs.ing.module.Configuratore;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Dati  {
 

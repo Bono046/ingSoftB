@@ -1,9 +1,9 @@
-package it.unibs.ing;
+package it.unibs.ing.module;
 
 import java.util.HashMap;
 
 
-class Categoria  {
+public class Categoria  {
     protected String nome;
     private String campo;
     private HashMap<String, String> dominio;
@@ -71,39 +71,3 @@ class Categoria  {
 }
 
 
-class CategoriaFoglia extends Categoria {
-    public CategoriaFoglia(String nome) {
-        super(nome, null, null);
-        this.sottocategorie = null;
-    }
-
-    
-	@Override
-	public boolean isFoglia() {
-	    return true;
-	}
-	
-	
-	// Override del metodo per evitare l'aggiunta di sottocategorie
-	@Override
-	public void aggiungiSottocategoria(String nome, Categoria categoria) {
-	    throw new UnsupportedOperationException("Le foglie non possono avere sottocategorie.");
-	}
-	
-	@Override
-	public String getCampo() {
-	    return null; // Campo non applicabile per le foglie
-	}
-	
-	@Override
-	public HashMap<String, String> getDominio() {
-	    return null; // Dominio non applicabile per le foglie
-	}
-	
-    @Override
-    public String toString() {
-        return nome;
-    }
-	
-	
-}

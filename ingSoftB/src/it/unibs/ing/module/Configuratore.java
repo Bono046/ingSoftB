@@ -1,4 +1,4 @@
-package it.unibs.ing;
+package it.unibs.ing.module;
 import java.util.ArrayList;
 
 public class Configuratore {

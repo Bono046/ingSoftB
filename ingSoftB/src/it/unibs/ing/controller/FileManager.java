@@ -1,4 +1,4 @@
-package it.unibs.ing;
+package it.unibs.ing.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,7 +26,7 @@ public class FileManager {
         Gson gson = new Gson();
         File file = new File(FILE_DATI);
         if (!file.exists() || file.length() == 0) {
-            // Se il file non esiste o è vuoto, restituisci un nuovo oggetto Dati
+            // Se il file non esiste o ï¿½ vuoto, restituisci un nuovo oggetto Dati
             return new Dati();
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {

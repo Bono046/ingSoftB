@@ -1,6 +1,8 @@
 
 
-package it.unibs.ing;
+package it.unibs.ing.controller;
+
+import it.unibs.ing.module.*;
 
 import java.io.IOException;
 import java.util.*;
