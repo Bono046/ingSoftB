@@ -1,10 +1,9 @@
 package it.unibs.ing.view;
 
-import it.unibs.ing.controller.*;
+import it.unibs.ing.controller.ControllerConfiguratore;
 
 public class ViewConfiguratore {
-
-      ControllerConfiguratore controllerConfiguratore;
+    ControllerConfiguratore controllerConfiguratore;
 
     public ViewConfiguratore(ControllerConfiguratore controllerConfiguratore) {
         super();
@@ -23,11 +22,12 @@ public class ViewConfiguratore {
 
             switch (scelta) {
                 case 1:
+                    verificaCredenziali();
                     registraConfiguratore();
                     break;
                 case 2:
-                    autenticaConfiguratore();
-                    mostraMenuPrincipaleConfig();
+                    if (autenticaConfiguratore())
+                        mostraMenuPrincipaleConfig();
                     break;
                 case 0:
                     System.out.println("Arrivederci!\n");
@@ -39,53 +39,47 @@ public class ViewConfiguratore {
     }
 
 
-
-    private void registraConfiguratore() {
+    private void verificaCredenziali() {
         Boolean check = false;
         while (!check) {
-            System.out.println("Inserisci username predefinito: ");
-            String usernamePredefinito = scanner.nextLine();
-            System.out.println("Inserisci password predefinita: ");
-            String passwordPredefinita = scanner.nextLine();
-
-            check = Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
+            String usernamePredefinito = InputDati.leggiStringaNonVuota("Inserisci username predefinito: ");
+            String passwordPredefinita = InputDati.leggiStringaNonVuota("Inserisci password predefinita: ");
+            check = controllerConfiguratore.verificaCredenzialiPrimoAccesso(usernamePredefinito, passwordPredefinita);
             if (!check)
                 System.out.println("Credenziali predefinite errate. Riprova" + "\n");
         }
+    }
 
+    private void registraConfiguratore() {
         Boolean userValido = false;
         while (!userValido) {
-            String username = getConsistentString("Inserisci nuovo username: ");
-            String password = getConsistentString("Inserisci nuova password: ");
+            String username = InputDati.leggiStringaNonVuota("Inserisci nuovo username: ");
+            String password = InputDati.leggiStringaNonVuota("Inserisci nuova password: ");
 
-            userValido = Configuratore.userValido(username);
+            userValido = controllerConfiguratore.userOk(username);
             if (!userValido) {
                 System.out.println("Username già esistente. Riprova con un altro." + "\n");
             } else {
-                Configuratore configuratore = new Configuratore(username, password);
-                Configuratore.addToListaConfiguratori(configuratore);
+                controllerConfiguratore.registraConfiguratore(username, password);
             }
         }
-        salvaDati();
+        // salvaDati();   DA SISTEMARE 
     }
 
     private Boolean autenticaConfiguratore() {
-        System.out.println("Inserisci username: ");
-        String username = scanner.nextLine();
-        System.out.println("Inserisci password: ");
-        String password = scanner.nextLine();
+        String username = InputDati.leggiStringaNonVuota("Inserisci username: ");
+        String password = InputDati.leggiStringaNonVuota("Inserisci password: ");
 
-        Boolean check = Configuratore.loginConfiguratore(username, password);
-        if (check)
+        Boolean auth = controllerConfiguratore.loginConfiguratore(username, password);
+        if (auth)
             System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
         else
             System.out.println("Credenziali non valide. Riprova" + "\n");
-        return check;
+        return auth;
     }
 
 
     private void mostraMenuPrincipaleConfig() {
-        while (loggedAsConfig) {
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
             System.out.println("3. Stabilisci Fattore di Conversione");
@@ -94,9 +88,7 @@ public class ViewConfiguratore {
             System.out.println("6. Visualizza Fattori di Conversione");
             System.out.println("7. Visualizza proposte relative ad una categoria");
             System.out.println("0. Esci");
-            System.out.print("Seleziona un'opzione: ");
-
-            int scelta = getInt();
+            int scelta = InputDati.leggiInteroNonNegativo("Seleziona un opzione: ");
 
             switch (scelta) {
                 case 1:
@@ -128,12 +120,4 @@ public class ViewConfiguratore {
                     System.out.println("Opzione non valida. Riprova" + "\n");
             }
         }
-    }
-
-
-
-
-
-
-
 }

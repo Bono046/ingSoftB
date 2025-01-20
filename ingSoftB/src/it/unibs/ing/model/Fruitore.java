@@ -1,7 +1,5 @@
 package it.unibs.ing.model;
 
-import java.util.ArrayList;
-
 public class Fruitore {
 
     private String username;

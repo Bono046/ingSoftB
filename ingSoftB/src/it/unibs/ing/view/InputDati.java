@@ -1,6 +1,7 @@
 package it.unibs.ing.view;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputDati {
@@ -165,6 +166,15 @@ public class InputDati {
         char valoreLetto = leggiUpperChar(mioMessaggio, String.valueOf(RISPOSTA_SI) + RISPOSTA_NO);
 
         return valoreLetto == RISPOSTA_SI;
+    }
+
+    public static <T> T selezionaDaLista(List<T> lista, String messaggio) {
+        System.out.println(messaggio);
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println((i + 1) + ". " + lista.get(i).toString());
+        }
+        int scelta = leggiIntero("Scelta:", 1, lista.size());
+        return lista.get(scelta - 1);
     }
 
 }
