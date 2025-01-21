@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "ingSoftB",
+        "ingSoftB\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\Andrea\\Desktop\\Uni\\INFO\\INGE SOFT\\gson-2.6.2.jar"
+    ]
+}

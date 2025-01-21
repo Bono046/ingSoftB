@@ -5,17 +5,20 @@ import it.unibs.ing.model.FruitoreManager;
 import java.util.ArrayList;
 import it.unibs.ing.model.ComprensorioGeografico;
 import it.unibs.ing.model.ComprensorioManager;
+import it.unibs.ing.model.Dati;
 
 public class ControllerFruitore {
     FruitoreManager fruitoreManager;
     ComprensorioManager comprensorioManager;
+    Dati dati;
 
-    public ControllerFruitore() {
+    public ControllerFruitore(Dati dati) {
+        this.dati = dati;
         fruitoreManager = new FruitoreManager();
     }
 
     public ArrayList<ComprensorioGeografico> getListaComprensori() {
-        ArrayList <ComprensorioGeografico> comprensori = comprensorioManager.getListaComprensori();
+        ArrayList <ComprensorioGeografico> comprensori = dati.getComprensorioManager().getListaComprensori();
         if(comprensori.isEmpty())
             throw new IllegalArgumentException();
         return comprensori;

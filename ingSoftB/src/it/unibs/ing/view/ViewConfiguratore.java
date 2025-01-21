@@ -1,5 +1,7 @@
 package it.unibs.ing.view;
 
+import java.io.IOException;
+
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.ComprensorioGeografico;
 import it.unibs.ing.model.ComprensorioManager;
@@ -26,6 +28,7 @@ public class ViewConfiguratore {
                 case 1:
                     verificaCredenziali();
                     registraConfiguratore();
+                    salvaDati();
                     break;
                 case 2:
                     if (autenticaConfiguratore())
@@ -122,4 +125,14 @@ public class ViewConfiguratore {
                     System.out.println("Opzione non valida. Riprova" + "\n");
             }
         }
+
+
+
+    private void salvaDati() {
+        try {
+            controllerConfiguratore.salvaDati();
+        } catch (IOException e) {
+            System.out.println("Errore nel salvataggio dei dati: " + e.getMessage());
+        }
+    }
 }

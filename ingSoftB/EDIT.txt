@@ -1,3 +1,5 @@
 1) applicazione mvc
 
 2) configuratore: separazione registrazione in 2 metodi 
+
+3) catena di eccezioni da filemanager -> controller (baseController?) -> view

@@ -1,12 +1,17 @@
 package it.unibs.ing.controller;
+import java.io.IOException;
+
 import it.unibs.ing.model.Configuratore;
 import it.unibs.ing.model.ConfiguratoreManager;
+import it.unibs.ing.model.Dati;
+import it.unibs.ing.model.FileManager;
 
 public class ControllerConfiguratore {
-    ConfiguratoreManager configuratoreManager;
+
+    Dati dati;
     
-    public ControllerConfiguratore() {
-        configuratoreManager = new ConfiguratoreManager();
+    public ControllerConfiguratore(Dati dati) {
+        this.dati = dati;
     }
 
     public Boolean verificaCredenzialiPrimoAccesso(String usernamePredefinito, String passwordPredefinita) {
@@ -14,16 +19,20 @@ public class ControllerConfiguratore {
     }
 
     public Boolean userOk(String username) {
-        return configuratoreManager.userValido(username);
+        return dati.getConfiguratoreManager().userValido(username);
     }
 
     public void registraConfiguratore(String username, String password) {
         Configuratore conf = new Configuratore(username, password);
-        configuratoreManager.addToListaConfiguratori(conf);
+        dati.getConfiguratoreManager().addToListaConfiguratori(conf);
     }
 
     public Boolean loginConfiguratore(String username, String password) {
-        return configuratoreManager.loginConfiguratore(username, password);
+        return dati.getConfiguratoreManager().loginConfiguratore(username, password);
+    }
+
+    public void salvaDati() throws IOException {
+        FileManager.salvaDati(dati);
     }
 
 }

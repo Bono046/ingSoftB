@@ -1,13 +1,16 @@
 {
-  "configuratori": [
-    {
-      "username": "e",
-      "password": "e"
-    }
-  ],
-  "comprensori": [],
-  "fattoriDiConversione": [],
-  "gerarchie": [],
-  "fruitori": [],
-  "proposte": []
+  "configuratoreManager": {
+    "listaConfiguratori": [
+      {
+        "username": "b",
+        "password": "b"
+      }
+    ]
+  },
+  "fruitoreManager": {
+    "listaFruitori": []
+  },
+  "comprensorioManager": {
+    "listaComprensori": []
+  }
 }
