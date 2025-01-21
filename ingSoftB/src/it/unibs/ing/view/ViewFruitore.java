@@ -32,11 +32,8 @@ public class ViewFruitore {
                         registraFruitore(sceltaComprensorio());
                     break;
                 case 2:
-                    /* Fruitore userLogged = autenticaFruitore();
-                    if(userLogged != null){
-                        loggedAsFruitore = true;
-                        mostraMenuPrincipaleFruitore(userLogged.getUsername());
-                    }	 */
+                    if(autenticaFruitore())
+                       // mostraMenuPrincipaleFruitore();
                     break;
                 case 0: 
                     //salvaDati();
@@ -76,6 +73,18 @@ public class ViewFruitore {
 		     
     	
     		}
+    }
+
+    private Boolean autenticaFruitore() {
+        String username = InputDati.leggiStringaNonVuota("Inserisci username: ");
+        String password = InputDati.leggiStringaNonVuota("Inserisci password: ");
+
+        Boolean auth = controllerFruitore.loginFruitore(username, password);
+        if (auth)
+            System.out.println("Autenticazione avvenuta con successo. Procedi con il seguente menu:");
+        else
+            System.out.println("Credenziali non valide. Riprova" + "\n");
+        return auth;
     }
 
 }

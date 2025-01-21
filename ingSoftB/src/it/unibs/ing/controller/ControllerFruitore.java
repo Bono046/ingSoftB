@@ -31,7 +31,9 @@ public class ControllerFruitore {
         // SALVA DATI
     }
 
-
+    public Boolean loginFruitore(String username, String password) {
+        return fruitoreManager.loginFruitore(username, password);
+    }
 
 
 }

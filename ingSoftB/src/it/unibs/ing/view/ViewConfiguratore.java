@@ -1,6 +1,8 @@
 package it.unibs.ing.view;
 
 import it.unibs.ing.controller.ControllerConfiguratore;
+import it.unibs.ing.model.ComprensorioGeografico;
+import it.unibs.ing.model.ComprensorioManager;
 
 public class ViewConfiguratore {
     ControllerConfiguratore controllerConfiguratore;

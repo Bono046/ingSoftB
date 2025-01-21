@@ -25,13 +25,13 @@ public class FruitoreManager {
         return true;
     }
 
-    public Fruitore loginFruitore(String username, String password) {
+    public boolean loginFruitore(String username, String password) {
         for (Fruitore user : listaFruitori) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return user;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public ComprensorioGeografico getComprensorioFromUser(String user) {
