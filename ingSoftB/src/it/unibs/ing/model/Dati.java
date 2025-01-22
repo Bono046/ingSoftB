@@ -1,7 +1,5 @@
 package it.unibs.ing.model;
 
-
-
 public class Dati {
 
     private ConfiguratoreManager configuratoreManager;
@@ -26,8 +24,5 @@ public class Dati {
     public ComprensorioManager getComprensorioManager() {
         return comprensorioManager;
     }
-
-
-   
-    
+        
 }

@@ -7,9 +7,7 @@ import it.unibs.ing.model.ComprensorioGeografico;
 import it.unibs.ing.model.ComprensorioManager;
 import it.unibs.ing.model.Dati;
 
-public class ControllerFruitore extends ControllerBase{
-   
-    
+public class ControllerFruitore extends ControllerBase{    
     Dati dati;
 
     public ControllerFruitore(Dati dati) {

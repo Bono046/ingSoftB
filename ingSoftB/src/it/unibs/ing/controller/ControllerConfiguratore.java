@@ -9,10 +9,9 @@ import it.unibs.ing.model.ConfiguratoreManager;
 import it.unibs.ing.model.Dati;
 import it.unibs.ing.model.FileManager;
 
-
 public class ControllerConfiguratore extends ControllerBase {
 
-    Dati dati;
+    private Dati dati;
     
     public ControllerConfiguratore(Dati dati) {
         super(dati); 
@@ -45,5 +44,6 @@ public class ControllerConfiguratore extends ControllerBase {
         dati.getComprensorioManager().addComprensorio(comprensorio);
    }
 
+   
 
 }

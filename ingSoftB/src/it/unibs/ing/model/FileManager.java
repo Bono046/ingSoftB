@@ -26,13 +26,11 @@ public class FileManager {
         Gson gson = new Gson();
         File file = new File(FILE_DATI);
         if (!file.exists() || file.length() == 0) {
-            // Se il file non esiste o è vuoto, restituisci un nuovo oggetto Dati
             return new Dati();
-        }
+        } 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return gson.fromJson(reader, Dati.class);
         } catch (JsonSyntaxException e) {
-            // Gestisci il caso in cui il file contenga dati non validi
             System.out.println("Errore: dati non validi nel file " + FILE_DATI);
             return new Dati();
         }

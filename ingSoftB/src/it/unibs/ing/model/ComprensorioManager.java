@@ -3,6 +3,7 @@ package it.unibs.ing.model;
 import java.util.ArrayList;
 
 public class ComprensorioManager {
+    
     private ArrayList<ComprensorioGeografico> listaComprensori;
     
     public ComprensorioManager() {

@@ -6,12 +6,12 @@ import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
 
 public class ViewBase {
+
     ControllerBase controllerBase;
 
     public ViewBase(ControllerBase controllerBase) {
         this.controllerBase = controllerBase;
     }
-
 
     protected void salvaDati() {
         try {
@@ -21,7 +21,6 @@ public class ViewBase {
         }
     }
 
-    
     public String toStringDati(Dati dati) {
         return "Dati{" +
                 "configuratoreManager=" + toStringConfigManager(dati.getConfiguratoreManager())+
@@ -48,7 +47,8 @@ public class ViewBase {
 
     public String toStringComprensorioManager(ComprensorioManager comprensorioManager){
         return "ComprensorioManager{" +
-                "listaComprensori=" + comprensorioManager.getListaComprensori();
+                "listaComprensori=" + comprensorioManager.getListaComprensori().toString() +
+                "}";
     }
 
     public String toStringConfigManager(ConfiguratoreManager configuratoreManager){

@@ -42,4 +42,11 @@ public class ComprensorioGeografico {
         return comuni.contains(comune);
     }
 
-}
+    @Override
+    public String toString() {
+        return "ComprensorioGeografico{" +
+                "nome='" + nome + '\'' +
+                ", comuni=" + comuni +
+                '}';
+    }
+} 

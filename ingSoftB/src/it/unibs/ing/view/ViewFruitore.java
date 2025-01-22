@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class ViewFruitore extends ViewBase {
     ControllerFruitore controllerFruitore;
+    ViewBase viewBase = new ViewBase(controllerFruitore);
 
     public ViewFruitore(ControllerFruitore controllerFruitore) {
         super(controllerFruitore);
@@ -53,7 +54,7 @@ public class ViewFruitore extends ViewBase {
         ComprensorioGeografico comprensorio = null;
         try {
             ArrayList<ComprensorioGeografico> listaComprensori = controllerFruitore.getListaComprensori();    		
-	        comprensorio = InputDati.selezionaDaLista(listaComprensori, "Seleziona comprensorio: ");
+	        comprensorio = InputDati.selezionaDaLista(listaComprensori, "Seleziona comprensorio: ", viewBase);
 	    } catch (Exception e) { 
     		System.out.println("Nessun comprensorio disponibile.\n"); 
         }
