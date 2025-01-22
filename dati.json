@@ -2,15 +2,34 @@
   "configuratoreManager": {
     "listaConfiguratori": [
       {
+        "username": "a",
+        "password": "a"
+      },
+      {
         "username": "b",
         "password": "b"
       }
     ]
   },
   "fruitoreManager": {
-    "listaFruitori": []
+    "listaFruitori": [
+      {
+        "username": "giorgio",
+        "password": "bucella",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": []
+        },
+        "mail": "g.b@"
+      }
+    ]
   },
   "comprensorioManager": {
-    "listaComprensori": []
+    "listaComprensori": [
+      {
+        "nome": "Brescia",
+        "comuni": []
+      }
+    ]
   }
 }

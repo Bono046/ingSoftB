@@ -13,7 +13,7 @@ public class FruitoreManager {
         return listaFruitori;
     }
 
-    public void addToListaConfiguratori(Fruitore f) {
+    public void addToListaFruitori(Fruitore f) {
         listaFruitori.add(f);
     }
 

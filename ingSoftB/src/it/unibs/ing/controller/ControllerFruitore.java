@@ -7,14 +7,14 @@ import it.unibs.ing.model.ComprensorioGeografico;
 import it.unibs.ing.model.ComprensorioManager;
 import it.unibs.ing.model.Dati;
 
-public class ControllerFruitore {
-    FruitoreManager fruitoreManager;
-    ComprensorioManager comprensorioManager;
+public class ControllerFruitore extends ControllerBase{
+   
+    
     Dati dati;
 
     public ControllerFruitore(Dati dati) {
+        super(dati);
         this.dati = dati;
-        fruitoreManager = new FruitoreManager();
     }
 
     public ArrayList<ComprensorioGeografico> getListaComprensori() {
@@ -25,17 +25,16 @@ public class ControllerFruitore {
     } 
 
     public Boolean userOk(String username) {
-        return fruitoreManager.userValido(username);
+        return dati.getFruitoreManager().userValido(username);
     }
 
     public void registraFruitore(String username, String password, ComprensorioGeografico comprensorio, String mail) {
         Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
-        fruitoreManager.addToListaConfiguratori(fruitore);
-        // SALVA DATI
+        dati.getFruitoreManager().addToListaFruitori(fruitore);
     }
 
     public Boolean loginFruitore(String username, String password) {
-        return fruitoreManager.loginFruitore(username, password);
+        return dati.getFruitoreManager().loginFruitore(username, password);
     }
 
 

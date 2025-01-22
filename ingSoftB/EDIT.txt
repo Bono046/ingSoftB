@@ -3,3 +3,6 @@
 2) configuratore: separazione registrazione in 2 metodi 
 
 3) catena di eccezioni da filemanager -> controller (baseController?) -> view
+
+4) valutare come spostare (ConfiguratoreManager/FruitoreManager).UserValido e  (ConfiguratoreManager/FruitoreManager).loginConfig/Fruitore 
+    nel ControllerBase

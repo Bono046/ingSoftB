@@ -1,20 +1,27 @@
 package it.unibs.ing.view;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.ComprensorioGeografico;
 import it.unibs.ing.model.ComprensorioManager;
+import it.unibs.ing.model.ConfiguratoreManager;
 
-public class ViewConfiguratore {
+public class ViewConfiguratore extends ViewBase{
     ControllerConfiguratore controllerConfiguratore;
 
     public ViewConfiguratore(ControllerConfiguratore controllerConfiguratore) {
-        super();
+        super(controllerConfiguratore);
         this.controllerConfiguratore = controllerConfiguratore;
     }
 
     public void start(){
+
+        System.out.println(toStringDati(controllerConfiguratore.getDati()));
+
+
 
         int scelta = -1;
         do {
@@ -23,6 +30,7 @@ public class ViewConfiguratore {
             System.out.println("2. Autenticazione Configuratore");
             System.out.println("0. Esci dal programma");
             scelta = InputDati.leggiInteroNonNegativo("Scelta: ");
+
 
             switch (scelta) {
                 case 1:
@@ -95,44 +103,52 @@ public class ViewConfiguratore {
             System.out.println("0. Esci");
             int scelta = InputDati.leggiInteroNonNegativo("Seleziona un opzione: ");
 
-            switch (scelta) {
-                case 1:
+            do{
+                switch (scelta) {
+                    case 1:
+                        creaComprensorio();
+                        salvaDati();
+                        break;
+                    case 2:
 
-                    break;
-                case 2:
+                        break;
+                    case 3:
 
-                    break;
-                case 3:
+                        break;
+                    case 4:
 
-                    break;
-                case 4:
+                        break;
+                    case 5:
 
-                    break;
-                case 5:
+                        break;
+                    case 6:
 
-                    break;
-                case 6:
+                        break;
+                    case 7:
 
-                    break;
-                case 7:
+                        break;
+                    case 0:
 
-                    break;
-                case 0:
-
-                    System.out.println("Arrivederci! \n");
-                    return;
-                default:
-                    System.out.println("Opzione non valida. Riprova" + "\n");
-            }
+                        System.out.println("Arrivederci! \n");
+                        return;
+                    default:
+                        System.out.println("Opzione non valida. Riprova" + "\n");
+                }
+            } while(scelta!=0);
         }
 
-
-
-    private void salvaDati() {
-        try {
-            controllerConfiguratore.salvaDati();
-        } catch (IOException e) {
-            System.out.println("Errore nel salvataggio dei dati: " + e.getMessage());
-        }
+    public void creaComprensorio(){
+        String nome = InputDati.leggiStringaNonVuota("Inserisci nome comprensorio: ");
+        
+        Set<String> comuni = new HashSet<>();
+        String input;
+		do {
+			input = InputDati.leggiStringaNonVuota("Inserisci nome del comune da aggiungere. Premi 0 per uscire: ");
+			if(!input.equals("0"))
+				comuni.add(input);
+		} while(!input.equals("0"));
+        controllerConfiguratore.aggiungiComprensorio(nome, comuni);
     }
+
+    
 }

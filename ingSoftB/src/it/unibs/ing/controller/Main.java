@@ -5,8 +5,8 @@ import java.io.IOException;
 import it.unibs.ing.view.ViewInit;
 import it.unibs.ing.model.Dati;
 import it.unibs.ing.model.FileManager;
+import it.unibs.ing.view.ViewBase;
 
-//File: Main.java
 public class Main {
 	
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Main {
             dati = new Dati();
         }
         
-        
+       
         
         ControllerConfiguratore controllerConfiguratore = new ControllerConfiguratore(dati);
         ControllerFruitore controllerFruitore = new ControllerFruitore(dati);
@@ -28,6 +28,6 @@ public class Main {
         ViewInit viewInit = new ViewInit(controllerConfiguratore, controllerFruitore);
         viewInit.start();
  
-        }
+    }
 
 }

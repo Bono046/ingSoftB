@@ -8,11 +8,11 @@ import it.unibs.ing.model.Configuratore;
 import it.unibs.ing.model.Fruitore;
 import java.util.Objects;
 
-public class ViewFruitore {
+public class ViewFruitore extends ViewBase {
     ControllerFruitore controllerFruitore;
 
     public ViewFruitore(ControllerFruitore controllerFruitore) {
-        super();
+        super(controllerFruitore);
         this.controllerFruitore = controllerFruitore;
     }
 
@@ -30,10 +30,11 @@ public class ViewFruitore {
                 case 1:
                     if(!Objects.isNull(sceltaComprensorio()))
                         registraFruitore(sceltaComprensorio());
+                        salvaDati();
                     break;
                 case 2:
                     String user = autenticaFruitore();
-                    if(!user.isEmpty()){}
+                    if(!user.isEmpty())
                         mostraMenuPrincipaleFruitore(user);
                     break;
                 case 0: 
@@ -91,6 +92,7 @@ public class ViewFruitore {
         }
     }
 
+    
 
     private void mostraMenuPrincipaleFruitore(String user) {
     	while (true) {

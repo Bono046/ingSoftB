@@ -37,4 +37,8 @@ public class ConfiguratoreManager {
         return false;
     }
 
+
+
+
+
 }

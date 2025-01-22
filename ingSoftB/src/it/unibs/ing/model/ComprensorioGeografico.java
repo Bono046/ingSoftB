@@ -8,7 +8,7 @@ public class ComprensorioGeografico {
     private String nome;
     private Set<String> comuni;
 
-    public ComprensorioGeografico(String nome) {
+    public ComprensorioGeografico(String nome, Set<String> comuni) {
         this.nome = nome;
         this.comuni = new HashSet<>();
     }
