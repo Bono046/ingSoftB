@@ -5,11 +5,13 @@ public class Dati {
     private ConfiguratoreManager configuratoreManager;
     private FruitoreManager fruitoreManager;
     private ComprensorioManager comprensorioManager;
+    private GerarchiaManager gerarchiaManager;
 
     public Dati() {
         configuratoreManager = new ConfiguratoreManager();
         fruitoreManager = new FruitoreManager();
         comprensorioManager = new ComprensorioManager();
+        gerarchiaManager = new GerarchiaManager();
     }
 
     
@@ -23,6 +25,10 @@ public class Dati {
 
     public ComprensorioManager getComprensorioManager() {
         return comprensorioManager;
+    }
+
+    public GerarchiaManager getGerarchiaCategorieManager() {
+        return gerarchiaManager;
     }
         
 }

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import it.unibs.ing.controller.ControllerFruitore;
 import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.Configuratore;
-import it.unibs.ing.model.Fruitore;
-import java.util.Objects;
+
 
 public class ViewFruitore extends ViewBase {
     ControllerFruitore controllerFruitore;
@@ -29,8 +27,9 @@ public class ViewFruitore extends ViewBase {
 
             switch (scelta) {
                 case 1:
-                    if(!Objects.isNull(sceltaComprensorio()))
-                        registraFruitore(sceltaComprensorio());
+                ComprensorioGeografico comprensorio = sceltaComprensorio();
+                    if(comprensorio != null)
+                        registraFruitore(comprensorio);
                         salvaDati();
                     break;
                 case 2:
@@ -54,7 +53,7 @@ public class ViewFruitore extends ViewBase {
         ComprensorioGeografico comprensorio = null;
         try {
             ArrayList<ComprensorioGeografico> listaComprensori = controllerFruitore.getListaComprensori();    		
-	        comprensorio = InputDati.selezionaDaLista(listaComprensori, "Seleziona comprensorio: ", viewBase);
+	        comprensorio = selezionaDaLista(listaComprensori, "Seleziona comprensorio: ");
 	    } catch (Exception e) { 
     		System.out.println("Nessun comprensorio disponibile.\n"); 
         }

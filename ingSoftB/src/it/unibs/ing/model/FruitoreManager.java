@@ -2,14 +2,14 @@ package it.unibs.ing.model;
 
 import java.util.ArrayList;
 
-public class FruitoreManager {
+public class FruitoreManager implements ManagerInterface {
     private ArrayList<Fruitore> listaFruitori;
 
     public FruitoreManager() {
         listaFruitori = new ArrayList<>();
     }
 
-    public ArrayList<Fruitore> getListaFruitori() {
+    public ArrayList<Fruitore> getLista() {
         return listaFruitori;
     }
 

@@ -1,6 +1,6 @@
 package it.unibs.ing.model;
 
-import java.util.HashSet;
+
 import java.util.Set;
 
 public class ComprensorioGeografico {
@@ -10,22 +10,24 @@ public class ComprensorioGeografico {
 
     public ComprensorioGeografico(String nome, Set<String> comuni) {
         this.nome = nome;
-        this.comuni = new HashSet<>();
+        this.comuni = comuni;
     }
 
     public String getNome() {
         return nome;
     }
 
+    /*
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+*/
 
     public Set<String> getComuni() {
         return comuni;
     }
 
+    /*
     public void setComuni(Set<String> comuni) {
         this.comuni = comuni;
     }
@@ -41,12 +43,8 @@ public class ComprensorioGeografico {
     public boolean contieneComune(String comune) {
         return comuni.contains(comune);
     }
+*/
+ 
 
-    @Override
-    public String toString() {
-        return "ComprensorioGeografico{" +
-                "nome='" + nome + '\'' +
-                ", comuni=" + comuni +
-                '}';
-    }
+
 } 

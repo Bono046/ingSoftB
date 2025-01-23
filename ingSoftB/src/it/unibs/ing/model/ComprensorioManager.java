@@ -2,7 +2,7 @@ package it.unibs.ing.model;
 
 import java.util.ArrayList;
 
-public class ComprensorioManager {
+public class ComprensorioManager implements ManagerInterface {
     
     private ArrayList<ComprensorioGeografico> listaComprensori;
     
@@ -10,7 +10,8 @@ public class ComprensorioManager {
         listaComprensori = new ArrayList<>();
     }
     
-    public ArrayList<ComprensorioGeografico> getListaComprensori() {
+    
+    public ArrayList<ComprensorioGeografico> getLista() {
         return listaComprensori;
     }
 

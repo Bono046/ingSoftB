@@ -1,10 +1,8 @@
 package it.unibs.ing.controller;
 
 import it.unibs.ing.model.Fruitore;
-import it.unibs.ing.model.FruitoreManager;
 import java.util.ArrayList;
 import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.ComprensorioManager;
 import it.unibs.ing.model.Dati;
 
 public class ControllerFruitore extends ControllerBase{    
@@ -16,7 +14,7 @@ public class ControllerFruitore extends ControllerBase{
     }
 
     public ArrayList<ComprensorioGeografico> getListaComprensori() {
-        ArrayList <ComprensorioGeografico> comprensori = dati.getComprensorioManager().getListaComprensori();
+        ArrayList <ComprensorioGeografico> comprensori = dati.getComprensorioManager().getLista();
         if(comprensori.isEmpty())
             throw new IllegalArgumentException();
         return comprensori;

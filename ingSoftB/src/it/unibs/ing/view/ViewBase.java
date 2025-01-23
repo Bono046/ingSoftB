@@ -1,6 +1,7 @@
 package it.unibs.ing.view;
 
 import java.io.IOException;
+import java.util.List;
 
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
@@ -23,47 +24,73 @@ public class ViewBase {
 
     public String toStringDati(Dati dati) {
         return "Dati{" +
-                "configuratoreManager=" + toStringConfigManager(dati.getConfiguratoreManager())+
-                ", fruitoreManager=" + tostringFruitoreManager(dati.getFruitoreManager()) +
-                ", comprensorioManager=" + toStringComprensorioManager(dati.getComprensorioManager()) +
+                "configuratoreManager=" + visualizzaConfiguratori(dati.getConfiguratoreManager())+
+                ", fruitoreManager=" + visualizzaFruitori(dati.getFruitoreManager()) +
+                ", comprensorioManager=" + visualizzaComprensori(dati.getComprensorioManager()) +
                 '}';
     }
 
     public String toStringConfig(Configuratore config){
         return "Configuratore{" +
-                "username='" + config.getUsername();
+                "username='" + config.getUsername()+ '}';
     }
 
     public String toStringFruitore(Fruitore fruitore){
         return "Fruitore{" +
-                "username='" + fruitore.getUsername();
+                "username='" + fruitore.getUsername() + '}';
     }
 
     public String toStringComprensorio(ComprensorioGeografico comprensorio){
         return "ComprensorioGeografico{" +
-                "nome='" + comprensorio.getNome()+
-                "comuni=" + comprensorio.getComuni();
+                "nome='" + comprensorio.getNome()+"', "+
+                "comuni=" + comprensorio.getComuni().toString()
+                + '}';
     }
 
-    public String toStringComprensorioManager(ComprensorioManager comprensorioManager){
-        return "ComprensorioManager{" +
-                "listaComprensori=" + comprensorioManager.getListaComprensori().toString() +
-                "}";
+    public String visualizzaConfiguratori(ConfiguratoreManager listaConfiguratori){
+        StringBuilder sb = new StringBuilder();
+        for (Configuratore configuratore : listaConfiguratori.getLista()) {
+            sb.append(toStringConfig(configuratore)).append("\n");
+        }
+        return sb.toString();
     }
 
-    public String toStringConfigManager(ConfiguratoreManager configuratoreManager){
-        return "ConfiguratoreManager{" +
-                "listaConfiguratori=" + configuratoreManager.getListaConfiguratori();
-    }
+    public  String visualizzaFruitori(FruitoreManager listaFruitori){
+        StringBuilder sb = new StringBuilder();
+        for (Fruitore fruitore : listaFruitori.getLista()) {
+            sb.append(toStringFruitore(fruitore)).append("\n");
+        }
+        return sb.toString();  
+    } 
 
-    public String tostringFruitoreManager(FruitoreManager fruitoreManager){
-        return "FruitoreManager{" +
-                "listaFruitori=" + fruitoreManager.getListaFruitori().toString();
-    }
+    public  String visualizzaComprensori(ComprensorioManager listaComprensori){
+        StringBuilder sb = new StringBuilder();
+        for (ComprensorioGeografico comprensorio : listaComprensori.getLista()) {
+            sb.append(toStringComprensorio(comprensorio)).append("\n");
+        }
+        return sb.toString();
+       }
     
+       
+    public <T> T selezionaDaLista(List<T> lista, String messaggio) {
+        System.out.println(messaggio);
 
+        for (int i = 0; i < lista.size(); i++) {
+            T elemento = lista.get(i);
+            String descrizione="";
 
-
+            if (elemento instanceof Fruitore) {
+                descrizione = toStringFruitore((Fruitore) elemento);
+            } else if (elemento instanceof ComprensorioGeografico) {
+                descrizione = toStringComprensorio((ComprensorioGeografico) elemento);
+            } else if (elemento instanceof Configuratore) {
+                descrizione = toStringConfig((Configuratore) elemento);         
+            }
+            System.out.println((i + 1) + ". " + descrizione);
+        }
+        int scelta = InputDati.leggiIntero("Scelta:", 1, lista.size());
+        return lista.get(scelta - 1);
+    }
 
 
 }

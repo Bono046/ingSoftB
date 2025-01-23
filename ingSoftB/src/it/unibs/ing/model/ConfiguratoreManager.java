@@ -2,7 +2,7 @@ package it.unibs.ing.model;
 
 import java.util.ArrayList;
 
-public class ConfiguratoreManager {
+public class ConfiguratoreManager implements ManagerInterface {
 
     private ArrayList<Configuratore> listaConfiguratori;
 
@@ -11,7 +11,7 @@ public class ConfiguratoreManager {
         listaConfiguratori = new ArrayList<>();
     }
 
-    public ArrayList<Configuratore> getListaConfiguratori() {
+    public ArrayList<Configuratore> getLista() {
         return listaConfiguratori;
     }
 

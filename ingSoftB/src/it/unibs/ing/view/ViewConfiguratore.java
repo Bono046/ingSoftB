@@ -1,13 +1,15 @@
 package it.unibs.ing.view;
 
-import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
 import it.unibs.ing.controller.ControllerConfiguratore;
-import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.ComprensorioManager;
-import it.unibs.ing.model.ConfiguratoreManager;
+import it.unibs.ing.model.GerarchiaCategorie;
+import it.unibs.ing.model.Categoria;
+import it.unibs.ing.model.CategoriaFoglia;
+
 
 public class ViewConfiguratore extends ViewBase{
     ControllerConfiguratore controllerConfiguratore;
@@ -16,12 +18,13 @@ public class ViewConfiguratore extends ViewBase{
     public ViewConfiguratore(ControllerConfiguratore controllerConfiguratore) {
         super(controllerConfiguratore);
         this.controllerConfiguratore = controllerConfiguratore;
+        this.controllerConfiguratore.registraView(this);
     }
 
     public void start(){
         int scelta = -1;
         do {
-            System.out.println(toStringDati(controllerConfiguratore.getDati()));
+            
             System.out.println("Menu Principale:");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
@@ -91,6 +94,9 @@ public class ViewConfiguratore extends ViewBase{
 
     private void mostraMenuPrincipaleConfig() {
         int scelta;
+
+        System.out.println(toStringDati(controllerConfiguratore.getDati()));
+
         do {
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
@@ -108,7 +114,11 @@ public class ViewConfiguratore extends ViewBase{
                     salvaDati();
                     break;
                 case 2:
-                    // Implementa la logica per creare gerarchie di categorie
+                    Categoria root = creaCategoria(true, null);
+                	GerarchiaCategorie g = new GerarchiaCategorie(root);
+                    creaGerarchia(g, g.getCategoriaRadice());
+                    controllerConfiguratore.addGerarchia(g);
+                    salvaDati();
                     break;
                 case 3:
                     // Implementa la logica per stabilire fattori di conversione
@@ -147,8 +157,112 @@ public class ViewConfiguratore extends ViewBase{
     }
 
     public void visualizzaComprensori(){
-        System.out.println(toStringComprensorioManager(controllerConfiguratore.getDati().getComprensorioManager()));
+        System.out.println(visualizzaComprensori(controllerConfiguratore.getDati().getComprensorioManager()));
     }
 
+
+
+    private Categoria creaCategoria(boolean isRadice, Categoria radice) {
+    	
+    	String nome = "";
+    	
+    	if(isRadice) {	
+            nome = getNomeRadice();
+    	}else 
+    		nome = getNomeCategoriaValido(radice);
+    	
+        String campo = InputDati.leggiStringaNonVuota("Inserisci nome del campo: ");
+        HashMap<String, String> dominio = new HashMap<>();
+       
+        int numValori = InputDati.leggiInteroNonNegativo("Quanti valori di dominio vuoi inserire? ");
+  
+        for (int i = 0; i < numValori; i++) {
+        	String valore;
+        	String descrizione;
+        	Boolean valido = false;
+            do {
+	        	valore = InputDati.leggiStringaNonVuota("Inserisci valore del dominio: ");
+	            descrizione = InputDati.leggiStringa("Inserisci descrizione (premere invio per lasciarla vuota): ");
+	            if(dominio.containsKey(valore))
+	            	System.out.println("Valore duplicato. Riprovare");
+	            else valido = true;
+            }while(!valido);
+            
+            dominio.put(valore, descrizione);
+        }
+        Categoria c = controllerConfiguratore.creaCategoria(nome, campo, dominio);
+        return c;
+    }
+
+
+    private String getNomeRadice() {
+            boolean nomeValido;
+            String nome;
+    		do {
+    			nome= InputDati.leggiStringaNonVuota("Inserisci nome categoria: ");
+    			nomeValido=controllerConfiguratore.checkNomeGerarchia(nome);
+        			if(!nomeValido) 
+        				System.out.println("Nome non valido. Riprovare");
+        	} while(!nomeValido);
+            return nome;    
+    }
+
+    private String getNomeCategoriaValido(Categoria radice) {		
+    	String nome = "";
+    	Boolean nomeValido=false;
     
+    	while(!nomeValido) {
+    		nome = InputDati.leggiStringaNonVuota("Inserisci nome categoria: ");
+    		nomeValido = radice.isNomeUnivoco(nome);
+    		if(!nomeValido) 
+    			System.out.println("Nome non valido. Riprovare");
+    	}
+    	return nome;
+    }
+
+    private CategoriaFoglia creaCategoriaFoglia(Categoria radice) {
+        String nome = getNomeCategoriaValido(radice); 		
+    
+        CategoriaFoglia categoria = new CategoriaFoglia(nome);
+        System.out.println("Categoria foglia creata con successo." + "\n");
+        return categoria;
+    }
+
+
+   private void creaGerarchia(GerarchiaCategorie g, Categoria padre) {			
+    	System.out.println("categoria selezionata: " + padre.getNome());
+    	
+    	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
+        Categoria radice = g.getCategoriaRadice();
+    	
+    	for (String dom : listaDominio) {
+            System.out.println("Creazione sottocategoria per il dominio: " + dom);
+            Boolean input=false;
+            while(!input) {
+		    	System.out.println(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia");
+		    	int choice1 = InputDati.leggiIntero(dom, 1, 2);
+		    	
+		    	switch(choice1) {
+		    		case 1:
+			    		Categoria sottocat = creaCategoria(false, radice);
+			            padre.aggiungiSottocategoria(dom, sottocat);
+			    		HashMap<String, Categoria> sottocategorie = padre.getSottocategorie();
+			    		creaGerarchia(g, sottocategorie.get(dom));
+			    		input = true;
+			    		break;
+		    		case 2:
+			    		CategoriaFoglia sottocatF = creaCategoriaFoglia(radice);
+			            padre.aggiungiSottocategoria(dom, sottocatF);
+			            g.addToListaFoglie(sottocatF);
+			            input = true;
+			            break;
+			        default:
+			        	System.out.println("input non valido. Riprovare");
+		    	}
+            }
+        }
+    }
+
+
+
 }

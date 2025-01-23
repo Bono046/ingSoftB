@@ -6,3 +6,6 @@
 
 4) valutare come spostare (ConfiguratoreManager/FruitoreManager).UserValido e  (ConfiguratoreManager/FruitoreManager).loginConfig/Fruitore 
     nel ControllerBase
+
+5) metodi creaCategoria istanziano un oggetto Categoria nella view - sarebbe da sistemare - metodo equivalente nel controller che prende
+    e ritorna una categoria -attenzione alla ricorsività
