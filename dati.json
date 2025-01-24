@@ -85,6 +85,135 @@
           }
         ],
         "percorso": []
+      },
+      {
+        "radice": {
+          "nome": "karate",
+          "campo": "cintura",
+          "dominio": {
+            "esperto": "",
+            "principiante": ""
+          },
+          "sottocategorie": {
+            "esperto": {
+              "nome": "cintura esperti",
+              "campo": "colore",
+              "dominio": {
+                "nera": "",
+                "blu": ""
+              },
+              "sottocategorie": {
+                "nera": {
+                  "nome": "nera"
+                },
+                "blu": {
+                  "nome": "blu"
+                }
+              }
+            },
+            "principiante": {
+              "nome": "bianca"
+            }
+          }
+        },
+        "listaFoglie": [
+          {
+            "nome": "nera"
+          },
+          {
+            "nome": "blu"
+          },
+          {
+            "nome": "bianca"
+          }
+        ],
+        "percorso": []
+      },
+      {
+        "radice": {
+          "nome": "cucina",
+          "campo": "piatti",
+          "dominio": {
+            "secondi": "",
+            "primi": ""
+          },
+          "sottocategorie": {
+            "secondi": {
+              "nome": "cucina di secondi",
+              "campo": "piatti",
+              "dominio": {
+                "carne bianca": "",
+                "carne rossa": ""
+              },
+              "sottocategorie": {
+                "carne bianca": {
+                  "nome": "cucina carne bianca"
+                },
+                "carne rossa": {
+                  "nome": "cucina carne rossa"
+                }
+              }
+            },
+            "primi": {
+              "nome": "cucina pasta"
+            }
+          }
+        },
+        "listaFoglie": [
+          {
+            "nome": "cucina carne bianca"
+          },
+          {
+            "nome": "cucina carne rossa"
+          },
+          {
+            "nome": "cucina pasta"
+          }
+        ],
+        "percorso": []
+      },
+      {
+        "radice": {
+          "nome": "cucina",
+          "campo": "piatti",
+          "dominio": {
+            "secondi": "",
+            "primi": ""
+          },
+          "sottocategorie": {
+            "secondi": {
+              "nome": "cucina di secondi",
+              "campo": "piatti",
+              "dominio": {
+                "carne bianca": "",
+                "carne rossa": ""
+              },
+              "sottocategorie": {
+                "carne bianca": {
+                  "nome": "cucina carne bianca"
+                },
+                "carne rossa": {
+                  "nome": "cucina carne rossa"
+                }
+              }
+            },
+            "primi": {
+              "nome": "cucina pasta"
+            }
+          }
+        },
+        "listaFoglie": [
+          {
+            "nome": "cucina carne bianca"
+          },
+          {
+            "nome": "cucina carne rossa"
+          },
+          {
+            "nome": "cucina pasta"
+          }
+        ],
+        "percorso": []
       }
     ]
   }

@@ -1,14 +1,15 @@
 package it.unibs.ing.view;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
-import it.unibs.ing.model.GerarchiaCategorie;
 import it.unibs.ing.model.Categoria;
-import it.unibs.ing.model.CategoriaFoglia;
+
+
 
 
 public class ViewConfiguratore extends ViewBase{
@@ -21,7 +22,7 @@ public class ViewConfiguratore extends ViewBase{
         this.controllerConfiguratore.registraView(this);
     }
 
-    public void start(){
+    public void start() {
         int scelta = -1;
         do {
             
@@ -76,7 +77,6 @@ public class ViewConfiguratore extends ViewBase{
                 controllerConfiguratore.registraConfiguratore(username, password);
             }
         }
-        // salvaDati();   DA SISTEMARE 
     }
 
     private Boolean autenticaConfiguratore() {
@@ -114,10 +114,7 @@ public class ViewConfiguratore extends ViewBase{
                     salvaDati();
                     break;
                 case 2:
-                    Categoria root = creaCategoria(true, null);
-                	GerarchiaCategorie g = new GerarchiaCategorie(root);
-                    creaGerarchia(g, g.getCategoriaRadice());
-                    controllerConfiguratore.addGerarchia(g);
+                    controllerConfiguratore.inizializzaGerarchia();
                     salvaDati();
                     break;
                 case 3:
@@ -127,7 +124,7 @@ public class ViewConfiguratore extends ViewBase{
                     visualizzaComprensori();
                     break;
                 case 5:
-                    // Implementa la logica per visualizzare gerarchie
+                    controllerConfiguratore.visualizzaGerarchie();
                     break;
                 case 6:
                     // Implementa la logica per visualizzare fattori di conversione
@@ -162,16 +159,13 @@ public class ViewConfiguratore extends ViewBase{
 
 
 
-    private Categoria creaCategoria(boolean isRadice, Categoria radice) {
-    	
-    	String nome = "";
-    	
-    	if(isRadice) {	
-            nome = getNomeRadice();
-    	}else 
-    		nome = getNomeCategoriaValido(radice);
-    	
-        String campo = InputDati.leggiStringaNonVuota("Inserisci nome del campo: ");
+
+
+    public String leggiCampo() {
+        return InputDati.leggiStringaNonVuota("Inserisci nome del campo: ");
+    }
+
+    public  HashMap<String, String> leggiDominio() {
         HashMap<String, String> dominio = new HashMap<>();
        
         int numValori = InputDati.leggiInteroNonNegativo("Quanti valori di dominio vuoi inserire? ");
@@ -190,12 +184,12 @@ public class ViewConfiguratore extends ViewBase{
             
             dominio.put(valore, descrizione);
         }
-        Categoria c = controllerConfiguratore.creaCategoria(nome, campo, dominio);
-        return c;
+        return dominio;
+
     }
 
 
-    private String getNomeRadice() {
+    public String getNomeRadice() {
             boolean nomeValido;
             String nome;
     		do {
@@ -207,61 +201,58 @@ public class ViewConfiguratore extends ViewBase{
             return nome;    
     }
 
-    private String getNomeCategoriaValido(Categoria radice) {		
-    	String nome = "";
-    	Boolean nomeValido=false;
-    
-    	while(!nomeValido) {
-    		nome = InputDati.leggiStringaNonVuota("Inserisci nome categoria: ");
-    		nomeValido = radice.isNomeUnivoco(nome);
-    		if(!nomeValido) 
-    			System.out.println("Nome non valido. Riprovare");
-    	}
-    	return nome;
+    public String getNomeCategoria() {		
+    	String nome = InputDati.leggiStringaNonVuota("Inserisci nome categoria: ");
+        return nome;
     }
 
-    private CategoriaFoglia creaCategoriaFoglia(Categoria radice) {
-        String nome = getNomeCategoriaValido(radice); 		
-    
-        CategoriaFoglia categoria = new CategoriaFoglia(nome);
-        System.out.println("Categoria foglia creata con successo." + "\n");
-        return categoria;
+    public int stampaSceltaSottocategoria(String dom){
+        System.out.println("Creazione sottocategoria per il dominio: " + dom);
+        int input = InputDati.leggiIntero(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia", 1, 2);
+        return input;
     }
 
 
-   private void creaGerarchia(GerarchiaCategorie g, Categoria padre) {			
-    	System.out.println("categoria selezionata: " + padre.getNome());
-    	
-    	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
-        Categoria radice = g.getCategoriaRadice();
-    	
-    	for (String dom : listaDominio) {
-            System.out.println("Creazione sottocategoria per il dominio: " + dom);
-            Boolean input=false;
-            while(!input) {
-		    	System.out.println(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia");
-		    	int choice1 = InputDati.leggiIntero(dom, 1, 2);
-		    	
-		    	switch(choice1) {
-		    		case 1:
-			    		Categoria sottocat = creaCategoria(false, radice);
-			            padre.aggiungiSottocategoria(dom, sottocat);
-			    		HashMap<String, Categoria> sottocategorie = padre.getSottocategorie();
-			    		creaGerarchia(g, sottocategorie.get(dom));
-			    		input = true;
-			    		break;
-		    		case 2:
-			    		CategoriaFoglia sottocatF = creaCategoriaFoglia(radice);
-			            padre.aggiungiSottocategoria(dom, sottocatF);
-			            g.addToListaFoglie(sottocatF);
-			            input = true;
-			            break;
-			        default:
-			        	System.out.println("input non valido. Riprovare");
-		    	}
+    
+    public void stampaAlbero(String indentazione, Categoria c) {
+        try {
+            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
+            List<String> coppie = new ArrayList<>();
+            for (Map.Entry<String, String> dominio : c.getDominio().entrySet()) {
+                String chiave = dominio.getKey();
+                String valore = dominio.getValue();
+                
+                if (valore.isEmpty()) {
+                    coppie.add(chiave);
+                } else {
+                    coppie.add(chiave + ": " + valore);
+                }
+            }
+            result.append(String.join(", ", coppie));
+            result.append("])");
+            System.out.println(result.toString());
+
+        } catch (NullPointerException e) {
+            System.out.println(indentazione + "- " + c.getNome());
+        }
+
+        if (c.getSottocategorie() != null) {
+            for (Categoria sottocategoria : c.getSottocategorie().values()) {
+                stampaAlbero(indentazione + "  ", sottocategoria);
             }
         }
     }
+
+    public int mostraListaGerarchie(List<String> nomiGerarchie) {
+        for (int i = 0; i < nomiGerarchie.size(); i++) {
+            System.out.println((i + 1) + ". " + nomiGerarchie.get(i));
+        }
+        int scelta = InputDati.leggiIntero("Scegli una gerarchia: ", 1, nomiGerarchie.size());
+        return scelta;
+    }
+
+
+    
 
 
 

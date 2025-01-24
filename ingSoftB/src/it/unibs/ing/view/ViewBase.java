@@ -92,5 +92,18 @@ public class ViewBase {
         return lista.get(scelta - 1);
     }
 
+    public void nomeNonValido() {
+        System.out.println("Nome non valido. Riprovare");
+    }
+
+    public void logErroreGenerico(){
+        System.out.println("Input non valido. Riprovare");
+    }
+  
+    public void logErroreGerarchia(){
+        System.out.println("Non esiste alcuna gerarchia da visualizzare.\n" + //
+                        "");
+    }
+
 
 }
