@@ -8,7 +8,6 @@ public class GerarchiaCategorie {
 	private Categoria categoriaCorrente;
     private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();
     private Stack<Categoria> percorso;
-
     
 	public GerarchiaCategorie(Categoria radice) {
 		this.radice = radice;
@@ -33,17 +32,13 @@ public class GerarchiaCategorie {
 		this.listaFoglie.add(c);
 	}
 	
-
-
     public Categoria getCategoriaCorrente() {
         return categoriaCorrente;
     }
     
-    
     public void setCategoriaCorrente() { 	//inizializzazione della categoriaCorrente: serve per non salvare due volte la radice nel file
     		categoriaCorrente = radice;
     }
-    
     
     // Metodo per spostarsi in una sottocategoria
     public boolean vaiASottocategoria(Categoria sottocategoria) {

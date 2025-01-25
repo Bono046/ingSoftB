@@ -17,7 +17,6 @@ public class FattoreConversione {
 		this.fattore = fattore;
 	}
 
-
 	public CategoriaFoglia getC1() {
 		return c1;
 	}
@@ -41,9 +40,6 @@ public class FattoreConversione {
 	public void setFattore(double fattore) {
 		this.fattore = fattore;
 	}
-	
-	
-
 
 	public FattoreConversione creaFattoreInverso () {
 		CategoriaFoglia c1 = getC1();
@@ -53,10 +49,6 @@ public class FattoreConversione {
 		return(new FattoreConversione(c2, c1, Math.round((1/f12) * 100.0) / 100.0));
 	}
 	
-	
-	
-	
-	
 	public static double getMax() {
 		return MAX;
 	}
@@ -64,7 +56,6 @@ public class FattoreConversione {
 	public static double getMin() {
 		return MIN;
 	}
-	
-	
 
+	
 }

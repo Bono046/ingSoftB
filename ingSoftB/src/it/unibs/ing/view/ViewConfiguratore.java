@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.Categoria;
+import it.unibs.ing.model.CategoriaFoglia;
+import it.unibs.ing.model.FattoreConversione;
+import it.unibs.ing.model.GerarchiaCategorie;
 
 
 
@@ -118,7 +121,8 @@ public class ViewConfiguratore extends ViewBase{
                     salvaDati();
                     break;
                 case 3:
-                    // Implementa la logica per stabilire fattori di conversione
+                    controllerConfiguratore.setFattoriConversione();
+                    salvaDati();
                     break;
                 case 4:
                     visualizzaComprensori();
@@ -127,7 +131,7 @@ public class ViewConfiguratore extends ViewBase{
                     controllerConfiguratore.visualizzaGerarchie();
                     break;
                 case 6:
-                    // Implementa la logica per visualizzare fattori di conversione
+                    controllerConfiguratore.visualizzaFattoriConversione();
                     break;
                 case 7:
                     // Implementa la logica per visualizzare proposte relative ad una categoria
@@ -257,7 +261,16 @@ public class ViewConfiguratore extends ViewBase{
         return fattore;
     }
 
+public String chiediNomeCategorieFoglia(ArrayList<CategoriaFoglia> listaFoglie) {
+        return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
+    }
 
+    public void mostraFattoriConversione(ArrayList<FattoreConversione> fattori) {
+        for (FattoreConversione f : fattori) {
+                System.out.println(toStringFattore(f));
+        }
+    }
+    
 
     
 

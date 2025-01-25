@@ -5,6 +5,7 @@ import java.util.List;
 
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
+import it.unibs.ing.model.FattoreConversione;
 
 public class ViewBase {
 
@@ -47,6 +48,16 @@ public class ViewBase {
                 + '}';
     }
 
+    public String toStringFattore(FattoreConversione fattore){
+        return "FattoreConversione{Richiesta:  " + fattore.getC1().getNome() + ", Offerta " + fattore.getC2().getNome() + 
+        ", fattore " + fattore.getFattore() + '}';
+    }
+
+    public String toStringCategoriaFoglia(CategoriaFoglia categoria){
+        return "CategoriaFoglia{" +
+                "nome='" + categoria.getNome() + '}';
+    }
+
     public String visualizzaConfiguratori(ConfiguratoreManager listaConfiguratori){
         StringBuilder sb = new StringBuilder();
         for (Configuratore configuratore : listaConfiguratori.getLista()) {
@@ -85,11 +96,16 @@ public class ViewBase {
                 descrizione = toStringComprensorio((ComprensorioGeografico) elemento);
             } else if (elemento instanceof Configuratore) {
                 descrizione = toStringConfig((Configuratore) elemento);         
+            } else if (elemento instanceof FattoreConversione) {
+                descrizione = toStringFattore((FattoreConversione) elemento); 
+            } else if (elemento instanceof CategoriaFoglia) {
+                descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
             }
             System.out.println((i + 1) + ". " + descrizione);
         }
         int scelta = InputDati.leggiIntero("Scelta:", 1, lista.size());
         return lista.get(scelta - 1);
+        
     }
 
     public void nomeNonValido() {

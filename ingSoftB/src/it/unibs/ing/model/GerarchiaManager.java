@@ -10,12 +10,9 @@ public class GerarchiaManager {
         listaOggettiGerarchia = new ArrayList<>();
     }
 
-
-
     public ArrayList<GerarchiaCategorie> getListaOggettiGerarchia() {
 		return listaOggettiGerarchia;
 	}
-
 
 	public void setListaOggettiGerarchia(ArrayList<GerarchiaCategorie> gerarchie) {
 		listaOggettiGerarchia = gerarchie;

@@ -7,8 +7,6 @@ import java.util.Set;
 import it.unibs.ing.model.*;
 import it.unibs.ing.view.ViewConfiguratore;
 
-
-
 public class ControllerConfiguratore extends ControllerBase {
 
     private Dati dati;
@@ -153,7 +151,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
     
 
-    public void setFattoriConversioneGerarchia() {
+    public void setFattoriConversione() {
         
         if (!listaGerarchiaNonVuota())
                 view.logErroreGerarchia();
@@ -172,12 +170,12 @@ public class ControllerConfiguratore extends ControllerBase {
 
             for (CategoriaFoglia c1 : foglieOfferta) {
                 for (CategoriaFoglia c2 : foglieRichiesta) {
-                    if (!c1.getNome().equals(c2.getNome()) && dati.getFattoreManager().esisteFattore(c1, c2)) {
+                    if (!c1.getNome().equals(c2.getNome()) && !dati.getFattoreManager().esisteFattore(c1, c2)) {
                         String messaggio = "Inserisci il fattore di conversione da " 
                                             + c1.getNome().toUpperCase() 
                                             + " a " 
                                             + c2.getNome().toUpperCase() 
-                                            + ":";
+                                            + ": ";
                         double fattore = view.leggiFattore(messaggio, min, max);
 
                         dati.getFattoreManager().addFattore(c1, c2, fattore);
@@ -191,6 +189,20 @@ public class ControllerConfiguratore extends ControllerBase {
         }
     }
 
+    public void visualizzaFattoriConversione() {
+        if (listaGerarchiaNonVuota()) {
+
+            GerarchiaCategorie g = sceltaRadice();
+            String nome = view.chiediNomeCategorieFoglia(g.getListaFoglie());
+            ArrayList<FattoreConversione> fattoriDaVisualizzare = dati.getFattoreManager().trovaFattore(nome);
+
+            if (fattoriDaVisualizzare.isEmpty()) {
+                view.mostraMessaggio("Non esistono fattori di conversione per la categoria selezionata\n");
+            } else {
+                view.mostraFattoriConversione(fattoriDaVisualizzare);
+            }
+        }
+    }
 
 
 
