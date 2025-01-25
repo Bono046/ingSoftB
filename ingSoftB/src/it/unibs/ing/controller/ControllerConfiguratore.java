@@ -56,10 +56,10 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public Categoria creaCategoria(boolean isRadice, Categoria c) {
-    String nome = isRadice ? view.getNomeRadice() : getNomeCategoriaValido(c);
-    String campo = view.leggiCampo();
-    HashMap<String, String> dominio = view.leggiDominio();
-    return new Categoria(nome, campo, dominio);
+        String nome = isRadice ? view.getNomeRadice() : getNomeCategoriaValido(c);
+        String campo = view.leggiCampo();
+        HashMap<String, String> dominio = view.leggiDominio();
+        return new Categoria(nome, campo, dominio);
     }
 
     public CategoriaFoglia creaCategoriaFoglia(Categoria radice) {
@@ -115,14 +115,7 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
 
-    //probabilmente da spostare in ControllerBase
-    public boolean listaGerarchiaNonVuota() {
-        if (dati.getGerarchiaCategorieManager().getListaRadici().isEmpty()) {
-            view.logErroreGerarchia();
-            return false;
-        } 
-        return true;
-    }
+ 
 
     //probabilmente da spostare in ControllerBase
     public void visualizzaGerarchie() {
@@ -133,7 +126,15 @@ public class ControllerConfiguratore extends ControllerBase {
         }
     }
 
-    //probabilmente da spostare in ControllerBase
+    public boolean listaGerarchiaNonVuota() {
+        if (dati.getGerarchiaCategorieManager().getListaRadici().isEmpty()) {
+            view.logErroreGerarchia();
+            return false;
+        } 
+        return true;
+    }
+
+
     public GerarchiaCategorie sceltaRadice() {
         ArrayList<GerarchiaCategorie> listaOggettiGerarchia = dati.getGerarchiaCategorieManager().getListaOggettiGerarchia();
 
@@ -149,6 +150,7 @@ public class ControllerConfiguratore extends ControllerBase {
         return null;
     }
 
+
     
 
     public void setFattoriConversione() {
@@ -156,11 +158,11 @@ public class ControllerConfiguratore extends ControllerBase {
         if (!listaGerarchiaNonVuota())
                 view.logErroreGerarchia();
         else {           
-            view.mostraMessaggio("Seleziona la gerarchia per l'offerta.");
+            view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
             GerarchiaCategorie gerarchiaOfferta = sceltaRadice();
             ArrayList<CategoriaFoglia> foglieOfferta = gerarchiaOfferta.getListaFoglie();
 
-            view.mostraMessaggio("Seleziona la gerarchia per la richiesta.");
+            view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
             GerarchiaCategorie gerarchiaRichiesta = sceltaRadice();
             ArrayList<CategoriaFoglia> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
 
@@ -206,7 +208,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
 
 
-
+   
 
        
 

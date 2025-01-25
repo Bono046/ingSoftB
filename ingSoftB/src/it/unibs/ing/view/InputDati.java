@@ -167,7 +167,6 @@ public class InputDati {
     public static boolean yesOrNo(String messaggio) {
         String mioMessaggio = messaggio + "(" + RISPOSTA_SI + "/" + RISPOSTA_NO + ")";
         char valoreLetto = leggiUpperChar(mioMessaggio, String.valueOf(RISPOSTA_SI) + RISPOSTA_NO);
-
         return valoreLetto == RISPOSTA_SI;
     }
  

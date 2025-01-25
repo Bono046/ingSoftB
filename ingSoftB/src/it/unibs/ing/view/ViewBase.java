@@ -1,11 +1,12 @@
 package it.unibs.ing.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
 
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
-import it.unibs.ing.model.FattoreConversione;
 
 public class ViewBase {
 
@@ -23,13 +24,14 @@ public class ViewBase {
         }
     }
 
+    /* 
     public String toStringDati(Dati dati) {
         return "Dati{" +
                 "configuratoreManager=" + visualizzaConfiguratori(dati.getConfiguratoreManager())+
                 ", fruitoreManager=" + visualizzaFruitori(dati.getFruitoreManager()) +
                 ", comprensorioManager=" + visualizzaComprensori(dati.getComprensorioManager()) +
                 '}';
-    }
+    }*/
 
     public String toStringConfig(Configuratore config){
         return "Configuratore{" +
@@ -58,6 +60,24 @@ public class ViewBase {
                 "nome='" + categoria.getNome() + '}';
     }
 
+    public String toStringProposta(Proposta p){
+        return "Proposta{" +"richiesta: " + p.getRichiesta() +", durata: " + p.getDurataRichiesta()
+				+ "; offerta: " + p.getOfferta() + ", durata: " + p.getDurataOfferta() + ", stato: " + p.getStato();    
+    }
+
+    public boolean chiediConferma(String messaggio) {
+        return InputDati.yesOrNo(messaggio);
+    }
+
+    public  String visualizzaComprensori(ComprensorioManager listaComprensori){
+        StringBuilder sb = new StringBuilder();
+        for (ComprensorioGeografico comprensorio : listaComprensori.getLista()) {
+            sb.append(toStringComprensorio(comprensorio)).append("\n");
+        }
+        return sb.toString();
+       }
+
+    /* 
     public String visualizzaConfiguratori(ConfiguratoreManager listaConfiguratori){
         StringBuilder sb = new StringBuilder();
         for (Configuratore configuratore : listaConfiguratori.getLista()) {
@@ -73,14 +93,14 @@ public class ViewBase {
         }
         return sb.toString();  
     } 
-
-    public  String visualizzaComprensori(ComprensorioManager listaComprensori){
+*/
+    public String visualizzaProposte(ArrayList<Proposta> listaProposte){
         StringBuilder sb = new StringBuilder();
-        for (ComprensorioGeografico comprensorio : listaComprensori.getLista()) {
-            sb.append(toStringComprensorio(comprensorio)).append("\n");
+        for (Proposta proposta : listaProposte) {
+            sb.append(toStringProposta(proposta)).append("\n");
         }
         return sb.toString();
-       }
+    }
     
        
     public <T> T selezionaDaLista(List<T> lista, String messaggio) {
@@ -124,6 +144,30 @@ public class ViewBase {
     public void mostraMessaggio(String messaggio){
         System.out.println(messaggio);
     }
+
+     public String leggiValore(String messaggio) {
+        return InputDati.leggiStringaNonVuota(messaggio);
+    }
+    
+    public int leggiValoreIntero(String messaggio) {
+        return InputDati.leggiIntero(messaggio);
+    } 
+
+    public int selezionaGerarchia(List<String> nomiGerarchie) {
+        for (int i = 0; i < nomiGerarchie.size(); i++) {
+            System.out.println((i + 1) + ". " + nomiGerarchie.get(i));
+        }
+        int scelta = InputDati.leggiIntero("Scegli una gerarchia: ", 1, nomiGerarchie.size());
+        return scelta;
+    }
+
+    public String chiediNomeCategorieFoglia(ArrayList<CategoriaFoglia> listaFoglie) {
+        return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
+    }
+
+
+   
+
 
 
 }

@@ -1,9 +1,11 @@
 package it.unibs.ing.view;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import it.unibs.ing.controller.ControllerFruitore;
 import it.unibs.ing.model.ComprensorioGeografico;
+import it.unibs.ing.model.Categoria;
 
 
 public class ViewFruitore extends ViewBase {
@@ -13,6 +15,7 @@ public class ViewFruitore extends ViewBase {
     public ViewFruitore(ControllerFruitore controllerFruitore) {
         super(controllerFruitore);
         this.controllerFruitore = controllerFruitore;
+        controllerFruitore.registraView(this);
     }
 
 
@@ -96,6 +99,7 @@ public class ViewFruitore extends ViewBase {
 
     private void mostraMenuPrincipaleFruitore(String user) {
     	while (true) {
+            System.out.println("\nMENU");
             System.out.println("1. Esplora gerarchie");
             System.out.println("2. Formula proposta scambio");
             System.out.println("3. Visualizza proposte di scambio");
@@ -107,16 +111,14 @@ public class ViewFruitore extends ViewBase {
 
             switch (scelta) {
                 case 1:
-                /* 	GerarchiaCategorie g = sceltaRadice();
-                	g.setCategoriaCorrente();
-                	esploraGerarchia(g);
-                    */
+                	controllerFruitore.esploraGerarchia();
                     break;
                 case 2: 
-                	//creaProposta(user);
+                	controllerFruitore.creaProposta(user);
+                    salvaDati();
                 	break;
                 case 3:
-                	//visualizzaProposteByUser(user);
+                    controllerFruitore.visualizzaProposteByUser(user);
                 	break;
                 case 4:
                 	//ritiraProposta(user);
@@ -130,5 +132,24 @@ public class ViewFruitore extends ViewBase {
             }
         }
     }
+
+
+    public void mostraCategoriaCorrente(String nomeCategoria) {
+        System.out.println("\nCategoria corrente: " + nomeCategoria);
+    }
+
+    public void mostraValoriSottocategorie(Map<String, Categoria> sottocategorie) {
+        System.out.println("Valori disponibili:");
+        sottocategorie.forEach((k, v) -> System.out.println(k + " -> " + v.getNome()));
+    }
+
+    
+
+ 
+
+    
+   
+
+
 
 }

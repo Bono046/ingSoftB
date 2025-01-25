@@ -12,6 +12,7 @@ public class GerarchiaCategorie {
 	public GerarchiaCategorie(Categoria radice) {
 		this.radice = radice;
         this.percorso = new Stack<>();
+        this.categoriaCorrente = radice;
     }
 	
 	public Categoria getCategoriaRadice() {

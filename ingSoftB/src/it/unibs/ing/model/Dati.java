@@ -7,6 +7,7 @@ public class Dati {
     private ComprensorioManager comprensorioManager;
     private GerarchiaManager gerarchiaManager;
     private FattoreManager fattoreManager;
+    private PropostaManager propostaManager;
 
     public Dati() {
         configuratoreManager = new ConfiguratoreManager();
@@ -14,6 +15,7 @@ public class Dati {
         comprensorioManager = new ComprensorioManager();
         gerarchiaManager = new GerarchiaManager();
         fattoreManager = new FattoreManager();
+        propostaManager = new PropostaManager();
     }
 
     
@@ -35,5 +37,9 @@ public class Dati {
  
     public FattoreManager getFattoreManager() {
         return fattoreManager;
+    }
+
+    public PropostaManager getPropostaManager() {
+        return propostaManager;
     }
 }

@@ -10,10 +10,6 @@ import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.Categoria;
 import it.unibs.ing.model.CategoriaFoglia;
 import it.unibs.ing.model.FattoreConversione;
-import it.unibs.ing.model.GerarchiaCategorie;
-
-
-
 
 public class ViewConfiguratore extends ViewBase{
     ControllerConfiguratore controllerConfiguratore;
@@ -97,8 +93,6 @@ public class ViewConfiguratore extends ViewBase{
 
     private void mostraMenuPrincipaleConfig() {
         int scelta;
-
-        System.out.println(toStringDati(controllerConfiguratore.getDati()));
 
         do {
             System.out.println("1. Crea Comprensorio Geografico");
@@ -247,13 +241,7 @@ public class ViewConfiguratore extends ViewBase{
         }
     }
 
-    public int selezionaGerarchia(List<String> nomiGerarchie) {
-        for (int i = 0; i < nomiGerarchie.size(); i++) {
-            System.out.println((i + 1) + ". " + nomiGerarchie.get(i));
-        }
-        int scelta = InputDati.leggiIntero("Scegli una gerarchia: ", 1, nomiGerarchie.size());
-        return scelta;
-    }
+   
 
 
     public double leggiFattore(String messaggio, double min, double max) {    
@@ -261,9 +249,7 @@ public class ViewConfiguratore extends ViewBase{
         return fattore;
     }
 
-public String chiediNomeCategorieFoglia(ArrayList<CategoriaFoglia> listaFoglie) {
-        return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
-    }
+
 
     public void mostraFattoriConversione(ArrayList<FattoreConversione> fattori) {
         for (FattoreConversione f : fattori) {

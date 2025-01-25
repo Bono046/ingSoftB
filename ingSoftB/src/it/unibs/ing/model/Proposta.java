@@ -3,41 +3,42 @@ package it.unibs.ing.model;
 import java.util.ArrayList;
 
 public class Proposta {
-	private CategoriaFoglia richiesta;
-	private CategoriaFoglia offerta;
+	private String richiesta;
+	private String offerta;
 	private int durataRichiesta;
 	private int durataOfferta;
 	private StatoProposta stato;
 	private String username;
 	private enum StatoProposta {SOSPESO, APERTA, CHIUSA, RITIRATA}; 
+	//private ArrayList<StatoProposta> statiProposta= new ArrayList<>(); 
 	
-	
-	public Proposta(CategoriaFoglia richiesta, CategoriaFoglia offerta, int durataRichiesta, String username) {
+	public Proposta(String richiesta, String offerta, int durataRichiesta, int durataOfferta, String username) {
 		super();
 		this.richiesta = richiesta;
 		this.offerta = offerta;
 		this.durataRichiesta = durataRichiesta;
+		this.durataOfferta = durataOfferta;
 		this.username = username;
 		this.stato = StatoProposta.SOSPESO;
 	}
 
 
-	public CategoriaFoglia getRichiesta() {
+	public String getRichiesta() {
 		return richiesta;
 	}
 
 
-	public void setRichiesta(CategoriaFoglia richiesta) {
+	public void setRichiesta(String richiesta) {
 		this.richiesta = richiesta;
 	}
 
 
-	public CategoriaFoglia getOfferta() {
+	public String getOfferta() {
 		return offerta;
 	}
 
 
-	public void setOfferta(CategoriaFoglia offerta) {
+	public void setOfferta(String offerta) {
 		this.offerta = offerta;
 	}
 
@@ -90,85 +91,35 @@ public class Proposta {
 
 
 	
-
-	
-	private void chiudiProposte(ArrayList<Proposta> percorso) {
-	    for (Proposta proposta : percorso) {
-	        proposta.chiudiProposta();
-	    }
-	}
 	
 	
 	public void chiudiProposta() {
 		this.stato=StatoProposta.CHIUSA;
-		statiProposta.add(StatoProposta.CHIUSA);
+		//statiProposta.add(StatoProposta.CHIUSA);
 	}
 	
 	public void accettaProposta() {
 		this.stato = StatoProposta.APERTA;
-		statiProposta.add(StatoProposta.APERTA);
+		//statiProposta.add(StatoProposta.APERTA);
 	}
 	
 	public void ritiraProposta() {
 		this.stato = StatoProposta.RITIRATA;
-		statiProposta.add(StatoProposta.RITIRATA);
+		//statiProposta.add(StatoProposta.RITIRATA);
 	}
 	
 	
-	public void verificaProposta() {
-		String user = this.getUsername();
-	    ComprensorioGeografico comprensorio = Fruitore.getComprensorioFromUser(user);
-	    ArrayList<String> userFruitoriFromComprensorio = Fruitore.getUserFruitoriFromComprensorio(comprensorio);
-	    userFruitoriFromComprensorio.remove(user);
-	    ArrayList<Proposta> proposteAperteFromComprensorio = Proposta.getProposteAperteFromUsers(userFruitoriFromComprensorio);   
-	    
-	    for (Proposta proposta : proposteAperteFromComprensorio) {
-	        if (this.soddisfaRichiestaDi(proposta)) {
-	            if (this.richiestaSoddisfattaDa(proposta)) {
-	                this.chiudiProposta();
-	                proposta.chiudiProposta();
-	                break; 
-	            } else {	              
-	                ArrayList<Proposta> percorso = new ArrayList<>();
-	                percorso.add(this);
-
-	                if (verificaTransitivaCiclo(proposta, percorso, proposteAperteFromComprensorio)) {
-	                    chiudiProposte(percorso);
-	                    this.chiudiProposta();
-	                    break; 
-	                }
-	            }
-	        }
-	    }
-	}
-
-	
-	private boolean verificaTransitivaCiclo(Proposta propostaAperta, ArrayList<Proposta> catenaProposte, ArrayList<Proposta> elencoProposte) {
-	    catenaProposte.add(propostaAperta);
-
-	    if (catenaProposte.size() > 2 && propostaAperta.soddisfaRichiestaDi(this)) {
-	        return true;
-	        }
-
-	    for (Proposta prossimaProposta : elencoProposte) {
-	        if (!catenaProposte.contains(prossimaProposta) && propostaAperta.soddisfaRichiestaDi(prossimaProposta)) {
-	            if (verificaTransitivaCiclo(prossimaProposta, catenaProposte, elencoProposte)) {
-	                return true;
-	            }
-	        }
-	    }
-	    catenaProposte.remove(catenaProposte.size() - 1);
-	    return false;
-	}
+    
 
 
 	public boolean soddisfaRichiestaDi(Proposta altraProposta) {
-	    return this.getOfferta().getNome().equals(altraProposta.getRichiesta().getNome())
+	    return this.getOfferta().equals(altraProposta.getRichiesta())
 	        && this.getDurataOfferta() == altraProposta.getDurataRichiesta();
 	}
 
 	public boolean richiestaSoddisfattaDa(Proposta altraProposta) {
-	    return this.getRichiesta().getNome().equals(altraProposta.getOfferta().getNome())
+	    return this.getRichiesta().equals(altraProposta.getOfferta())
 	        && this.getDurataRichiesta() == altraProposta.getDurataOfferta();
 	}
+	
 }
