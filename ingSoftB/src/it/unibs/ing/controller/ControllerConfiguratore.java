@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.Configuratore;
-import it.unibs.ing.model.Dati;
-import it.unibs.ing.model.GerarchiaCategorie;
+import it.unibs.ing.model.*;
 import it.unibs.ing.view.ViewConfiguratore;
-import it.unibs.ing.model.CategoriaFoglia;
-import it.unibs.ing.model.Categoria;
+
 
 
 public class ControllerConfiguratore extends ControllerBase {
@@ -120,6 +116,8 @@ public class ControllerConfiguratore extends ControllerBase {
         dati.getGerarchiaCategorieManager().addGerarchia(g);
     }
 
+
+    //probabilmente da spostare in ControllerBase
     public boolean listaGerarchiaNonVuota() {
         if (dati.getGerarchiaCategorieManager().getListaRadici().isEmpty()) {
             view.logErroreGerarchia();
@@ -128,7 +126,7 @@ public class ControllerConfiguratore extends ControllerBase {
         return true;
     }
 
-
+    //probabilmente da spostare in ControllerBase
     public void visualizzaGerarchie() {
         if (listaGerarchiaNonVuota()) {
             for (Categoria gerarchia : dati.getGerarchiaCategorieManager().getListaRadici()) {
@@ -137,7 +135,7 @@ public class ControllerConfiguratore extends ControllerBase {
         }
     }
 
-
+    //probabilmente da spostare in ControllerBase
     public GerarchiaCategorie sceltaRadice() {
         ArrayList<GerarchiaCategorie> listaOggettiGerarchia = dati.getGerarchiaCategorieManager().getListaOggettiGerarchia();
 
@@ -146,7 +144,7 @@ public class ControllerConfiguratore extends ControllerBase {
             for (GerarchiaCategorie gerarchia : listaOggettiGerarchia) {
                 nomiGerarchie.add(gerarchia.getCategoriaRadice().getNome());
             }
-            int scelta = view.mostraListaGerarchie(nomiGerarchie);
+            int scelta = view.selezionaGerarchia(nomiGerarchie);
 
             return listaOggettiGerarchia.get(scelta - 1);
         }
@@ -155,6 +153,43 @@ public class ControllerConfiguratore extends ControllerBase {
 
     
 
+    public void setFattoriConversioneGerarchia() {
+        
+        if (!listaGerarchiaNonVuota())
+                view.logErroreGerarchia();
+        else {           
+            view.mostraMessaggio("Seleziona la gerarchia per l'offerta.");
+            GerarchiaCategorie gerarchiaOfferta = sceltaRadice();
+            ArrayList<CategoriaFoglia> foglieOfferta = gerarchiaOfferta.getListaFoglie();
+
+            view.mostraMessaggio("Seleziona la gerarchia per la richiesta.");
+            GerarchiaCategorie gerarchiaRichiesta = sceltaRadice();
+            ArrayList<CategoriaFoglia> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
+
+            double min = FattoreConversione.getMin();
+            double max = FattoreConversione.getMax();
+            boolean aggiuntoFattore = false;
+
+            for (CategoriaFoglia c1 : foglieOfferta) {
+                for (CategoriaFoglia c2 : foglieRichiesta) {
+                    if (!c1.getNome().equals(c2.getNome()) && dati.getFattoreManager().esisteFattore(c1, c2)) {
+                        String messaggio = "Inserisci il fattore di conversione da " 
+                                            + c1.getNome().toUpperCase() 
+                                            + " a " 
+                                            + c2.getNome().toUpperCase() 
+                                            + ":";
+                        double fattore = view.leggiFattore(messaggio, min, max);
+
+                        dati.getFattoreManager().addFattore(c1, c2, fattore);
+                        aggiuntoFattore = true;
+                    }
+                }
+            }
+            if (!aggiuntoFattore) {
+                view.mostraMessaggio("Tutte le categorie foglia hanno già assegnato un fattore di conversione.");
+            }
+        }
+    }
 
 
 

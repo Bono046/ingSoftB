@@ -147,15 +147,17 @@ public class InputDati {
         return valoreLetto;
     }
 
-    public static double leggiDoubleConMinimo(String messaggio, double minimo) {
+    public static double leggiDouble(String messaggio, double minimo, double massimo) {
         boolean finito = false;
         double valoreLetto = 0;
         do {
             valoreLetto = leggiDouble(messaggio);
-            if (valoreLetto >= minimo)
+            if (valoreLetto >= minimo && valoreLetto <= massimo)
                 finito = true;
-            else
+            else if (valoreLetto < minimo)
                 System.out.println(ERRORE_MINIMO + minimo);
+                else if(valoreLetto > massimo)
+                System.out.println(ERRORE_MASSIMO + massimo);
         } while (!finito);
 
         return valoreLetto;

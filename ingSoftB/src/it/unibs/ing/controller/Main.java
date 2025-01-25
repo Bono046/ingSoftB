@@ -12,7 +12,7 @@ public class Main {
 
         Dati dati = new Dati();
         
-         try {
+        try {
             dati = FileManager.caricaDati();
         } catch (IOException e) {
             System.out.println("Errore nel caricamento dei dati: " + e.getMessage());

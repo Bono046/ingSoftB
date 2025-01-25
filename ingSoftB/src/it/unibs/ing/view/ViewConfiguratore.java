@@ -213,7 +213,7 @@ public class ViewConfiguratore extends ViewBase{
     }
 
 
-    
+   
     public void stampaAlbero(String indentazione, Categoria c) {
         try {
             StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
@@ -243,13 +243,20 @@ public class ViewConfiguratore extends ViewBase{
         }
     }
 
-    public int mostraListaGerarchie(List<String> nomiGerarchie) {
+    public int selezionaGerarchia(List<String> nomiGerarchie) {
         for (int i = 0; i < nomiGerarchie.size(); i++) {
             System.out.println((i + 1) + ". " + nomiGerarchie.get(i));
         }
         int scelta = InputDati.leggiIntero("Scegli una gerarchia: ", 1, nomiGerarchie.size());
         return scelta;
     }
+
+
+    public double leggiFattore(String messaggio, double min, double max) {    
+        double fattore = InputDati.leggiDouble(messaggio, min, max);
+        return fattore;
+    }
+
 
 
     

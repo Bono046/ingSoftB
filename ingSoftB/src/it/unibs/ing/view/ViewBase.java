@@ -105,5 +105,9 @@ public class ViewBase {
                         "");
     }
 
+    public void mostraMessaggio(String messaggio){
+        System.out.println(messaggio);
+    }
+
 
 }

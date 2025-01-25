@@ -6,12 +6,14 @@ public class Dati {
     private FruitoreManager fruitoreManager;
     private ComprensorioManager comprensorioManager;
     private GerarchiaManager gerarchiaManager;
+    private FattoreManager fattoreManager;
 
     public Dati() {
         configuratoreManager = new ConfiguratoreManager();
         fruitoreManager = new FruitoreManager();
         comprensorioManager = new ComprensorioManager();
         gerarchiaManager = new GerarchiaManager();
+        fattoreManager = new FattoreManager();
     }
 
     
@@ -30,5 +32,8 @@ public class Dati {
     public GerarchiaManager getGerarchiaCategorieManager() {
         return gerarchiaManager;
     }
-        
+ 
+    public FattoreManager getFattoreManager() {
+        return fattoreManager;
+    }
 }
