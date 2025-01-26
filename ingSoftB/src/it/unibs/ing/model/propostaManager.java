@@ -41,6 +41,18 @@ public class PropostaManager {
 		return lista;
 	}
 
+	public ArrayList<Proposta> getListaProposteAperteUser(String user) {
+		ArrayList<Proposta> lista = new ArrayList<>();
+		for(Proposta p : listaProposte) {
+			if(p.getUsername().equals(user)){
+				if(p.isAperto()) {
+					lista.add(p);
+				}
+			}
+		}
+		return lista;
+	}
+
 	public ArrayList<Proposta> getProposteAperteFromUsers(ArrayList<String> listaUser) {
 		ArrayList<Proposta> proposteFromComprensorio=new ArrayList<>();
 		for(String user:listaUser) {

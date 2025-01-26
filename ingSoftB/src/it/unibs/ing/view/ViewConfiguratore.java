@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.Categoria;
-import it.unibs.ing.model.CategoriaFoglia;
 import it.unibs.ing.model.FattoreConversione;
 
 public class ViewConfiguratore extends ViewBase{
@@ -95,6 +94,7 @@ public class ViewConfiguratore extends ViewBase{
         int scelta;
 
         do {
+            System.out.println("\n MENU");
             System.out.println("1. Crea Comprensorio Geografico");
             System.out.println("2. Crea Gerarchia di Categorie");
             System.out.println("3. Stabilisci Fattore di Conversione");
@@ -128,7 +128,7 @@ public class ViewConfiguratore extends ViewBase{
                     controllerConfiguratore.visualizzaFattoriConversione();
                     break;
                 case 7:
-                    // Implementa la logica per visualizzare proposte relative ad una categoria
+                    controllerConfiguratore.visualizzaProposteByFoglia();
                     break;
                 case 0:
                     System.out.println("Arrivederci! \n");

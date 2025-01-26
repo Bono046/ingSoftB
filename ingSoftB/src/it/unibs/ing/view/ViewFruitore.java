@@ -121,7 +121,8 @@ public class ViewFruitore extends ViewBase {
                     controllerFruitore.visualizzaProposteByUser(user);
                 	break;
                 case 4:
-                	//ritiraProposta(user);
+                	controllerFruitore.ritiraProposta(user);
+                    salvaDati();
                 	break;
                 case 0:
                     

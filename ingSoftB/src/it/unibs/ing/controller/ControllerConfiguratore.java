@@ -84,6 +84,7 @@ public class ControllerConfiguratore extends ControllerBase {
         Categoria radice = creaCategoria(true, null);
         GerarchiaCategorie g = new GerarchiaCategorie(radice);
         componiGerarchia(g, radice);
+        dati.getGerarchiaCategorieManager().addGerarchia(g);
     }
 
     public void componiGerarchia(GerarchiaCategorie g, Categoria padre) {		
@@ -111,7 +112,7 @@ public class ControllerConfiguratore extends ControllerBase {
                     view.logErroreGenerico();
             }
         }
-        dati.getGerarchiaCategorieManager().addGerarchia(g);
+        
     }
 
 
@@ -206,7 +207,19 @@ public class ControllerConfiguratore extends ControllerBase {
         }
     }
 
-
+    public void visualizzaProposteByFoglia() {
+		String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
+		ArrayList<Proposta> lista = dati.getPropostaManager().getListaProposte();
+		ArrayList<Proposta> listaDaVisualizzare = new ArrayList<>();
+		for(Proposta proposta:lista) {
+			if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))
+				listaDaVisualizzare.add(proposta);                
+			}
+		
+		if(listaDaVisualizzare.isEmpty()) 
+			System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
+        else view.visualizzaProposte(listaDaVisualizzare);   
+	}
 
    
 

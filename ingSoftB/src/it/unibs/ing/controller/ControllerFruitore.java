@@ -4,7 +4,7 @@ import it.unibs.ing.model.*;
 import it.unibs.ing.view.ViewFruitore;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ControllerFruitore extends ControllerBase{    
     Dati dati;
@@ -160,9 +160,23 @@ public class ControllerFruitore extends ControllerBase{
             view.mostraMessaggio("Non sono presenti proposte da visualizzare.");
 	    } else {
             view.mostraMessaggio(view.visualizzaProposte(list));;
-	}
-
+    	}
     }   
+
+    public void ritiraProposta(String user) {
+	    
+	    ArrayList<Proposta> list = dati.getPropostaManager().getListaProposteAperteUser(user);
+
+	    if (list.isEmpty()) {
+	        view.mostraMessaggio("Non sono presenti proposte da ritirare.");
+	        return;
+	    }
+
+	    Proposta propostaDaRitirare = view.selezionaDaLista(list, "Seleziona il numero della proposta da ritirare:");
+
+	    propostaDaRitirare.ritiraProposta();
+	    view.mostraMessaggio("La proposta è stata ritirata con successo.");
+	    }
 
 
 }

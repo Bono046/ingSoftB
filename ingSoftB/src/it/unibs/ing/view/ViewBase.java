@@ -120,6 +120,8 @@ public class ViewBase {
                 descrizione = toStringFattore((FattoreConversione) elemento); 
             } else if (elemento instanceof CategoriaFoglia) {
                 descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
+            }else if (elemento instanceof Proposta) {
+                    descrizione = toStringProposta((Proposta) elemento); 
             }
             System.out.println((i + 1) + ". " + descrizione);
         }

@@ -4,67 +4,63 @@
       {
         "username": "a",
         "password": "a"
-      },
-      {
-        "username": "b",
-        "password": "b"
       }
     ]
   },
   "fruitoreManager": {
     "listaFruitori": [
       {
-        "username": "z",
-        "password": "z",
+        "username": "giorgio",
+        "password": "bucella",
         "comprensiorio": {
-          "nome": "Brescia",
+          "nome": "Bresica",
           "comuni": [
-            "Orzi",
+            "Orzinuovi",
             "Mazzano"
           ]
         },
-        "mail": "z@"
+        "mail": "g@"
       },
       {
-        "username": "y",
-        "password": "y",
+        "username": "luca",
+        "password": "freschi",
         "comprensiorio": {
-          "nome": "Milano",
+          "nome": "Bresica",
           "comuni": [
-            "Rho",
-            "Segrate"
-          ]
-        },
-        "mail": "y@"
-      },
-      {
-        "username": "w",
-        "password": "w",
-        "comprensiorio": {
-          "nome": "Brescia",
-          "comuni": [
-            "Orzi",
+            "Orzinuovi",
             "Mazzano"
           ]
         },
-        "mail": "w@"
+        "mail": "l@"
+      },
+      {
+        "username": "riccardo",
+        "password": "rossi",
+        "comprensiorio": {
+          "nome": "Bresica",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ]
+        },
+        "mail": "r@"
       }
     ]
   },
   "comprensorioManager": {
     "listaComprensori": [
       {
-        "nome": "Brescia",
+        "nome": "Bresica",
         "comuni": [
-          "Orzi",
+          "Orzinuovi",
           "Mazzano"
         ]
       },
       {
-        "nome": "Milano",
+        "nome": "Bergamo",
         "comuni": [
-          "Rho",
-          "Segrate"
+          "Albino",
+          "Orio"
         ]
       }
     ]
@@ -73,156 +69,223 @@
     "listaOggettiGerarchia": [
       {
         "radice": {
-          "nome": "Musica",
-          "campo": "m",
+          "nome": "lezioni di musica",
+          "campo": "tipo",
           "dominio": {
-            "teoria": "",
+            "teoria": "str",
             "strumento": ""
           },
           "sottocategorie": {
             "teoria": {
-              "nome": "teoria"
+              "nome": "lezioni di teoria",
+              "campo": "argomento",
+              "dominio": {
+                "storia": "",
+                "solfeggio": ""
+              },
+              "sottocategorie": {
+                "storia": {
+                  "nome": "lezioni di storia della musica"
+                },
+                "solfeggio": {
+                  "nome": "lezioni di solfeggio"
+                }
+              }
             },
             "strumento": {
-              "nome": "strumento"
+              "nome": "lezioni di stumenti",
+              "campo": "2",
+              "dominio": {
+                "piano": "",
+                "chitarra": ""
+              },
+              "sottocategorie": {
+                "piano": {
+                  "nome": "lezioni di chitarra"
+                },
+                "chitarra": {
+                  "nome": "lezioni di pianoforte"
+                }
+              }
+            }
+          }
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di musica",
+          "campo": "tipo",
+          "dominio": {
+            "teoria": "str",
+            "strumento": ""
+          },
+          "sottocategorie": {
+            "teoria": {
+              "nome": "lezioni di teoria",
+              "campo": "argomento",
+              "dominio": {
+                "storia": "",
+                "solfeggio": ""
+              },
+              "sottocategorie": {
+                "storia": {
+                  "nome": "lezioni di storia della musica"
+                },
+                "solfeggio": {
+                  "nome": "lezioni di solfeggio"
+                }
+              }
+            },
+            "strumento": {
+              "nome": "lezioni di stumenti",
+              "campo": "2",
+              "dominio": {
+                "piano": "",
+                "chitarra": ""
+              },
+              "sottocategorie": {
+                "piano": {
+                  "nome": "lezioni di chitarra"
+                },
+                "chitarra": {
+                  "nome": "lezioni di pianoforte"
+                }
+              }
             }
           }
         },
         "listaFoglie": [
           {
-            "nome": "teoria"
+            "nome": "lezioni di storia della musica"
           },
           {
-            "nome": "strumento"
+            "nome": "lezioni di solfeggio"
+          },
+          {
+            "nome": "lezioni di chitarra"
+          },
+          {
+            "nome": "lezioni di pianoforte"
           }
         ],
         "percorso": []
       },
       {
         "radice": {
-          "nome": "karate",
-          "campo": "cintura",
+          "nome": "lezioni di karate",
+          "campo": "livello",
           "dominio": {
             "esperto": "",
-            "principiante": ""
+            "principiante": "",
+            "medio": ""
           },
           "sottocategorie": {
             "esperto": {
-              "nome": "cintura esperti",
-              "campo": "colore",
-              "dominio": {
-                "nera": "",
-                "blu": ""
-              },
-              "sottocategorie": {
-                "nera": {
-                  "nome": "nera"
-                },
-                "blu": {
-                  "nome": "blu"
-                }
-              }
+              "nome": "lezioni di cintura bianca"
             },
             "principiante": {
-              "nome": "bianca"
+              "nome": "lezioni di cintura verde"
+            },
+            "medio": {
+              "nome": "lezioni di cintura nera"
+            }
+          }
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di karate",
+          "campo": "livello",
+          "dominio": {
+            "esperto": "",
+            "principiante": "",
+            "medio": ""
+          },
+          "sottocategorie": {
+            "esperto": {
+              "nome": "lezioni di cintura bianca"
+            },
+            "principiante": {
+              "nome": "lezioni di cintura verde"
+            },
+            "medio": {
+              "nome": "lezioni di cintura nera"
             }
           }
         },
         "listaFoglie": [
           {
-            "nome": "nera"
+            "nome": "lezioni di cintura bianca"
           },
           {
-            "nome": "blu"
+            "nome": "lezioni di cintura verde"
           },
           {
-            "nome": "bianca"
+            "nome": "lezioni di cintura nera"
           }
         ],
         "percorso": []
       },
       {
         "radice": {
-          "nome": "cucina",
-          "campo": "piatti",
+          "nome": "a",
+          "campo": "a",
           "dominio": {
-            "secondi": "",
-            "primi": ""
+            "a": ""
           },
           "sottocategorie": {
-            "secondi": {
-              "nome": "cucina di secondi",
-              "campo": "piatti",
+            "a": {
+              "nome": "b",
+              "campo": "b",
               "dominio": {
-                "carne bianca": "",
-                "carne rossa": ""
+                "b": ""
               },
               "sottocategorie": {
-                "carne bianca": {
-                  "nome": "cucina carne bianca"
-                },
-                "carne rossa": {
-                  "nome": "cucina carne rossa"
+                "b": {
+                  "nome": "c",
+                  "campo": "c",
+                  "dominio": {
+                    "c": "c"
+                  },
+                  "sottocategorie": {
+                    "c": {
+                      "nome": "d"
+                    }
+                  }
                 }
               }
-            },
-            "primi": {
-              "nome": "cucina pasta"
+            }
+          }
+        },
+        "categoriaCorrente": {
+          "nome": "a",
+          "campo": "a",
+          "dominio": {
+            "a": ""
+          },
+          "sottocategorie": {
+            "a": {
+              "nome": "b",
+              "campo": "b",
+              "dominio": {
+                "b": ""
+              },
+              "sottocategorie": {
+                "b": {
+                  "nome": "c",
+                  "campo": "c",
+                  "dominio": {
+                    "c": "c"
+                  },
+                  "sottocategorie": {
+                    "c": {
+                      "nome": "d"
+                    }
+                  }
+                }
+              }
             }
           }
         },
         "listaFoglie": [
           {
-            "nome": "cucina carne bianca"
-          },
-          {
-            "nome": "cucina carne rossa"
-          },
-          {
-            "nome": "cucina pasta"
-          }
-        ],
-        "percorso": []
-      },
-      {
-        "radice": {
-          "nome": "cucina",
-          "campo": "piatti",
-          "dominio": {
-            "secondi": "",
-            "primi": ""
-          },
-          "sottocategorie": {
-            "secondi": {
-              "nome": "cucina di secondi",
-              "campo": "piatti",
-              "dominio": {
-                "carne bianca": "",
-                "carne rossa": ""
-              },
-              "sottocategorie": {
-                "carne bianca": {
-                  "nome": "cucina carne bianca"
-                },
-                "carne rossa": {
-                  "nome": "cucina carne rossa"
-                }
-              }
-            },
-            "primi": {
-              "nome": "cucina pasta"
-            }
-          }
-        },
-        "listaFoglie": [
-          {
-            "nome": "cucina carne bianca"
-          },
-          {
-            "nome": "cucina carne rossa"
-          },
-          {
-            "nome": "cucina pasta"
+            "nome": "d"
           }
         ],
         "percorso": []
@@ -233,543 +296,549 @@
     "listaFattori": [
       {
         "c1": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "c2": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "c2": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "c2": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "c2": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "c2": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "c2": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "c2": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "c2": {
-          "nome": "teoria"
+          "nome": "lezioni di storia della musica"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "c2": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "c2": {
-          "nome": "strumento"
+          "nome": "lezioni di solfeggio"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "c2": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "blu"
+          "nome": "lezioni di pianoforte"
         },
         "c2": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "teoria"
+          "nome": "lezioni di cintura bianca"
         },
         "c2": {
-          "nome": "bianca"
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 1.2
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 0.83
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
+        },
+        "fattore": 0.6
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura nera"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.67
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
+        },
+        "fattore": 0.5
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura nera"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 2.0
+      },
+      {
+        "c1": {
+          "nome": "d"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.4
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "d"
+        },
+        "fattore": 0.71
+      },
+      {
+        "c1": {
+          "nome": "d"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 1.68
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "d"
+        },
+        "fattore": 0.6
+      },
+      {
+        "c1": {
+          "nome": "d"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
+        },
+        "fattore": 0.84
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura nera"
+        },
+        "c2": {
+          "nome": "d"
+        },
+        "fattore": 1.19
+      },
+      {
+        "c1": {
+          "nome": "lezioni di storia della musica"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.7
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "lezioni di storia della musica"
+        },
+        "fattore": 0.59
+      },
+      {
+        "c1": {
+          "nome": "lezioni di solfeggio"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.7
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "lezioni di solfeggio"
+        },
+        "fattore": 0.59
+      },
+      {
+        "c1": {
+          "nome": "lezioni di chitarra"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.7
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "lezioni di chitarra"
+        },
+        "fattore": 0.59
+      },
+      {
+        "c1": {
+          "nome": "lezioni di pianoforte"
+        },
+        "c2": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "fattore": 1.7
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura bianca"
+        },
+        "c2": {
+          "nome": "lezioni di pianoforte"
+        },
+        "fattore": 0.59
+      },
+      {
+        "c1": {
+          "nome": "lezioni di storia della musica"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 2.0
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di storia della musica"
+        },
+        "fattore": 0.5
+      },
+      {
+        "c1": {
+          "nome": "lezioni di storia della musica"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
+        },
+        "fattore": 1.02
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura nera"
+        },
+        "c2": {
+          "nome": "lezioni di storia della musica"
+        },
+        "fattore": 0.98
+      },
+      {
+        "c1": {
+          "nome": "lezioni di storia della musica"
+        },
+        "c2": {
+          "nome": "d"
+        },
+        "fattore": 1.21
+      },
+      {
+        "c1": {
+          "nome": "d"
+        },
+        "c2": {
+          "nome": "lezioni di storia della musica"
+        },
+        "fattore": 0.83
+      },
+      {
+        "c1": {
+          "nome": "lezioni di solfeggio"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 1.8
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di solfeggio"
+        },
+        "fattore": 0.56
+      },
+      {
+        "c1": {
+          "nome": "lezioni di chitarra"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 1.8
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di chitarra"
+        },
+        "fattore": 0.56
+      },
+      {
+        "c1": {
+          "nome": "lezioni di pianoforte"
+        },
+        "c2": {
+          "nome": "lezioni di cintura verde"
+        },
+        "fattore": 1.8
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura verde"
+        },
+        "c2": {
+          "nome": "lezioni di pianoforte"
+        },
+        "fattore": 0.56
+      },
+      {
+        "c1": {
+          "nome": "lezioni di solfeggio"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
+        },
+        "fattore": 0.9
+      },
+      {
+        "c1": {
+          "nome": "lezioni di cintura nera"
+        },
+        "c2": {
+          "nome": "lezioni di solfeggio"
+        },
+        "fattore": 1.11
+      },
+      {
+        "c1": {
+          "nome": "lezioni di solfeggio"
+        },
+        "c2": {
+          "nome": "d"
+        },
+        "fattore": 1.08
+      },
+      {
+        "c1": {
+          "nome": "d"
+        },
+        "c2": {
+          "nome": "lezioni di solfeggio"
+        },
+        "fattore": 0.93
+      },
+      {
+        "c1": {
+          "nome": "lezioni di chitarra"
+        },
+        "c2": {
+          "nome": "lezioni di cintura nera"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "bianca"
+          "nome": "lezioni di cintura nera"
         },
         "c2": {
-          "nome": "teoria"
+          "nome": "lezioni di chitarra"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "strumento"
+          "nome": "lezioni di pianoforte"
         },
         "c2": {
-          "nome": "bianca"
+          "nome": "lezioni di cintura nera"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "bianca"
+          "nome": "lezioni di cintura nera"
         },
         "c2": {
-          "nome": "strumento"
+          "nome": "lezioni di pianoforte"
         },
         "fattore": 1.0
       },
       {
         "c1": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
         "c2": {
-          "nome": "bianca"
+          "nome": "d"
         },
-        "fattore": 1.0
+        "fattore": 1.19
       },
       {
         "c1": {
-          "nome": "bianca"
+          "nome": "d"
         },
         "c2": {
-          "nome": "nera"
+          "nome": "lezioni di chitarra"
         },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "blu"
-        },
-        "c2": {
-          "nome": "bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "bianca"
-        },
-        "c2": {
-          "nome": "blu"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "teoria"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "teoria"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "strumento"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "strumento"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "nera"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "nera"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "blu"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "blu"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "bianca"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "teoria"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "teoria"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "strumento"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "strumento"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "nera"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "nera"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "blu"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "blu"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "bianca"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "teoria"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "teoria"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "strumento"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "strumento"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "nera"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "nera"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "blu"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "blu"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "bianca"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne bianca"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "cucina carne bianca"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina carne rossa"
-        },
-        "c2": {
-          "nome": "cucina pasta"
-        },
-        "fattore": 1.0
-      },
-      {
-        "c1": {
-          "nome": "cucina pasta"
-        },
-        "c2": {
-          "nome": "cucina carne rossa"
-        },
-        "fattore": 1.0
+        "fattore": 0.84
       }
     ]
   },
   "propostaManager": {
     "listaProposte": [
       {
-        "richiesta": "strumento",
-        "offerta": "teoria",
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di solfeggio",
         "durataRichiesta": 10,
         "durataOfferta": 10,
-        "stato": "CHIUSA",
-        "username": "z"
+        "stato": "RITIRATA",
+        "username": "giorgio"
       },
       {
-        "richiesta": "cucina pasta",
-        "offerta": "nera",
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di pianoforte",
         "durataRichiesta": 10,
         "durataOfferta": 10,
         "stato": "APERTA",
-        "username": "z"
+        "username": "giorgio"
       },
       {
-        "richiesta": "teoria",
-        "offerta": "strumento",
+        "richiesta": "lezioni di solfeggio",
+        "offerta": "lezioni di chitarra",
         "durataRichiesta": 10,
         "durataOfferta": 10,
         "stato": "CHIUSA",
-        "username": "w"
+        "username": "giorgio"
       },
       {
-        "richiesta": "nera",
-        "offerta": "cucina pasta",
+        "richiesta": "lezioni di chitarra",
+        "offerta": "lezioni di solfeggio",
         "durataRichiesta": 10,
         "durataOfferta": 10,
-        "stato": "APERTA",
-        "username": "y"
+        "stato": "CHIUSA",
+        "username": "riccardo"
+      },
+      {
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di solfeggio",
+        "durataRichiesta": 15,
+        "durataOfferta": 15,
+        "stato": "CHIUSA",
+        "username": "giorgio"
+      },
+      {
+        "richiesta": "lezioni di solfeggio",
+        "offerta": "lezioni di chitarra",
+        "durataRichiesta": 15,
+        "durataOfferta": 15,
+        "stato": "CHIUSA",
+        "username": "luca"
+      },
+      {
+        "richiesta": "lezioni di chitarra",
+        "offerta": "lezioni di storia della musica",
+        "durataRichiesta": 15,
+        "durataOfferta": 15,
+        "stato": "CHIUSA",
+        "username": "riccardo"
       }
     ]
   }

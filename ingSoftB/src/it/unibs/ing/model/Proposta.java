@@ -1,6 +1,6 @@
 package it.unibs.ing.model;
 
-import java.util.ArrayList;
+
 
 public class Proposta {
 	private String richiesta;
@@ -10,7 +10,7 @@ public class Proposta {
 	private StatoProposta stato;
 	private String username;
 	private enum StatoProposta {SOSPESO, APERTA, CHIUSA, RITIRATA}; 
-	//private ArrayList<StatoProposta> statiProposta= new ArrayList<>(); 
+
 	
 	public Proposta(String richiesta, String offerta, int durataRichiesta, int durataOfferta, String username) {
 		super();
@@ -64,7 +64,7 @@ public class Proposta {
 
 
 	public Boolean isAperto() {
-		if(this.stato == StatoProposta.APERTA)
+		if(this.stato.equals(StatoProposta.APERTA))
 			return true;
 		return false;
 	}
@@ -80,16 +80,6 @@ public class Proposta {
 	public String getUsername() {
 		return username;
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "richiesta: " + richiesta +", durata: " + durataRichiesta
-				+ "; offerta: " + offerta + ", durata: " + durataOfferta + ", stato: " + stato;
-	}
-
-
 	
 	
 	
@@ -109,8 +99,6 @@ public class Proposta {
 	}
 	
 	
-    
-
 
 	public boolean soddisfaRichiestaDi(Proposta altraProposta) {
 	    return this.getOfferta().equals(altraProposta.getRichiesta())

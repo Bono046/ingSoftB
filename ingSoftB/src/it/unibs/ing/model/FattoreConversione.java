@@ -1,6 +1,6 @@
 package it.unibs.ing.model;
 
-import java.util.ArrayList;
+
 
 public class FattoreConversione {
 
