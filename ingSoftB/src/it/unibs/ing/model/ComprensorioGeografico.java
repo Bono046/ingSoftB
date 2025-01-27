@@ -17,34 +17,10 @@ public class ComprensorioGeografico {
         return nome;
     }
 
-    /*
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-*/
 
     public Set<String> getComuni() {
         return comuni;
     }
-
-    /*
-    public void setComuni(Set<String> comuni) {
-        this.comuni = comuni;
-    }
-
-    public void aggiungiComune(String comune) {
-        comuni.add(comune);
-    }
-
-    public void rimuoviComune(String comune) {
-        comuni.remove(comune);
-    }
-
-    public boolean contieneComune(String comune) {
-        return comuni.contains(comune);
-    }
-*/
- 
 
 
 } 

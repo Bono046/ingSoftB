@@ -1,6 +1,6 @@
 package it.unibs.ing.view;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import it.unibs.ing.controller.ControllerBase;
@@ -17,19 +17,12 @@ public class ViewBase {
     protected void salvaDati() {
         try {
             controllerBase.salvaDati();
-        } catch (IOException e) {
-            System.out.println("Errore nel salvataggio dei dati: " + e.getMessage());
+        } catch (IllegalStateException e) {
+            System.out.println("Attenzione: errore nel salvataggio dei dati\n" +
+             "File ripristinato e salvataggio eseguito con successo");
         }
     }
 
-    /* 
-    public String toStringDati(Dati dati) {
-        return "Dati{" +
-                "configuratoreManager=" + visualizzaConfiguratori(dati.getConfiguratoreManager())+
-                ", fruitoreManager=" + visualizzaFruitori(dati.getFruitoreManager()) +
-                ", comprensorioManager=" + visualizzaComprensori(dati.getComprensorioManager()) +
-                '}';
-    }*/
 
     public String toStringConfig(Configuratore config){
         return "Configuratore{" +
@@ -75,23 +68,7 @@ public class ViewBase {
         return sb.toString();
        }
 
-    /* 
-    public String visualizzaConfiguratori(ConfiguratoreManager listaConfiguratori){
-        StringBuilder sb = new StringBuilder();
-        for (Configuratore configuratore : listaConfiguratori.getLista()) {
-            sb.append(toStringConfig(configuratore)).append("\n");
-        }
-        return sb.toString();
-    }
-
-    public  String visualizzaFruitori(FruitoreManager listaFruitori){
-        StringBuilder sb = new StringBuilder();
-        for (Fruitore fruitore : listaFruitori.getLista()) {
-            sb.append(toStringFruitore(fruitore)).append("\n");
-        }
-        return sb.toString();  
-    } 
-*/
+  
     public String visualizzaProposte(ArrayList<Proposta> listaProposte){
         StringBuilder sb = new StringBuilder();
         for (Proposta proposta : listaProposte) {

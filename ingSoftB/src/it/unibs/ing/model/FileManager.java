@@ -19,9 +19,10 @@ public class FileManager {
         Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_DATI))) {
             writer.write(gson.toJson(dati));
+            throw new IOException();
         }
     }
-	
+    
     public static Dati caricaDati() throws IOException {
         Gson gson = new Gson();
         File file = new File(FILE_DATI);
@@ -31,7 +32,7 @@ public class FileManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return gson.fromJson(reader, Dati.class);
         } catch (JsonSyntaxException e) {
-            throw new IOException(e);
+            throw new IllegalStateException(e);
             
         }
     }

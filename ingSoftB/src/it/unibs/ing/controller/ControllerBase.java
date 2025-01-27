@@ -17,8 +17,12 @@ public class ControllerBase {
         this.dati = dati;
     }
 
-    public void salvaDati() throws IOException {
-        FileManager.salvaDati(dati);
+    public void salvaDati() throws IllegalStateException {
+        try {
+            FileManager.salvaDati(dati);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        } 
     }
 
     public boolean listaGerarchiaNonVuota() {

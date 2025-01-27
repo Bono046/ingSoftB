@@ -16,7 +16,6 @@ public class CategoriaFoglia extends Categoria {
 	}
 	
 	
-	// Override del metodo per evitare l'aggiunta di sottocategorie
 	@Override
 	public void aggiungiSottocategoria(String nome, Categoria categoria) {
 	    throw new UnsupportedOperationException("Le foglie non possono avere sottocategorie.");
@@ -24,12 +23,12 @@ public class CategoriaFoglia extends Categoria {
 	
 	@Override
 	public String getCampo() {
-	    return null; // Campo non applicabile per le foglie
+	    return null; 
 	}
 	
 	@Override
 	public HashMap<String, String> getDominio() {
-	    return null; // Dominio non applicabile per le foglie
+	    return null; 
 	}
 	
 

@@ -170,30 +170,6 @@ public class InputDati {
         return valoreLetto == RISPOSTA_SI;
     }
  
-    /*public static <T> T selezionaDaLista(List<T> lista, String messaggio, ViewBase viewBase) {
-        System.out.println(messaggio);
-        for (int i = 0; i < lista.size(); i++) {
-            T elemento = lista.get(i);
-            String descrizione;
-            if (elemento instanceof Fruitore) {
-                descrizione = viewBase.toStringFruitore((Fruitore) elemento);
-            } else if (elemento instanceof ComprensorioGeografico) {
-                descrizione = viewBase.toStringComprensorio((ComprensorioGeografico) elemento);
-            } else if (elemento instanceof ComprensorioManager) {
-                descrizione = viewBase.toStringComprensorioManager((ComprensorioManager) elemento);
-            } else if (elemento instanceof ConfiguratoreManager) {
-                descrizione = viewBase.toStringConfigManager((ConfiguratoreManager) elemento);
-            } else if (elemento instanceof FruitoreManager) {
-                descrizione = viewBase.tostringFruitoreManager((FruitoreManager) elemento);
-            } else {
-                descrizione = elemento.toString(); 
-            }
-            System.out.println((i + 1) + ". " + descrizione);
-        }
-        int scelta = leggiIntero("Scelta:", 1, lista.size());
-        return lista.get(scelta - 1);
-    }
-    */
 
    
 
