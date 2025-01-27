@@ -7,12 +7,11 @@ import java.util.ArrayList;
 
 
 public class ControllerFruitore extends ControllerBase{    
-    Dati dati;
+    
     ViewFruitore view;
 
     public ControllerFruitore(Dati dati) {
         super(dati);
-        this.dati = dati;
     }
 
     public void registraView(ViewFruitore view) {

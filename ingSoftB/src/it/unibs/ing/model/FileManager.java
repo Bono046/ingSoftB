@@ -16,7 +16,7 @@ public class FileManager {
     private static final String FILE_DATI = "dati.json";
 	
     public static void salvaDati(Dati dati) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Abilita l'indentazione
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_DATI))) {
             writer.write(gson.toJson(dati));
         }
@@ -31,8 +31,8 @@ public class FileManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return gson.fromJson(reader, Dati.class);
         } catch (JsonSyntaxException e) {
-            System.out.println("Errore: dati non validi nel file " + FILE_DATI);
-            return new Dati();
+            throw new IOException(e);
+            
         }
     }
 }

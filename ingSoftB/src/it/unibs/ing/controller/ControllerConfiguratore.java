@@ -9,12 +9,10 @@ import it.unibs.ing.view.ViewConfiguratore;
 
 public class ControllerConfiguratore extends ControllerBase {
 
-    private Dati dati;
     ViewConfiguratore view;
 
     public ControllerConfiguratore(Dati dati) {
         super(dati); 
-        this.dati = dati;
     }
 
     public void registraView(ViewConfiguratore view) {

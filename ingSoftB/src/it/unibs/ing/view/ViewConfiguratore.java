@@ -11,8 +11,8 @@ import it.unibs.ing.model.Categoria;
 import it.unibs.ing.model.FattoreConversione;
 
 public class ViewConfiguratore extends ViewBase{
+
     ControllerConfiguratore controllerConfiguratore;
-    ViewBase viewBase = new ViewBase(controllerConfiguratore);
 
     public ViewConfiguratore(ControllerConfiguratore controllerConfiguratore) {
         super(controllerConfiguratore);

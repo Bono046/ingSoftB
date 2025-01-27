@@ -3,8 +3,6 @@ package it.unibs.ing.view;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
 

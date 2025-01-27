@@ -9,8 +9,8 @@ import it.unibs.ing.model.Categoria;
 
 
 public class ViewFruitore extends ViewBase {
+
     ControllerFruitore controllerFruitore;
-    ViewBase viewBase = new ViewBase(controllerFruitore);
 
     public ViewFruitore(ControllerFruitore controllerFruitore) {
         super(controllerFruitore);

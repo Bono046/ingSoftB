@@ -1,13 +1,16 @@
-1) applicazione mvc
 
-2) configuratore: separazione registrazione in 2 metodi 
-
-3) catena di eccezioni da filemanager -> controller (baseController?) -> view
+3) catena di eccezioni da filemanager -> controller (baseController?) -> view - DA VALUTARE 
 
 4) valutare come spostare (ConfiguratoreManager/FruitoreManager).UserValido e  (ConfiguratoreManager/FruitoreManager).loginConfig/Fruitore 
-    nel ControllerBase
+    nel ControllerBase [problema lista - DA VALUTARE]
 
-5) metodi creaCategoria istanziano un oggetto Categoria nella view - sarebbe da sistemare - metodo equivalente nel controller che prende
-    e ritorna una categoria -attenzione alla ricorsività
+6) decidere se tenere interfaccia manager
 
-6) decdere se tenere interfaccia manager
+7) strategy per calcolo fattori 
+
+8) information expert per classi manager 
+
+9) categoria foglia: liskov grazie a composite
+
+10) dip: creare interfaccia per le view. i controller dipenderanno dalle implementazioni dell'interfaccia
+
