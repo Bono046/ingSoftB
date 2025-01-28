@@ -209,17 +209,19 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public void visualizzaProposteByFoglia() {
-		String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
-		ArrayList<Proposta> lista = dati.getPropostaManager().getListaProposte();
-		ArrayList<Proposta> listaDaVisualizzare = new ArrayList<>();
-		for(Proposta proposta:lista) {
-			if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))
-				listaDaVisualizzare.add(proposta);                
-			}
-		
-		if(listaDaVisualizzare.isEmpty()) 
-			System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
-        else view.visualizzaProposte(listaDaVisualizzare);   
+		if(listaGerarchiaNonVuota()){
+            String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
+            ArrayList<Proposta> lista = dati.getPropostaManager().getListaProposte();
+            ArrayList<Proposta> listaDaVisualizzare = new ArrayList<>();
+            for(Proposta proposta:lista) {
+                if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))
+                    listaDaVisualizzare.add(proposta);                
+                }
+            
+            if(listaDaVisualizzare.isEmpty()) 
+                System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
+            else view.visualizzaProposte(listaDaVisualizzare);
+        }   
 	}
 
    

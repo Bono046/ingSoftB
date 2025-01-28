@@ -24,7 +24,7 @@ public class ViewConfiguratore extends ViewBase{
         int scelta = -1;
         do {
             
-            System.out.println("Menu Principale:");
+            System.out.println("\nMenu Principale:");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
             System.out.println("0. Esci dal programma");
@@ -206,7 +206,7 @@ public class ViewConfiguratore extends ViewBase{
 
     public int stampaSceltaSottocategoria(String dom){
         System.out.println("Creazione sottocategoria per il dominio: " + dom);
-        int input = InputDati.leggiIntero(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia", 1, 2);
+        int input = InputDati.leggiIntero(" 1 - aggiungi sottocategoria, 2 - aggiungi categoria foglia: ", 1, 2);
         return input;
     }
 

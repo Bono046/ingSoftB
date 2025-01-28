@@ -13,26 +13,43 @@
         "username": "b",
         "password": "b",
         "comprensiorio": {
-          "nome": "d",
+          "nome": "Brescia",
           "comuni": [
-            "r"
+            "Orzinuovi",
+            "Mazzano"
           ]
         },
-        "mail": "b"
+        "mail": "b•"
+      },
+      {
+        "username": "c",
+        "password": "c",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ]
+        },
+        "mail": "c"
       }
     ]
   },
   "comprensorioManager": {
     "listaComprensori": [
       {
-        "nome": "d",
+        "nome": "Brescia",
         "comuni": [
-          "r"
+          "Orzinuovi",
+          "Mazzano"
         ]
       },
       {
-        "nome": "rr",
-        "comuni": []
+        "nome": "Bergamo",
+        "comuni": [
+          "Albino",
+          "Orio"
+        ]
       }
     ]
   },
@@ -40,38 +57,68 @@
     "listaOggettiGerarchia": [
       {
         "radice": {
-          "nome": "a",
-          "campo": "a",
+          "nome": "lezioni di musica",
+          "campo": "tio",
           "dominio": {
-            "b": "",
-            "c": ""
+            "teoria": "",
+            "strumento": ""
           },
           "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "type": "foglia"
+            "teoria": {
+              "nome": "lezioni di teoria",
+              "campo": "argomento",
+              "dominio": {
+                "storia": "solfeggio",
+                "solfeggio": ""
+              },
+              "sottocategorie": {
+                "storia": {
+                  "nome": "lezioni di storia della musica",
+                  "type": "foglia"
+                },
+                "solfeggio": {
+                  "nome": "lezioni di solfeggio",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
             },
-            "c": {
-              "nome": "c",
-              "type": "foglia"
+            "strumento": {
+              "nome": "lezioni di strumenti",
+              "campo": "strumento",
+              "dominio": {
+                "chitarra": "",
+                "pianoforte": ""
+              },
+              "sottocategorie": {
+                "chitarra": {
+                  "nome": "lezioni di chitarra",
+                  "type": "foglia"
+                },
+                "pianoforte": {
+                  "nome": "lezioni di pianofrote",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
             }
           },
           "type": "categoria"
         },
         "categoriaCorrente": {
-          "nome": "a",
-          "campo": "a",
+          "nome": "lezioni di teoria",
+          "campo": "argomento",
           "dominio": {
-            "b": "",
-            "c": ""
+            "storia": "solfeggio",
+            "solfeggio": ""
           },
           "sottocategorie": {
-            "b": {
-              "nome": "b",
+            "storia": {
+              "nome": "lezioni di storia della musica",
               "type": "foglia"
             },
-            "c": {
-              "nome": "c",
+            "solfeggio": {
+              "nome": "lezioni di solfeggio",
               "type": "foglia"
             }
           },
@@ -79,11 +126,134 @@
         },
         "listaFoglie": [
           {
-            "nome": "b",
+            "nome": "lezioni di storia della musica",
             "type": "foglia"
           },
           {
-            "nome": "c",
+            "nome": "lezioni di solfeggio",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di chitarra",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di pianofrote",
+            "type": "foglia"
+          }
+        ],
+        "percorso": [
+          {
+            "nome": "lezioni di musica",
+            "campo": "tio",
+            "dominio": {
+              "teoria": "",
+              "strumento": ""
+            },
+            "sottocategorie": {
+              "teoria": {
+                "nome": "lezioni di teoria",
+                "campo": "argomento",
+                "dominio": {
+                  "storia": "solfeggio",
+                  "solfeggio": ""
+                },
+                "sottocategorie": {
+                  "storia": {
+                    "nome": "lezioni di storia della musica",
+                    "type": "foglia"
+                  },
+                  "solfeggio": {
+                    "nome": "lezioni di solfeggio",
+                    "type": "foglia"
+                  }
+                },
+                "type": "categoria"
+              },
+              "strumento": {
+                "nome": "lezioni di strumenti",
+                "campo": "strumento",
+                "dominio": {
+                  "chitarra": "",
+                  "pianoforte": ""
+                },
+                "sottocategorie": {
+                  "chitarra": {
+                    "nome": "lezioni di chitarra",
+                    "type": "foglia"
+                  },
+                  "pianoforte": {
+                    "nome": "lezioni di pianofrote",
+                    "type": "foglia"
+                  }
+                },
+                "type": "categoria"
+              }
+            },
+            "type": "categoria"
+          }
+        ]
+      },
+      {
+        "radice": {
+          "nome": "lezioni di karate",
+          "campo": "livello",
+          "dominio": {
+            "esperto": "",
+            "principiante": "",
+            "medio": ""
+          },
+          "sottocategorie": {
+            "esperto": {
+              "nome": "lezioni di cintura nera",
+              "type": "foglia"
+            },
+            "principiante": {
+              "nome": "lezioni di cintura bianca",
+              "type": "foglia"
+            },
+            "medio": {
+              "nome": "lezioni di cintura verde",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di karate",
+          "campo": "livello",
+          "dominio": {
+            "esperto": "",
+            "principiante": "",
+            "medio": ""
+          },
+          "sottocategorie": {
+            "esperto": {
+              "nome": "lezioni di cintura nera",
+              "type": "foglia"
+            },
+            "principiante": {
+              "nome": "lezioni di cintura bianca",
+              "type": "foglia"
+            },
+            "medio": {
+              "nome": "lezioni di cintura verde",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
+        },
+        "listaFoglie": [
+          {
+            "nome": "lezioni di cintura nera",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di cintura bianca",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di cintura verde",
             "type": "foglia"
           }
         ],
@@ -91,78 +261,48 @@
       },
       {
         "radice": {
-          "nome": "d",
-          "campo": "d",
+          "nome": "ricette di cucina",
+          "campo": "piatti",
           "dominio": {
-            "e": "",
-            "f": "",
-            "g": ""
+            "dolci": "",
+            "secondi": "",
+            "primi": ""
           },
           "sottocategorie": {
-            "e": {
-              "nome": "h",
-              "campo": "h",
-              "dominio": {
-                "r": "",
-                "i": ""
-              },
-              "sottocategorie": {
-                "r": {
-                  "nome": "t",
-                  "type": "foglia"
-                },
-                "i": {
-                  "nome": "u",
-                  "type": "foglia"
-                }
-              },
-              "type": "categoria"
-            },
-            "f": {
-              "nome": "b",
+            "dolci": {
+              "nome": "ricette di dolci",
               "type": "foglia"
             },
-            "g": {
-              "nome": "b",
+            "secondi": {
+              "nome": "ricette secondi piatti",
+              "type": "foglia"
+            },
+            "primi": {
+              "nome": "ricette primi piatti",
               "type": "foglia"
             }
           },
           "type": "categoria"
         },
         "categoriaCorrente": {
-          "nome": "d",
-          "campo": "d",
+          "nome": "ricette di cucina",
+          "campo": "piatti",
           "dominio": {
-            "e": "",
-            "f": "",
-            "g": ""
+            "dolci": "",
+            "secondi": "",
+            "primi": ""
           },
           "sottocategorie": {
-            "e": {
-              "nome": "h",
-              "campo": "h",
-              "dominio": {
-                "r": "",
-                "i": ""
-              },
-              "sottocategorie": {
-                "r": {
-                  "nome": "t",
-                  "type": "foglia"
-                },
-                "i": {
-                  "nome": "u",
-                  "type": "foglia"
-                }
-              },
-              "type": "categoria"
-            },
-            "f": {
-              "nome": "b",
+            "dolci": {
+              "nome": "ricette di dolci",
               "type": "foglia"
             },
-            "g": {
-              "nome": "b",
+            "secondi": {
+              "nome": "ricette secondi piatti",
+              "type": "foglia"
+            },
+            "primi": {
+              "nome": "ricette primi piatti",
               "type": "foglia"
             }
           },
@@ -170,280 +310,15 @@
         },
         "listaFoglie": [
           {
-            "nome": "t",
+            "nome": "ricette di dolci",
             "type": "foglia"
           },
           {
-            "nome": "u",
+            "nome": "ricette secondi piatti",
             "type": "foglia"
           },
           {
-            "nome": "b",
-            "type": "foglia"
-          },
-          {
-            "nome": "b",
-            "type": "foglia"
-          }
-        ],
-        "percorso": []
-      },
-      {
-        "radice": {
-          "nome": "aa",
-          "campo": "a",
-          "dominio": {
-            "b": "",
-            "c": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "type": "foglia"
-            },
-            "c": {
-              "nome": "c",
-              "type": "foglia"
-            }
-          },
-          "type": "categoria"
-        },
-        "categoriaCorrente": {
-          "nome": "aa",
-          "campo": "a",
-          "dominio": {
-            "b": "",
-            "c": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "type": "foglia"
-            },
-            "c": {
-              "nome": "c",
-              "type": "foglia"
-            }
-          },
-          "type": "categoria"
-        },
-        "listaFoglie": [
-          {
-            "nome": "b",
-            "type": "foglia"
-          },
-          {
-            "nome": "c",
-            "type": "foglia"
-          }
-        ],
-        "percorso": []
-      },
-      {
-        "radice": {
-          "nome": "aaa",
-          "campo": "a",
-          "dominio": {
-            "b": "",
-            "c": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "campo": "d",
-              "dominio": {
-                "r": "",
-                "e": ""
-              },
-              "sottocategorie": {
-                "r": {
-                  "nome": "c",
-                  "type": "foglia"
-                },
-                "e": {
-                  "nome": "f",
-                  "campo": "g",
-                  "dominio": {
-                    "f": "",
-                    "g": ""
-                  },
-                  "sottocategorie": {
-                    "f": {
-                      "nome": "y",
-                      "type": "foglia"
-                    },
-                    "g": {
-                      "nome": "i",
-                      "type": "foglia"
-                    }
-                  },
-                  "type": "categoria"
-                }
-              },
-              "type": "categoria"
-            },
-            "c": {
-              "nome": "p",
-              "type": "foglia"
-            }
-          },
-          "type": "categoria"
-        },
-        "categoriaCorrente": {
-          "nome": "aaa",
-          "campo": "a",
-          "dominio": {
-            "b": "",
-            "c": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "campo": "d",
-              "dominio": {
-                "r": "",
-                "e": ""
-              },
-              "sottocategorie": {
-                "r": {
-                  "nome": "c",
-                  "type": "foglia"
-                },
-                "e": {
-                  "nome": "f",
-                  "campo": "g",
-                  "dominio": {
-                    "f": "",
-                    "g": ""
-                  },
-                  "sottocategorie": {
-                    "f": {
-                      "nome": "y",
-                      "type": "foglia"
-                    },
-                    "g": {
-                      "nome": "i",
-                      "type": "foglia"
-                    }
-                  },
-                  "type": "categoria"
-                }
-              },
-              "type": "categoria"
-            },
-            "c": {
-              "nome": "p",
-              "type": "foglia"
-            }
-          },
-          "type": "categoria"
-        },
-        "listaFoglie": [
-          {
-            "nome": "c",
-            "type": "foglia"
-          },
-          {
-            "nome": "y",
-            "type": "foglia"
-          },
-          {
-            "nome": "i",
-            "type": "foglia"
-          },
-          {
-            "nome": "p",
-            "type": "foglia"
-          }
-        ],
-        "percorso": []
-      },
-      {
-        "radice": {
-          "nome": "aaaa",
-          "campo": "a",
-          "dominio": {
-            "b": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "campo": "c",
-              "dominio": {
-                "d": "",
-                "e": ""
-              },
-              "sottocategorie": {
-                "d": {
-                  "nome": "f",
-                  "campo": "f",
-                  "dominio": {
-                    "r": ""
-                  },
-                  "sottocategorie": {
-                    "r": {
-                      "nome": "t",
-                      "type": "foglia"
-                    }
-                  },
-                  "type": "categoria"
-                },
-                "e": {
-                  "nome": "e",
-                  "type": "foglia"
-                }
-              },
-              "type": "categoria"
-            }
-          },
-          "type": "categoria"
-        },
-        "categoriaCorrente": {
-          "nome": "aaaa",
-          "campo": "a",
-          "dominio": {
-            "b": ""
-          },
-          "sottocategorie": {
-            "b": {
-              "nome": "b",
-              "campo": "c",
-              "dominio": {
-                "d": "",
-                "e": ""
-              },
-              "sottocategorie": {
-                "d": {
-                  "nome": "f",
-                  "campo": "f",
-                  "dominio": {
-                    "r": ""
-                  },
-                  "sottocategorie": {
-                    "r": {
-                      "nome": "t",
-                      "type": "foglia"
-                    }
-                  },
-                  "type": "categoria"
-                },
-                "e": {
-                  "nome": "e",
-                  "type": "foglia"
-                }
-              },
-              "type": "categoria"
-            }
-          },
-          "type": "categoria"
-        },
-        "listaFoglie": [
-          {
-            "nome": "t",
-            "type": "foglia"
-          },
-          {
-            "nome": "e",
+            "nome": "ricette primi piatti",
             "type": "foglia"
           }
         ],
@@ -454,288 +329,499 @@
   "fattoreManager": {
     "listaFattori": [
       {
-        "c1": "b",
-        "c2": "c",
-        "fattore": 1.0
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.2
       },
       {
-        "c1": "c",
-        "c2": "b",
-        "fattore": 1.0
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di storia della musica",
+        "fattore": 0.83
       },
       {
-        "c1": "t",
-        "c2": "b",
-        "fattore": 1.0
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.8
       },
       {
-        "c1": "b",
-        "c2": "t",
-        "fattore": 1.0
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.25
       },
       {
-        "c1": "t",
-        "c2": "c",
-        "fattore": 1.0
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.67
       },
       {
-        "c1": "c",
-        "c2": "t",
-        "fattore": 1.0
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.49
       },
       {
-        "c1": "u",
-        "c2": "b",
-        "fattore": 1.0
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.6
       },
       {
-        "c1": "b",
-        "c2": "u",
-        "fattore": 1.0
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.67
       },
       {
-        "c1": "u",
-        "c2": "c",
-        "fattore": 1.0
-      },
-      {
-        "c1": "c",
-        "c2": "u",
-        "fattore": 1.0
-      },
-      {
-        "c1": "u",
-        "c2": "t",
-        "fattore": 1.0
-      },
-      {
-        "c1": "t",
-        "c2": "u",
-        "fattore": 1.0
-      },
-      {
-        "c1": "t",
-        "c2": "y",
-        "fattore": 1.0
-      },
-      {
-        "c1": "y",
-        "c2": "t",
-        "fattore": 1.0
-      },
-      {
-        "c1": "b",
-        "c2": "y",
-        "fattore": 1.0
-      },
-      {
-        "c1": "y",
-        "c2": "b",
-        "fattore": 1.0
-      },
-      {
-        "c1": "c",
-        "c2": "y",
-        "fattore": 1.0
-      },
-      {
-        "c1": "y",
-        "c2": "c",
-        "fattore": 1.0
-      },
-      {
-        "c1": "u",
-        "c2": "y",
-        "fattore": 1.0
-      },
-      {
-        "c1": "y",
-        "c2": "u",
-        "fattore": 1.0
-      },
-      {
-        "c1": "t",
-        "c2": "i",
-        "fattore": 1.0
-      },
-      {
-        "c1": "i",
-        "c2": "t",
-        "fattore": 1.0
-      },
-      {
-        "c1": "b",
-        "c2": "i",
-        "fattore": 1.0
-      },
-      {
-        "c1": "i",
-        "c2": "b",
-        "fattore": 1.0
-      },
-      {
-        "c1": "c",
-        "c2": "i",
-        "fattore": 1.0
-      },
-      {
-        "c1": "i",
-        "c2": "c",
-        "fattore": 1.0
-      },
-      {
-        "c1": "u",
-        "c2": "i",
-        "fattore": 1.0
-      },
-      {
-        "c1": "i",
-        "c2": "u",
-        "fattore": 1.0
-      },
-      {
-        "c1": "y",
-        "c2": "i",
-        "fattore": 1.0
-      },
-      {
-        "c1": "i",
-        "c2": "y",
-        "fattore": 1.0
-      },
-      {
-        "c1": "t",
-        "c2": "p",
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di pianofrote",
         "fattore": 0.5
       },
       {
-        "c1": "p",
-        "c2": "t",
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di solfeggio",
         "fattore": 2.0
       },
       {
-        "c1": "b",
-        "c2": "p",
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di chitarra",
+        "fattore": 1.33
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 2.0
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di cintura nera",
         "fattore": 0.5
       },
       {
-        "c1": "p",
-        "c2": "b",
-        "fattore": 2.0
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.5
       },
       {
-        "c1": "c",
-        "c2": "p",
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.67
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.33
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura nera",
         "fattore": 0.5
       },
       {
-        "c1": "p",
-        "c2": "c",
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di storia della musica",
         "fattore": 2.0
       },
       {
-        "c1": "u",
-        "c2": "p",
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura nera",
         "fattore": 0.5
       },
       {
-        "c1": "p",
-        "c2": "u",
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di solfeggio",
         "fattore": 2.0
       },
       {
-        "c1": "y",
-        "c2": "p",
-        "fattore": 0.5
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.63
       },
       {
-        "c1": "p",
-        "c2": "y",
-        "fattore": 2.0
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di chitarra",
+        "fattore": 1.59
       },
       {
-        "c1": "i",
-        "c2": "p",
-        "fattore": 0.5
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.83
       },
       {
-        "c1": "p",
-        "c2": "i",
-        "fattore": 2.0
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di pianofrote",
+        "fattore": 1.2
       },
       {
-        "c1": "e",
-        "c2": "c",
-        "fattore": 2.0
-      },
-      {
-        "c1": "c",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "b",
-        "fattore": 2.0
-      },
-      {
-        "c1": "b",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "t",
-        "fattore": 2.0
-      },
-      {
-        "c1": "t",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "u",
-        "fattore": 2.0
-      },
-      {
-        "c1": "u",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "y",
-        "fattore": 2.0
-      },
-      {
-        "c1": "y",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "i",
-        "fattore": 2.0
-      },
-      {
-        "c1": "i",
-        "c2": "e",
-        "fattore": 0.5
-      },
-      {
-        "c1": "e",
-        "c2": "p",
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura bianca",
         "fattore": 1.0
       },
       {
-        "c1": "p",
-        "c2": "e",
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.33
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.3
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.77
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.94
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.52
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 2.0
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.5
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.98
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.02
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di chitarra",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.33
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "ricette di dolci",
+        "fattore": 2.0
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.5
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "ricette di dolci",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "ricette di dolci",
+        "fattore": 1.33
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "ricette di dolci",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "ricette di dolci",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "ricette di dolci",
+        "fattore": 1.26
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.79
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "ricette di dolci",
+        "fattore": 1.67
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.6
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "ricette secondi piatti",
+        "fattore": 2.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.5
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.33
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.26
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.79
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.67
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.6
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "ricette secondi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "ricette di dolci",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "ricette primi piatti",
+        "fattore": 2.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.5
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "ricette primi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "ricette primi piatti",
+        "fattore": 1.33
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.75
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "ricette primi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "ricette primi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.0
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "ricette primi piatti",
+        "fattore": 1.26
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.79
+      },
+      {
+        "c1": "lezioni di pianofrote",
+        "c2": "ricette primi piatti",
+        "fattore": 1.67
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "lezioni di pianofrote",
+        "fattore": 0.6
+      },
+      {
+        "c1": "ricette di dolci",
+        "c2": "ricette primi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "ricette di dolci",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette secondi piatti",
+        "c2": "ricette primi piatti",
+        "fattore": 1.0
+      },
+      {
+        "c1": "ricette primi piatti",
+        "c2": "ricette secondi piatti",
         "fattore": 1.0
       }
     ]
   },
   "propostaManager": {
-    "listaProposte": []
+    "listaProposte": [
+      {
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di cintura bianca",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "APERTA",
+        "username": "b"
+      },
+      {
+        "richiesta": "lezioni di solfeggio",
+        "offerta": "ricette di dolci",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "APERTA",
+        "username": "b"
+      },
+      {
+        "richiesta": "lezioni di cintura nera",
+        "offerta": "lezioni di cintura bianca",
+        "durataRichiesta": 10,
+        "durataOfferta": 20,
+        "stato": "APERTA",
+        "username": "b"
+      },
+      {
+        "richiesta": "ricette secondi piatti",
+        "offerta": "lezioni di pianofrote",
+        "durataRichiesta": 10,
+        "durataOfferta": 6,
+        "stato": "APERTA",
+        "username": "c"
+      },
+      {
+        "richiesta": "ricette primi piatti",
+        "offerta": "lezioni di cintura bianca",
+        "durataRichiesta": 15,
+        "durataOfferta": 15,
+        "stato": "RITIRATA",
+        "username": "c"
+      }
+    ]
   }
 }
