@@ -4,72 +4,75 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class GerarchiaCategorie {
-	private Categoria radice;
-	private Categoria categoriaCorrente;
-    private ArrayList<CategoriaFoglia> listaFoglie = new ArrayList<>();
-    private Stack<Categoria> percorso;
+	private ComponenteCategoria radice;
+	private ComponenteCategoria categoriaCorrente;
+    private ArrayList<ComponenteCategoria> listaFoglie = new ArrayList<>();
+    private Stack<ComponenteCategoria> percorso;
     
-	public GerarchiaCategorie(Categoria radice) {
+	public GerarchiaCategorie(ComponenteCategoria radice) {
 		this.radice = radice;
         this.percorso = new Stack<>();
         this.categoriaCorrente = radice;
     }
 	
-	public Categoria getCategoriaRadice() {
+	public ComponenteCategoria getCategoriaRadice() {
 		return this.radice;
 	}
 	
-   public ArrayList<CategoriaFoglia> getListaFoglie() {
+   public ArrayList<ComponenteCategoria> getListaFoglie() {
 		return listaFoglie;
 	}
 
-	public void setListaFoglie(ArrayList<CategoriaFoglia> c) {
+	public void setListaFoglie(ArrayList<ComponenteCategoria> c) {
 		
-		for(CategoriaFoglia foglia: c)
+		for(ComponenteCategoria foglia: c) {
+            //if(foglia.isFoglia())
 			this.listaFoglie.add(foglia);
+        }
 	}
 	
-	public void addToListaFoglie(CategoriaFoglia c) {
+	public void addToListaFoglie(ComponenteCategoria c) {
+        //if(foglia.isFoglia())
 		this.listaFoglie.add(c);
 	}
 	
-    public Categoria getCategoriaCorrente() {
+    public ComponenteCategoria getCategoriaCorrente() {
         return categoriaCorrente;
     }
     
-    public void setCategoriaCorrente() { 	//inizializzazione della categoriaCorrente: serve per non salvare due volte la radice nel file
+    public void setCategoriaCorrente() { 	
     		categoriaCorrente = radice;
     }
     
-    // Metodo per spostarsi in una sottocategoria
-    public boolean vaiASottocategoria(Categoria sottocategoria) {
+    
+    public boolean vaiASottocategoria(ComponenteCategoria sottocategoria) {
         if (categoriaCorrente.getSottocategorie() != null &&
             categoriaCorrente.getSottocategorie().containsValue(sottocategoria)) {
             percorso.push(categoriaCorrente);
             categoriaCorrente = sottocategoria;
             return true;
         }
-        return false; // Sottocategoria non trovata
+        return false;
     }
     
     
-    public Stack<Categoria> getPercorso() {
+    public Stack<ComponenteCategoria> getPercorso() {
 		return percorso;
 	}
 
-	// Metodo per tornare alla categoria superiore
+	
     public boolean tornaIndietro() {
         if (!percorso.isEmpty()) {
             categoriaCorrente = percorso.pop();
             return true;
         }
-        return false; // Non ci sono categorie superiori
+        return false; 
     }
 
 	
     
-    public CategoriaFoglia getFogliaDaNome(String nome) {
-    	for(CategoriaFoglia c: listaFoglie) {
+    public ComponenteCategoria getFogliaDaNome(String nome) {
+    	for(ComponenteCategoria c: listaFoglie) {
     		if(c.getNome().equals(nome))
     			return c;
     	}

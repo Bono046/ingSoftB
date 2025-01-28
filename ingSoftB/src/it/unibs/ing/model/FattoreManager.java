@@ -12,7 +12,7 @@ public class FattoreManager {
 	}
 	
 	
-	public void addFattore (CategoriaFoglia c1, CategoriaFoglia c3, double f13) {
+	public void addFattore (String c1, String c3, double f13) {
 		
 		FattoreConversione fattore = new FattoreConversione(c1, c3, f13);
 		FattoreConversione f_inverso = fattore.creaFattoreInverso();
@@ -25,8 +25,8 @@ public class FattoreManager {
 			listaFattori.add(f_inverso);
 		} else {
 			for(FattoreConversione fact : listaFattori) {
-				CategoriaFoglia c2 = fact.getC2();
-				if(fact.getC1().getNome().equals(c1.getNome())) {
+				String c2 = fact.getC2();
+				if(fact.getC1().equals(c1)) {
 					if(!esisteFattore(c3, c2)) {
 						valoreFattore = Math.round((f13 / fact.getFattore()) * 100.0) / 100.0;
 						valoreFattore = Math.max(0.5, Math.min(2.0, valoreFattore));
@@ -35,7 +35,7 @@ public class FattoreManager {
 						fattoriDaAggiungere.add(newFattore.creaFattoreInverso());
 					}
 				}
-				if(fact.getC1().getNome().equals(c3.getNome())) {
+				if(fact.getC1().equals(c3)) {
 					if(!esisteFattore(c1, c2)) {
 						valoreFattore = Math.round((f13 * fact.getFattore()) * 100.0) / 100.0;
 						valoreFattore = Math.max(0.5, Math.min(2.0, valoreFattore));
@@ -52,15 +52,15 @@ public class FattoreManager {
 	}
 	
 	
-	public Boolean esisteFattore(CategoriaFoglia c1, CategoriaFoglia c2) {
+	public Boolean esisteFattore(String c1, String c2) {
 		
 		for(FattoreConversione f: listaFattori) {
-			String foglia1 = f.getC1().getNome();
-			String foglia2 = f.getC2().getNome();
+			String foglia1 = f.getC1();
+			String foglia2 = f.getC2();
 			
-			if(foglia1.equals(c1.getNome()) && foglia2.equals(c2.getNome()))
+			if(foglia1.equals(c1) && foglia2.equals(c2))
 				return true;
-			if(foglia1.equals(c2.getNome()) && foglia2.equals(c1.getNome()))
+			if(foglia1.equals(c2) && foglia2.equals(c1))
 				return true;
 		}
 		return false;
@@ -70,7 +70,7 @@ public class FattoreManager {
     public  ArrayList<FattoreConversione> trovaFattore(String s) {
 		ArrayList<FattoreConversione> fattoriDaVisualizzare = new ArrayList<>();
 		for(FattoreConversione f: listaFattori) {
-			if( f.getC1().getNome().equals(s) || f.getC2().getNome().equals(s) )
+			if( f.getC1().equals(s) || f.getC2().equals(s) )
 				fattoriDaVisualizzare.add(f);
 		}
 		return fattoriDaVisualizzare;
@@ -79,7 +79,7 @@ public class FattoreManager {
 	
 	public FattoreConversione trovaFattore(String foglia1, String foglia2) {
 		for(FattoreConversione f: listaFattori) {
-			if( f.getC1().getNome().equals(foglia1) && f.getC2().getNome().equals(foglia2) )
+			if( f.getC1().equals(foglia1) && f.getC2().equals(foglia2) )
 				return f;
 		}	
 		return null;

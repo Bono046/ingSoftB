@@ -3,11 +3,11 @@ package it.unibs.ing.model;
 import java.util.HashMap;
 
 
-public class Categoria  {
+public class Categoria implements ComponenteCategoria{
     protected String nome;
     private String campo;
     private HashMap<String, String> dominio;
-    protected HashMap<String, Categoria> sottocategorie;
+    protected HashMap<String, ComponenteCategoria> sottocategorie;
 
 
     public Categoria(String nome, String campo, HashMap<String, String> dominio) {
@@ -31,7 +31,7 @@ public class Categoria  {
     }
   
 
-    public void aggiungiSottocategoria(String valore_dominio, Categoria sottocategoria) {
+    public void aggiungiSottocategoria(String valore_dominio, ComponenteCategoria sottocategoria) {
         if (dominio.containsKey(valore_dominio)) {
                 sottocategorie.put(valore_dominio, sottocategoria);
             } else {
@@ -39,7 +39,7 @@ public class Categoria  {
             }
     }
 
-    public HashMap<String, Categoria> getSottocategorie() {
+    public HashMap<String, ComponenteCategoria> getSottocategorie() {
         return sottocategorie;
     }
 
@@ -52,9 +52,13 @@ public class Categoria  {
 	        return false;  
 	    }
 	    if(sottocategorie != null) {
-		    for (Categoria sottocategoria : sottocategorie.values()) {
-		        if (!sottocategoria.isNomeUnivoco(nomeSottocategoria)) {
-		            return false; 
+           
+		    for (ComponenteCategoria sottocategoria : sottocategorie.values()) {
+                
+                    
+
+		            if (!sottocategoria.isNomeUnivoco(nomeSottocategoria)) {
+		                return false; 
 		        }
 		    }
         }

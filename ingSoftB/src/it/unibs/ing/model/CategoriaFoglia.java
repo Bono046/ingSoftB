@@ -1,12 +1,15 @@
 package it.unibs.ing.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
-public class CategoriaFoglia extends Categoria {
-    public CategoriaFoglia(String nome) {
-        super(nome, null, null);
-        this.sottocategorie = null;
+public class CategoriaFoglia implements ComponenteCategoria {
+    
+	String nome;
+
+	public CategoriaFoglia(String nome) {
+        this.nome = nome;
     }
 
     
@@ -17,18 +20,38 @@ public class CategoriaFoglia extends Categoria {
 	
 	
 	@Override
-	public void aggiungiSottocategoria(String nome, Categoria categoria) {
+	public void aggiungiSottocategoria(String nome, ComponenteCategoria categoria) {
 	    throw new UnsupportedOperationException("Le foglie non possono avere sottocategorie.");
 	}
 	
-	@Override
 	public String getCampo() {
-	    return null; 
+		return "";
 	}
 	
-	@Override
+	
 	public HashMap<String, String> getDominio() {
-	    return null; 
+	    return null;
+	}
+
+
+	@Override
+	public String getNome() {
+		return this.nome;
+	}
+
+
+	@Override
+	public HashMap<String, ComponenteCategoria> getSottocategorie() {
+		throw new UnsupportedOperationException("Unimplemented method 'getSottocategorie'");
+	}
+
+
+	@Override
+	public boolean isNomeUnivoco(String nome) {	
+		if(this.nome.equals(nome)) {
+			return false;
+		}
+		return true;
 	}
 	
 

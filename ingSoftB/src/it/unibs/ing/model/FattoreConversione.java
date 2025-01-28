@@ -4,32 +4,32 @@ package it.unibs.ing.model;
 
 public class FattoreConversione {
 
-	private CategoriaFoglia c1;
-	private CategoriaFoglia c2;
+	private String c1;
+	private String c2;
 	double fattore;
 
     public static double MAX = 2.0;
     public static double MIN = 0.5;
 	
-	public FattoreConversione(CategoriaFoglia c1, CategoriaFoglia c2, double fattore) {
+	public FattoreConversione(String c1, String c2, double fattore) {
 		this.c1 = c1;
 		this.c2 = c2;
 		this.fattore = fattore;
 	}
 
-	public CategoriaFoglia getC1() {
+	public String getC1() {
 		return c1;
 	}
 
-	public void setC1(CategoriaFoglia c1) {
+	public void setC1(String c1) {
 		this.c1 = c1;
 	}
 
-	public CategoriaFoglia getC2() {
+	public String getC2() {
 		return c2;
 	}
 
-	public void setC2(CategoriaFoglia c2) {
+	public void setC2(String c2) {
 		this.c2 = c2;
 	}
 
@@ -42,8 +42,8 @@ public class FattoreConversione {
 	}
 
 	public FattoreConversione creaFattoreInverso () {
-		CategoriaFoglia c1 = getC1();
-		CategoriaFoglia c2 = getC2();
+		String c1 = getC1();
+		String c2 = getC2();
 		Double f12 = getFattore();
 		
 		return(new FattoreConversione(c2, c1, Math.round((1/f12) * 100.0) / 100.0));

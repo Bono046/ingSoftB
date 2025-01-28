@@ -46,7 +46,7 @@ public class ControllerFruitore extends ControllerBase{
         g.setCategoriaCorrente();
         while (ricerca) {
             
-            Categoria categoriaCorrente = g.getCategoriaCorrente();
+            ComponenteCategoria categoriaCorrente = g.getCategoriaCorrente();
             view.mostraCategoriaCorrente(categoriaCorrente.getNome());
 
             // Controlla se la categoria corrente è una foglia
@@ -57,7 +57,7 @@ public class ControllerFruitore extends ControllerBase{
                 view.mostraMessaggio("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'esci' per uscire");
             } else {
                 view.mostraValoriSottocategorie(categoriaCorrente.getSottocategorie());
-                view.mostraMessaggio("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'exit' per uscire)");
+                view.mostraMessaggio("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'esci' per uscire)");
             }
 
             String valore = view.leggiValore("");

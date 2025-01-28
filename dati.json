@@ -4,74 +4,35 @@
       {
         "username": "a",
         "password": "a"
-      },
-      {
-        "username": "b",
-        "password": "b"
       }
     ]
   },
   "fruitoreManager": {
     "listaFruitori": [
       {
-        "username": "z",
-        "password": "z",
+        "username": "b",
+        "password": "b",
         "comprensiorio": {
-          "nome": "Brescia",
+          "nome": "d",
           "comuni": [
-            "Orzi",
-            "Mazzano"
+            "r"
           ]
         },
-        "mail": "z@"
-      },
-      {
-        "username": "y",
-        "password": "y",
-        "comprensiorio": {
-          "nome": "Milano",
-          "comuni": [
-            "Rho",
-            "Segrate"
-          ]
-        },
-        "mail": "y@"
+        "mail": "b"
       }
     ]
   },
   "comprensorioManager": {
     "listaComprensori": [
       {
-        "nome": "Brescia",
-        "comuni": [
-          "Orzi",
-          "Mazzano"
-        ]
-      },
-      {
-        "nome": "Milano",
-        "comuni": [
-          "Rho",
-          "Segrate"
-        ]
-      },
-      {
-        "nome": "e",
+        "nome": "d",
         "comuni": [
           "r"
         ]
       },
       {
-        "nome": "r",
-        "comuni": [
-          "t"
-        ]
-      },
-      {
-        "nome": "f",
-        "comuni": [
-          "g"
-        ]
+        "nome": "rr",
+        "comuni": []
       }
     ]
   },
@@ -79,156 +40,411 @@
     "listaOggettiGerarchia": [
       {
         "radice": {
-          "nome": "Musica",
-          "campo": "m",
+          "nome": "a",
+          "campo": "a",
           "dominio": {
-            "teoria": "",
-            "strumento": ""
+            "b": "",
+            "c": ""
           },
           "sottocategorie": {
-            "teoria": {
-              "nome": "teoria"
+            "b": {
+              "nome": "b",
+              "type": "foglia"
             },
-            "strumento": {
-              "nome": "strumento"
+            "c": {
+              "nome": "c",
+              "type": "foglia"
             }
-          }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "a",
+          "campo": "a",
+          "dominio": {
+            "b": "",
+            "c": ""
+          },
+          "sottocategorie": {
+            "b": {
+              "nome": "b",
+              "type": "foglia"
+            },
+            "c": {
+              "nome": "c",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
         },
         "listaFoglie": [
           {
-            "nome": "teoria"
+            "nome": "b",
+            "type": "foglia"
           },
           {
-            "nome": "strumento"
+            "nome": "c",
+            "type": "foglia"
           }
         ],
         "percorso": []
       },
       {
         "radice": {
-          "nome": "karate",
-          "campo": "cintura",
+          "nome": "d",
+          "campo": "d",
           "dominio": {
-            "esperto": "",
-            "principiante": ""
+            "e": "",
+            "f": "",
+            "g": ""
           },
           "sottocategorie": {
-            "esperto": {
-              "nome": "cintura esperti",
-              "campo": "colore",
+            "e": {
+              "nome": "h",
+              "campo": "h",
               "dominio": {
-                "nera": "",
-                "blu": ""
+                "r": "",
+                "i": ""
               },
               "sottocategorie": {
-                "nera": {
-                  "nome": "nera"
+                "r": {
+                  "nome": "t",
+                  "type": "foglia"
                 },
-                "blu": {
-                  "nome": "blu"
+                "i": {
+                  "nome": "u",
+                  "type": "foglia"
                 }
-              }
+              },
+              "type": "categoria"
             },
-            "principiante": {
-              "nome": "bianca"
+            "f": {
+              "nome": "b",
+              "type": "foglia"
+            },
+            "g": {
+              "nome": "b",
+              "type": "foglia"
             }
-          }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "d",
+          "campo": "d",
+          "dominio": {
+            "e": "",
+            "f": "",
+            "g": ""
+          },
+          "sottocategorie": {
+            "e": {
+              "nome": "h",
+              "campo": "h",
+              "dominio": {
+                "r": "",
+                "i": ""
+              },
+              "sottocategorie": {
+                "r": {
+                  "nome": "t",
+                  "type": "foglia"
+                },
+                "i": {
+                  "nome": "u",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
+            },
+            "f": {
+              "nome": "b",
+              "type": "foglia"
+            },
+            "g": {
+              "nome": "b",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
         },
         "listaFoglie": [
           {
-            "nome": "nera"
+            "nome": "t",
+            "type": "foglia"
           },
           {
-            "nome": "blu"
+            "nome": "u",
+            "type": "foglia"
           },
           {
-            "nome": "bianca"
+            "nome": "b",
+            "type": "foglia"
+          },
+          {
+            "nome": "b",
+            "type": "foglia"
           }
         ],
         "percorso": []
       },
       {
         "radice": {
-          "nome": "cucina",
-          "campo": "piatti",
+          "nome": "aa",
+          "campo": "a",
           "dominio": {
-            "secondi": "",
-            "primi": ""
+            "b": "",
+            "c": ""
           },
           "sottocategorie": {
-            "secondi": {
-              "nome": "cucina di secondi",
-              "campo": "piatti",
-              "dominio": {
-                "carne bianca": "",
-                "carne rossa": ""
-              },
-              "sottocategorie": {
-                "carne bianca": {
-                  "nome": "cucina carne bianca"
-                },
-                "carne rossa": {
-                  "nome": "cucina carne rossa"
-                }
-              }
+            "b": {
+              "nome": "b",
+              "type": "foglia"
             },
-            "primi": {
-              "nome": "cucina pasta"
+            "c": {
+              "nome": "c",
+              "type": "foglia"
             }
-          }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "aa",
+          "campo": "a",
+          "dominio": {
+            "b": "",
+            "c": ""
+          },
+          "sottocategorie": {
+            "b": {
+              "nome": "b",
+              "type": "foglia"
+            },
+            "c": {
+              "nome": "c",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
         },
         "listaFoglie": [
           {
-            "nome": "cucina carne bianca"
+            "nome": "b",
+            "type": "foglia"
           },
           {
-            "nome": "cucina carne rossa"
-          },
-          {
-            "nome": "cucina pasta"
+            "nome": "c",
+            "type": "foglia"
           }
         ],
         "percorso": []
       },
       {
         "radice": {
-          "nome": "cucina",
-          "campo": "piatti",
+          "nome": "aaa",
+          "campo": "a",
           "dominio": {
-            "secondi": "",
-            "primi": ""
+            "b": "",
+            "c": ""
           },
           "sottocategorie": {
-            "secondi": {
-              "nome": "cucina di secondi",
-              "campo": "piatti",
+            "b": {
+              "nome": "b",
+              "campo": "d",
               "dominio": {
-                "carne bianca": "",
-                "carne rossa": ""
+                "r": "",
+                "e": ""
               },
               "sottocategorie": {
-                "carne bianca": {
-                  "nome": "cucina carne bianca"
+                "r": {
+                  "nome": "c",
+                  "type": "foglia"
                 },
-                "carne rossa": {
-                  "nome": "cucina carne rossa"
+                "e": {
+                  "nome": "f",
+                  "campo": "g",
+                  "dominio": {
+                    "f": "",
+                    "g": ""
+                  },
+                  "sottocategorie": {
+                    "f": {
+                      "nome": "y",
+                      "type": "foglia"
+                    },
+                    "g": {
+                      "nome": "i",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
                 }
-              }
+              },
+              "type": "categoria"
             },
-            "primi": {
-              "nome": "cucina pasta"
+            "c": {
+              "nome": "p",
+              "type": "foglia"
             }
-          }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "aaa",
+          "campo": "a",
+          "dominio": {
+            "b": "",
+            "c": ""
+          },
+          "sottocategorie": {
+            "b": {
+              "nome": "b",
+              "campo": "d",
+              "dominio": {
+                "r": "",
+                "e": ""
+              },
+              "sottocategorie": {
+                "r": {
+                  "nome": "c",
+                  "type": "foglia"
+                },
+                "e": {
+                  "nome": "f",
+                  "campo": "g",
+                  "dominio": {
+                    "f": "",
+                    "g": ""
+                  },
+                  "sottocategorie": {
+                    "f": {
+                      "nome": "y",
+                      "type": "foglia"
+                    },
+                    "g": {
+                      "nome": "i",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                }
+              },
+              "type": "categoria"
+            },
+            "c": {
+              "nome": "p",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
         },
         "listaFoglie": [
           {
-            "nome": "cucina carne bianca"
+            "nome": "c",
+            "type": "foglia"
           },
           {
-            "nome": "cucina carne rossa"
+            "nome": "y",
+            "type": "foglia"
           },
           {
-            "nome": "cucina pasta"
+            "nome": "i",
+            "type": "foglia"
+          },
+          {
+            "nome": "p",
+            "type": "foglia"
+          }
+        ],
+        "percorso": []
+      },
+      {
+        "radice": {
+          "nome": "aaaa",
+          "campo": "a",
+          "dominio": {
+            "b": ""
+          },
+          "sottocategorie": {
+            "b": {
+              "nome": "b",
+              "campo": "c",
+              "dominio": {
+                "d": "",
+                "e": ""
+              },
+              "sottocategorie": {
+                "d": {
+                  "nome": "f",
+                  "campo": "f",
+                  "dominio": {
+                    "r": ""
+                  },
+                  "sottocategorie": {
+                    "r": {
+                      "nome": "t",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                },
+                "e": {
+                  "nome": "e",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
+            }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "aaaa",
+          "campo": "a",
+          "dominio": {
+            "b": ""
+          },
+          "sottocategorie": {
+            "b": {
+              "nome": "b",
+              "campo": "c",
+              "dominio": {
+                "d": "",
+                "e": ""
+              },
+              "sottocategorie": {
+                "d": {
+                  "nome": "f",
+                  "campo": "f",
+                  "dominio": {
+                    "r": ""
+                  },
+                  "sottocategorie": {
+                    "r": {
+                      "nome": "t",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                },
+                "e": {
+                  "nome": "e",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
+            }
+          },
+          "type": "categoria"
+        },
+        "listaFoglie": [
+          {
+            "nome": "t",
+            "type": "foglia"
+          },
+          {
+            "nome": "e",
+            "type": "foglia"
           }
         ],
         "percorso": []
@@ -236,7 +452,288 @@
     ]
   },
   "fattoreManager": {
-    "listaFattori": []
+    "listaFattori": [
+      {
+        "c1": "b",
+        "c2": "c",
+        "fattore": 1.0
+      },
+      {
+        "c1": "c",
+        "c2": "b",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "b",
+        "fattore": 1.0
+      },
+      {
+        "c1": "b",
+        "c2": "t",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "c",
+        "fattore": 1.0
+      },
+      {
+        "c1": "c",
+        "c2": "t",
+        "fattore": 1.0
+      },
+      {
+        "c1": "u",
+        "c2": "b",
+        "fattore": 1.0
+      },
+      {
+        "c1": "b",
+        "c2": "u",
+        "fattore": 1.0
+      },
+      {
+        "c1": "u",
+        "c2": "c",
+        "fattore": 1.0
+      },
+      {
+        "c1": "c",
+        "c2": "u",
+        "fattore": 1.0
+      },
+      {
+        "c1": "u",
+        "c2": "t",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "u",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "y",
+        "fattore": 1.0
+      },
+      {
+        "c1": "y",
+        "c2": "t",
+        "fattore": 1.0
+      },
+      {
+        "c1": "b",
+        "c2": "y",
+        "fattore": 1.0
+      },
+      {
+        "c1": "y",
+        "c2": "b",
+        "fattore": 1.0
+      },
+      {
+        "c1": "c",
+        "c2": "y",
+        "fattore": 1.0
+      },
+      {
+        "c1": "y",
+        "c2": "c",
+        "fattore": 1.0
+      },
+      {
+        "c1": "u",
+        "c2": "y",
+        "fattore": 1.0
+      },
+      {
+        "c1": "y",
+        "c2": "u",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "i",
+        "fattore": 1.0
+      },
+      {
+        "c1": "i",
+        "c2": "t",
+        "fattore": 1.0
+      },
+      {
+        "c1": "b",
+        "c2": "i",
+        "fattore": 1.0
+      },
+      {
+        "c1": "i",
+        "c2": "b",
+        "fattore": 1.0
+      },
+      {
+        "c1": "c",
+        "c2": "i",
+        "fattore": 1.0
+      },
+      {
+        "c1": "i",
+        "c2": "c",
+        "fattore": 1.0
+      },
+      {
+        "c1": "u",
+        "c2": "i",
+        "fattore": 1.0
+      },
+      {
+        "c1": "i",
+        "c2": "u",
+        "fattore": 1.0
+      },
+      {
+        "c1": "y",
+        "c2": "i",
+        "fattore": 1.0
+      },
+      {
+        "c1": "i",
+        "c2": "y",
+        "fattore": 1.0
+      },
+      {
+        "c1": "t",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "t",
+        "fattore": 2.0
+      },
+      {
+        "c1": "b",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "b",
+        "fattore": 2.0
+      },
+      {
+        "c1": "c",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "c",
+        "fattore": 2.0
+      },
+      {
+        "c1": "u",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "u",
+        "fattore": 2.0
+      },
+      {
+        "c1": "y",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "y",
+        "fattore": 2.0
+      },
+      {
+        "c1": "i",
+        "c2": "p",
+        "fattore": 0.5
+      },
+      {
+        "c1": "p",
+        "c2": "i",
+        "fattore": 2.0
+      },
+      {
+        "c1": "e",
+        "c2": "c",
+        "fattore": 2.0
+      },
+      {
+        "c1": "c",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "b",
+        "fattore": 2.0
+      },
+      {
+        "c1": "b",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "t",
+        "fattore": 2.0
+      },
+      {
+        "c1": "t",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "u",
+        "fattore": 2.0
+      },
+      {
+        "c1": "u",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "y",
+        "fattore": 2.0
+      },
+      {
+        "c1": "y",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "i",
+        "fattore": 2.0
+      },
+      {
+        "c1": "i",
+        "c2": "e",
+        "fattore": 0.5
+      },
+      {
+        "c1": "e",
+        "c2": "p",
+        "fattore": 1.0
+      },
+      {
+        "c1": "p",
+        "c2": "e",
+        "fattore": 1.0
+      }
+    ]
   },
   "propostaManager": {
     "listaProposte": []

@@ -53,42 +53,42 @@ public class ControllerConfiguratore extends ControllerBase {
         dati.getGerarchiaCategorieManager().addGerarchia(g);
     }
 
-    public Categoria creaCategoria(boolean isRadice, Categoria c) {
+    public ComponenteCategoria creaCategoria(boolean isRadice, ComponenteCategoria c) {
         String nome = isRadice ? view.getNomeRadice() : getNomeCategoriaValido(c);
         String campo = view.leggiCampo();
         HashMap<String, String> dominio = view.leggiDominio();
         return new Categoria(nome, campo, dominio);
     }
 
-    public CategoriaFoglia creaCategoriaFoglia(Categoria radice) {
+    public ComponenteCategoria creaCategoriaFoglia(ComponenteCategoria radice) {
         String nome = getNomeCategoriaValido(radice); 		
-        CategoriaFoglia categoria = new CategoriaFoglia(nome);
+        ComponenteCategoria categoria = new CategoriaFoglia(nome);
         return categoria;
     }
 
-    public String getNomeCategoriaValido(Categoria c) {
+    public String getNomeCategoriaValido(ComponenteCategoria radice) {
         boolean nomeValido = false;
         String nome=""; 
         while(!nomeValido) {
             nome = view.getNomeCategoria();
-            nomeValido = c.isNomeUnivoco(nome);
-            if(!nomeValido) 
-                view.nomeNonValido();
-        }
+                nomeValido = radice.isNomeUnivoco(nome);
+                if(!nomeValido) 
+                    view.nomeNonValido();
+            }
         return nome;
     }
 
     public void inizializzaGerarchia(){
-        Categoria radice = creaCategoria(true, null);
+        ComponenteCategoria radice = creaCategoria(true, null);
         GerarchiaCategorie g = new GerarchiaCategorie(radice);
         componiGerarchia(g, radice);
         dati.getGerarchiaCategorieManager().addGerarchia(g);
     }
 
-    public void componiGerarchia(GerarchiaCategorie g, Categoria padre) {		
+    public void componiGerarchia(GerarchiaCategorie g, ComponenteCategoria padre) {		
     	
     	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
-        Categoria radice = g.getCategoriaRadice();
+        ComponenteCategoria radice = g.getCategoriaRadice();
     	
     	for (String dom : listaDominio) {
 
@@ -96,13 +96,13 @@ public class ControllerConfiguratore extends ControllerBase {
             
             switch(choice1) {
                 case 1:
-                    Categoria sottocat = creaCategoria(false, radice);
+                    ComponenteCategoria sottocat = creaCategoria(false, radice);
                     padre.aggiungiSottocategoria(dom, sottocat);
-                    HashMap<String, Categoria> sottocategorie = padre.getSottocategorie();
+                    HashMap<String, ComponenteCategoria> sottocategorie = padre.getSottocategorie();
                     componiGerarchia(g, sottocategorie.get(dom));
                     break;
                 case 2:
-                    CategoriaFoglia sottocatF = creaCategoriaFoglia(radice);
+                    ComponenteCategoria sottocatF = creaCategoriaFoglia(radice);
                     padre.aggiungiSottocategoria(dom, sottocatF);
                     g.addToListaFoglie(sottocatF);
                     break;
@@ -119,7 +119,7 @@ public class ControllerConfiguratore extends ControllerBase {
     //probabilmente da spostare in ControllerBase
     public void visualizzaGerarchie() {
         if (listaGerarchiaNonVuota()) {
-            for (Categoria gerarchia : dati.getGerarchiaCategorieManager().getListaRadici()) {
+            for (ComponenteCategoria gerarchia : dati.getGerarchiaCategorieManager().getListaRadici()) {
                 view.stampaAlbero("", gerarchia);
             }
         }
@@ -159,23 +159,26 @@ public class ControllerConfiguratore extends ControllerBase {
         else {           
             view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
             GerarchiaCategorie gerarchiaOfferta = sceltaRadice();
-            ArrayList<CategoriaFoglia> foglieOfferta = gerarchiaOfferta.getListaFoglie();
+            ArrayList<ComponenteCategoria> foglieOfferta = gerarchiaOfferta.getListaFoglie();
 
             view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
             GerarchiaCategorie gerarchiaRichiesta = sceltaRadice();
-            ArrayList<CategoriaFoglia> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
+            ArrayList<ComponenteCategoria> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
 
             double min = FattoreConversione.getMin();
             double max = FattoreConversione.getMax();
             boolean aggiuntoFattore = false;
 
-            for (CategoriaFoglia c1 : foglieOfferta) {
-                for (CategoriaFoglia c2 : foglieRichiesta) {
-                    if (!c1.getNome().equals(c2.getNome()) && !dati.getFattoreManager().esisteFattore(c1, c2)) {
+            for (ComponenteCategoria foglia1 : foglieOfferta) {
+                String c1 = foglia1.getNome();
+                for (ComponenteCategoria foglia2 : foglieRichiesta) {
+                    String c2 = foglia2.getNome();
+
+                    if (!c1.equals(c2) && !dati.getFattoreManager().esisteFattore(c1, c2)) {
                         String messaggio = "Inserisci il fattore di conversione da " 
-                                            + c1.getNome().toUpperCase() 
+                                            + c1.toUpperCase() 
                                             + " a " 
-                                            + c2.getNome().toUpperCase() 
+                                            + c2.toUpperCase() 
                                             + ": ";
                         double fattore = view.leggiFattore(messaggio, min, max);
 

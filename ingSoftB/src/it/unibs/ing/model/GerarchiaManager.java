@@ -22,8 +22,8 @@ public class GerarchiaManager {
 		listaOggettiGerarchia.add(g);
 	}
     
-    public ArrayList<Categoria> getListaRadici() {
-    	ArrayList<Categoria> listaRadici = new ArrayList<>(); 
+    public ArrayList<ComponenteCategoria> getListaRadici() {
+    	ArrayList<ComponenteCategoria> listaRadici = new ArrayList<>(); 
     	
     	for(GerarchiaCategorie c : listaOggettiGerarchia) {
     		listaRadici.add(c.getCategoriaRadice());
@@ -33,7 +33,7 @@ public class GerarchiaManager {
 
 
     public boolean checkNomeGerarchia(String nome) {
-    	for(Categoria c : getListaRadici()) {
+    	for(ComponenteCategoria c : getListaRadici()) {
     		if(c.getNome().equals(nome))
     			return false;
     	}

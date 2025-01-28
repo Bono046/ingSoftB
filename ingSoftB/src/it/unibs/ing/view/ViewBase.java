@@ -42,11 +42,11 @@ public class ViewBase {
     }
 
     public String toStringFattore(FattoreConversione fattore){
-        return "FattoreConversione{Richiesta:  " + fattore.getC1().getNome() + ", Offerta " + fattore.getC2().getNome() + 
+        return "FattoreConversione{Richiesta:  " + fattore.getC1() + ", Offerta " + fattore.getC2() + 
         ", fattore " + fattore.getFattore() + '}';
     }
 
-    public String toStringCategoriaFoglia(CategoriaFoglia categoria){
+    public String toStringCategoriaFoglia(ComponenteCategoria categoria){
         return "CategoriaFoglia{" +
                 "nome='" + categoria.getNome() + '}';
     }
@@ -138,7 +138,7 @@ public class ViewBase {
         return scelta;
     }
 
-    public String chiediNomeCategorieFoglia(ArrayList<CategoriaFoglia> listaFoglie) {
+    public String chiediNomeCategorieFoglia(ArrayList<ComponenteCategoria> listaFoglie) {
         return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
     }
 

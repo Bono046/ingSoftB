@@ -5,7 +5,7 @@ import java.util.Map;
 
 import it.unibs.ing.controller.ControllerFruitore;
 import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.Categoria;
+import it.unibs.ing.model.ComponenteCategoria;
 
 
 public class ViewFruitore extends ViewBase {
@@ -139,7 +139,7 @@ public class ViewFruitore extends ViewBase {
         System.out.println("\nCategoria corrente: " + nomeCategoria);
     }
 
-    public void mostraValoriSottocategorie(Map<String, Categoria> sottocategorie) {
+    public void mostraValoriSottocategorie(Map<String, ComponenteCategoria> sottocategorie) {
         System.out.println("Valori disponibili:");
         sottocategorie.forEach((k, v) -> System.out.println(k + " -> " + v.getNome()));
     }
