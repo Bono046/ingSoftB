@@ -102,7 +102,6 @@ public class ViewBase {
         }
         int scelta = InputDati.leggiIntero("Scelta:", 1, lista.size());
         return lista.get(scelta - 1);
-        
     }
 
     public void nomeNonValido() {

@@ -218,9 +218,11 @@ public class ControllerConfiguratore extends ControllerBase {
                     listaDaVisualizzare.add(proposta);                
                 }
             
-            if(listaDaVisualizzare.isEmpty()) 
+            if(listaDaVisualizzare.isEmpty()) {
                 System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
-            else view.visualizzaProposte(listaDaVisualizzare);
+            } else {
+                view.stampaProposte(listaDaVisualizzare);
+            }
         }   
 	}
 

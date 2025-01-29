@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.FattoreConversione;
+import it.unibs.ing.model.Proposta;
 import it.unibs.ing.model.ComponenteCategoria;
 
 public class ViewConfiguratore extends ViewBase{
@@ -257,6 +258,9 @@ public class ViewConfiguratore extends ViewBase{
         }
     }
     
+    public void stampaProposte(ArrayList<Proposta> listaProposte){
+        System.out.println(visualizzaProposte(listaProposte));
+    }
 
     
 

@@ -20,7 +20,7 @@ public class FattoreManager {
 		 ArrayList<FattoreConversione> fattoriDaAggiungere = new ArrayList<>();
 		 double valoreFattore;
 		 
-		if(listaFattori.isEmpty()) {		//prima iterazione
+		if(listaFattori.isEmpty()) {		
 			listaFattori.add(fattore);
 			listaFattori.add(f_inverso);
 		} else {
@@ -43,7 +43,8 @@ public class FattoreManager {
 						fattoriDaAggiungere.add(newFattore);
 						fattoriDaAggiungere.add(newFattore.creaFattoreInverso());
 					}
-			}}
+				}
+			}
 			listaFattori.add(fattore);
 			listaFattori.add(f_inverso);
 			listaFattori.addAll(fattoriDaAggiungere);

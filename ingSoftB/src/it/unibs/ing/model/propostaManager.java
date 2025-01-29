@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class PropostaManager {
 
     ArrayList<Proposta> listaProposte;
+	ChiusuraProposteStrategy chiusuraProposteStrategy;
 
     public PropostaManager() {
         listaProposte = new ArrayList<Proposta>();
@@ -26,11 +27,15 @@ public class PropostaManager {
 		}
 	}
 
-    private void chiudiProposte(ArrayList<Proposta> percorso) {
-	    for (Proposta proposta : percorso) {
-	        proposta.chiudiProposta();
-	    }
+	public void setChiusuraProposteStrategy(ChiusuraProposteStrategy chiusuraProposteStrategy) {
+		this.chiusuraProposteStrategy = chiusuraProposteStrategy;
 	}
+
+	public boolean verificaProposta(Proposta proposta, ArrayList<Proposta> listaProposte) {
+		return chiusuraProposteStrategy.execute(proposta, listaProposte);
+	}
+
+    
 	
 	public ArrayList<Proposta> getListaProposteUser(String user) {
 		ArrayList<Proposta> lista = new ArrayList<>();
@@ -65,50 +70,6 @@ public class PropostaManager {
 		return proposteFromComprensorio;
 	}
 
-
-
- 
-    public boolean verificaProposta(Proposta proposta, ArrayList<Proposta> proposteAperteFromComprensorio) {
- 	    
-	    for (Proposta p : proposteAperteFromComprensorio) {
-	        if (proposta.soddisfaRichiestaDi(p)) {
-	            if (proposta.richiestaSoddisfattaDa(p)) {
-	                proposta.chiudiProposta();
-	                p.chiudiProposta();
-	                return true; 
-	            } else {	              
-	                ArrayList<Proposta> percorso = new ArrayList<>();
-	                percorso.add(proposta);
-
-	                if (verificaTransitivaCiclo(proposta, p, percorso, proposteAperteFromComprensorio)) {
-	                    chiudiProposte(percorso);
-	                    proposta.chiudiProposta();
-	                    return true; 
-	                }
-	            }
-	        }
-	    }
-	    return false;
-	}
-
-	
-	private boolean verificaTransitivaCiclo(Proposta propostaDaChiudere, Proposta propostaAperta, ArrayList<Proposta> catenaProposte, ArrayList<Proposta> elencoProposte) {
-	    catenaProposte.add(propostaAperta);
-
-	    if (catenaProposte.size() > 2 && propostaAperta.soddisfaRichiestaDi(propostaDaChiudere)) {
-	        return true;
-	        }
-
-	    for (Proposta prossimaProposta : elencoProposte) {
-	        if (!catenaProposte.contains(prossimaProposta) && propostaAperta.soddisfaRichiestaDi(prossimaProposta)) {
-	            if (verificaTransitivaCiclo(propostaDaChiudere, prossimaProposta, catenaProposte, elencoProposte)) {
-	                return true;
-	            }
-	        }
-	    }
-	    catenaProposte.remove(catenaProposte.size() - 1);
-	    return false;
-	}
 
 }
 	

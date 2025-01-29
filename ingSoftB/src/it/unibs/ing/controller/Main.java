@@ -10,13 +10,14 @@ import it.unibs.ing.model.FileManager;
 public class Main {
 	public static void main(String[] args) {
 
-        Dati dati = new Dati();
+        Dati dati;
         
         try {
             dati = FileManager.caricaDati();
         } catch (IOException e) {
             System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
-            dati = new Dati();
+            dati = 
+            Dati.getInstance();
         } 
         
         ControllerConfiguratore controllerConfiguratore = new ControllerConfiguratore(dati);

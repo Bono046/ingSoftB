@@ -24,7 +24,7 @@ public class FileManager {
                 .create();
         File file = new File(FILE_DATI);
         if (!file.exists() || file.length() == 0) {
-            return new Dati();
+            return Dati.getInstance();
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return gson.fromJson(reader, Dati.class);

@@ -147,7 +147,9 @@ public class ControllerFruitore extends ControllerBase{
 	    ComprensorioGeografico comprensorio = dati.getFruitoreManager().getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio = dati.getFruitoreManager().getUserFruitoriFromComprensorio(comprensorio);
 	    userFruitoriFromComprensorio.remove(user);
+       
         ArrayList<Proposta> proposteAperteFromComprensorio = dati.getPropostaManager().getProposteAperteFromUsers(userFruitoriFromComprensorio);  
+        dati.getPropostaManager().setChiusuraProposteStrategy(new ConcreteStrategyProposte());
         boolean chiusura = dati.getPropostaManager().verificaProposta(proposta, proposteAperteFromComprensorio);
         return chiusura;
     }

@@ -19,7 +19,7 @@
             "Mazzano"
           ]
         },
-        "mail": "b•"
+        "mail": "bï¿½"
       },
       {
         "username": "c",
@@ -32,6 +32,18 @@
           ]
         },
         "mail": "c"
+      },
+      {
+        "username": "d",
+        "password": "d",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ]
+        },
+        "mail": "d"
       }
     ]
   },
@@ -787,7 +799,7 @@
         "offerta": "lezioni di cintura bianca",
         "durataRichiesta": 10,
         "durataOfferta": 10,
-        "stato": "APERTA",
+        "stato": "CHIUSA",
         "username": "b"
       },
       {
@@ -821,7 +833,48 @@
         "durataOfferta": 15,
         "stato": "RITIRATA",
         "username": "c"
+      },
+      {
+        "richiesta": "lezioni di cintura bianca",
+        "offerta": "lezioni di storia della musica",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "APERTA",
+        "username": "b"
+      },
+      {
+        "richiesta": "lezioni di cintura bianca",
+        "offerta": "lezioni di storia della musica",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "CHIUSA",
+        "username": "c"
+      },
+      {
+        "richiesta": "lezioni di cintura bianca",
+        "offerta": "ricette di dolci",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "CHIUSA",
+        "username": "c"
+      },
+      {
+        "richiesta": "ricette di dolci",
+        "offerta": "lezioni di storia della musica",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "CHIUSA",
+        "username": "d"
+      },
+      {
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di cintura bianca",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "CHIUSA",
+        "username": "b"
       }
-    ]
+    ],
+    "chiusuraProposteStrategy": {}
   }
 }

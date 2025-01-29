@@ -2,6 +2,8 @@ package it.unibs.ing.model;
 
 public class Dati {
 
+    private static Dati instance;
+
     private ConfiguratoreManager configuratoreManager;
     private FruitoreManager fruitoreManager;
     private ComprensorioManager comprensorioManager;
@@ -9,7 +11,7 @@ public class Dati {
     private FattoreManager fattoreManager;
     private PropostaManager propostaManager;
 
-    public Dati() {
+    private Dati() {
         configuratoreManager = new ConfiguratoreManager();
         fruitoreManager = new FruitoreManager();
         comprensorioManager = new ComprensorioManager();
@@ -18,7 +20,13 @@ public class Dati {
         propostaManager = new PropostaManager();
     }
 
-    
+    public static Dati getInstance() {
+        if (instance == null) {
+            instance = new Dati();
+        }
+        return instance;
+    }
+
     public ConfiguratoreManager getConfiguratoreManager() {
         return configuratoreManager;
     }
@@ -34,7 +42,7 @@ public class Dati {
     public GerarchiaManager getGerarchiaCategorieManager() {
         return gerarchiaManager;
     }
- 
+
     public FattoreManager getFattoreManager() {
         return fattoreManager;
     }
