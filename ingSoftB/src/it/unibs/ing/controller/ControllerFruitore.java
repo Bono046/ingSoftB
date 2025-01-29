@@ -19,23 +19,23 @@ public class ControllerFruitore extends ControllerBase{
     }
 
     public ArrayList<ComprensorioGeografico> getListaComprensori() {
-        ArrayList <ComprensorioGeografico> comprensori = dati.getComprensorioManager().getLista();
+        ArrayList <ComprensorioGeografico> comprensori = comprensorioManager.getLista();
         if(comprensori.isEmpty())
             throw new IllegalArgumentException();
         return comprensori;
     } 
 
     public Boolean userOk(String username) {
-        return dati.getFruitoreManager().userValido(username);
+        return fruitoreManager.userValido(username);
     }
 
     public void registraFruitore(String username, String password, ComprensorioGeografico comprensorio, String mail) {
         Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
-        dati.getFruitoreManager().addToListaFruitori(fruitore);
+       fruitoreManager.addToListaFruitori(fruitore);
     }
 
     public Boolean loginFruitore(String username, String password) {
-        return dati.getFruitoreManager().loginFruitore(username, password);
+        return fruitoreManager.loginFruitore(username, password);
     }
 
 
@@ -115,7 +115,7 @@ public class ControllerFruitore extends ControllerBase{
             Boolean conferma = view.chiediConferma("Vuoi confermare la proposta? ");
             if (conferma) {
                 proposta.accettaProposta();
-                dati.getPropostaManager().addProposta(proposta);
+                propostaManager.addProposta(proposta);
                 view.mostraMessaggio("Proposta confermata.");
                 confermato = true;
 
@@ -132,7 +132,7 @@ public class ControllerFruitore extends ControllerBase{
     private int calcolaDurataOfferta(String richiesta, String offerta, int durataRichiesta) {
         int durataOfferta=0;
         try {
-            FattoreConversione f = dati.getFattoreManager().trovaFattore(richiesta, offerta);
+            FattoreConversione f = fattoreManager.trovaFattore(richiesta, offerta);
             durataOfferta = (int) Math.round(durataRichiesta * f.getFattore());
             return durataOfferta;
         } catch (NullPointerException e) {
@@ -144,29 +144,29 @@ public class ControllerFruitore extends ControllerBase{
 
     private boolean verificaProposta(Proposta proposta) {
         String user = proposta.getUsername();
-	    ComprensorioGeografico comprensorio = dati.getFruitoreManager().getComprensorioFromUser(user);
-	    ArrayList<String> userFruitoriFromComprensorio = dati.getFruitoreManager().getUserFruitoriFromComprensorio(comprensorio);
+	    ComprensorioGeografico comprensorio =fruitoreManager.getComprensorioFromUser(user);
+	    ArrayList<String> userFruitoriFromComprensorio =fruitoreManager.getUserFruitoriFromComprensorio(comprensorio);
 	    userFruitoriFromComprensorio.remove(user);
        
-        ArrayList<Proposta> proposteAperteFromComprensorio = dati.getPropostaManager().getProposteAperteFromUsers(userFruitoriFromComprensorio);  
-        dati.getPropostaManager().setChiusuraProposteStrategy(new ConcreteStrategyProposte());
-        boolean chiusura = dati.getPropostaManager().verificaProposta(proposta, proposteAperteFromComprensorio);
+        ArrayList<Proposta> proposteAperteFromComprensorio = propostaManager.getProposteAperteFromUsers(userFruitoriFromComprensorio);  
+        propostaManager.setChiusuraProposteStrategy(new ConcreteStrategyProposte());
+        boolean chiusura = propostaManager.verificaProposta(proposta, proposteAperteFromComprensorio);
         return chiusura;
     }
 
 
     public void visualizzaProposteByUser(String user) {
-	    ArrayList<Proposta> list = dati.getPropostaManager().getListaProposteUser(user);
+	    ArrayList<Proposta> list = propostaManager.getListaProposteUser(user);
 	    if (list.isEmpty()) {
             view.mostraMessaggio("Non sono presenti proposte da visualizzare.");
 	    } else {
-            view.mostraMessaggio(view.visualizzaProposte(list));;
+            view.visualizzaProposte(list);;
     	}
     }   
 
     public void ritiraProposta(String user) {
 	    
-	    ArrayList<Proposta> list = dati.getPropostaManager().getListaProposteAperteUser(user);
+	    ArrayList<Proposta> list = propostaManager.getListaProposteAperteUser(user);
 
 	    if (list.isEmpty()) {
 	        view.mostraMessaggio("Non sono presenti proposte da ritirare.");

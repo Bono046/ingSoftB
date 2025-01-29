@@ -32,9 +32,10 @@ public class FileManager {
             throw new IllegalStateException("Errore di sintassi JSON", e);
         }
     }
+}
 
     // Adapter personalizzato per ComponenteCategoria
-    private static class ComponenteCategoriaAdapter implements JsonDeserializer<ComponenteCategoria>, JsonSerializer<ComponenteCategoria> {
+    class ComponenteCategoriaAdapter implements JsonDeserializer<ComponenteCategoria>, JsonSerializer<ComponenteCategoria> {
 
         @Override
         public JsonElement serialize(ComponenteCategoria src, Type typeOfSrc, JsonSerializationContext context) {
@@ -61,4 +62,7 @@ public class FileManager {
             throw new JsonParseException("Tipo sconosciuto: " + type);
         }
     }
-}
+
+    
+
+

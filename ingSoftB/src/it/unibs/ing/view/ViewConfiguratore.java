@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.FattoreConversione;
-import it.unibs.ing.model.Proposta;
 import it.unibs.ing.model.ComponenteCategoria;
 
 public class ViewConfiguratore extends ViewBase{
@@ -120,7 +119,7 @@ public class ViewConfiguratore extends ViewBase{
                     salvaDati();
                     break;
                 case 4:
-                    visualizzaComprensori();
+                    visualizzaComprensori(controllerConfiguratore.getComprensorioManager());
                     break;
                 case 5:
                     controllerConfiguratore.visualizzaGerarchie();
@@ -152,14 +151,7 @@ public class ViewConfiguratore extends ViewBase{
         controllerConfiguratore.aggiungiComprensorio(nome, comuni);
     }
 
-    public void visualizzaComprensori(){
-        System.out.println(visualizzaComprensori(controllerConfiguratore.getDati().getComprensorioManager()));
-    }
-
-
-
-
-
+   
     public String leggiCampo() {
         return InputDati.leggiStringaNonVuota("Inserisci nome del campo: ");
     }
@@ -258,9 +250,7 @@ public class ViewConfiguratore extends ViewBase{
         }
     }
     
-    public void stampaProposte(ArrayList<Proposta> listaProposte){
-        System.out.println(visualizzaProposte(listaProposte));
-    }
+    
 
     
 

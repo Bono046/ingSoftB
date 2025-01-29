@@ -12,9 +12,23 @@ public class ControllerBase {
 
     Dati dati;
     ViewBase view = new ViewBase(this);
+    ConfiguratoreManager configuratoreManager;
+    FruitoreManager fruitoreManager;
+    GerarchiaManager gerarchiaManager;
+    ComprensorioManager comprensorioManager;
+    FattoreManager fattoreManager;
+    PropostaManager propostaManager;
+
+
 
     public ControllerBase(Dati dati) {
         this.dati = dati;
+        this.configuratoreManager = dati.getConfiguratoreManager();
+        this.fruitoreManager = dati.getFruitoreManager();
+        this.gerarchiaManager = dati.getGerarchiaCategorieManager();
+        this.comprensorioManager = dati.getComprensorioManager();
+        this.fattoreManager = dati.getFattoreManager();
+        this.propostaManager = dati.getPropostaManager();
     }
 
     public void salvaDati() throws IllegalStateException {
@@ -26,7 +40,7 @@ public class ControllerBase {
     }
 
     public boolean listaGerarchiaNonVuota() {
-        if (dati.getGerarchiaCategorieManager().getListaRadici().isEmpty()) {
+        if (gerarchiaManager.getListaRadici().isEmpty()) {
             view.logErroreGerarchia();
             return false;
         }
@@ -34,8 +48,7 @@ public class ControllerBase {
     }
 
     public GerarchiaCategorie sceltaRadice() {
-        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = dati.getGerarchiaCategorieManager()
-                .getListaOggettiGerarchia();
+        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
 
         if (listaGerarchiaNonVuota()) {
             List<String> nomiGerarchie = new ArrayList<>();

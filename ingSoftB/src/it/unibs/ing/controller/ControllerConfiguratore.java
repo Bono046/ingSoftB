@@ -15,6 +15,8 @@ public class ControllerConfiguratore extends ControllerBase {
         super(dati); 
     }
 
+
+
     public void registraView(ViewConfiguratore view) {
         this.view = view;
     }
@@ -24,33 +26,35 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public Boolean userOk(String username) {
-        return dati.getConfiguratoreManager().userValido(username);
+        return configuratoreManager.userValido(username);
     }
 
     public void registraConfiguratore(String username, String password) {
         Configuratore conf = new Configuratore(username, password);
-        dati.getConfiguratoreManager().addToListaConfiguratori(conf);
+        configuratoreManager.addToListaConfiguratori(conf);
     }
 
     public Boolean loginConfiguratore(String username, String password) {
-        return dati.getConfiguratoreManager().loginConfiguratore(username, password);
+        return configuratoreManager.loginConfiguratore(username, password);
     }
 
-    public Dati getDati() {
-        return dati;
-    }
 
     public void aggiungiComprensorio(String nome, Set<String> comuni) {
         ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome, comuni);
-        dati.getComprensorioManager().addComprensorio(comprensorio);
+        comprensorioManager.addComprensorio(comprensorio);
     }
 
+    public ArrayList<ComprensorioGeografico>  getComprensorioManager() {
+        return comprensorioManager.getLista();
+    }
+
+
     public boolean checkNomeGerarchia(String nome) {
-        return dati.getGerarchiaCategorieManager().checkNomeGerarchia(nome);
+        return gerarchiaManager.checkNomeGerarchia(nome);
     }
 
     public void addGerarchia(GerarchiaCategorie g) {
-        dati.getGerarchiaCategorieManager().addGerarchia(g);
+        gerarchiaManager.addGerarchia(g);
     }
 
     public ComponenteCategoria creaCategoria(boolean isRadice, ComponenteCategoria c) {
@@ -82,7 +86,7 @@ public class ControllerConfiguratore extends ControllerBase {
         ComponenteCategoria radice = creaCategoria(true, null);
         GerarchiaCategorie g = new GerarchiaCategorie(radice);
         componiGerarchia(g, radice);
-        dati.getGerarchiaCategorieManager().addGerarchia(g);
+        gerarchiaManager.addGerarchia(g);
     }
 
     public void componiGerarchia(GerarchiaCategorie g, ComponenteCategoria padre) {		
@@ -110,7 +114,6 @@ public class ControllerConfiguratore extends ControllerBase {
                     view.logErroreGenerico();
             }
         }
-        
     }
 
 
@@ -119,14 +122,14 @@ public class ControllerConfiguratore extends ControllerBase {
     //probabilmente da spostare in ControllerBase
     public void visualizzaGerarchie() {
         if (listaGerarchiaNonVuota()) {
-            for (ComponenteCategoria gerarchia : dati.getGerarchiaCategorieManager().getListaRadici()) {
+            for (ComponenteCategoria gerarchia : gerarchiaManager.getListaRadici()) {
                 view.stampaAlbero("", gerarchia);
             }
         }
     }
 
     public boolean listaGerarchiaNonVuota() {
-        if (dati.getGerarchiaCategorieManager().getListaRadici().isEmpty()) {
+        if (gerarchiaManager.getListaRadici().isEmpty()) {
             view.logErroreGerarchia();
             return false;
         } 
@@ -135,7 +138,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
 
     public GerarchiaCategorie sceltaRadice() {
-        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = dati.getGerarchiaCategorieManager().getListaOggettiGerarchia();
+        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
 
         if (listaGerarchiaNonVuota()) {
             List<String> nomiGerarchie = new ArrayList<>();
@@ -174,7 +177,7 @@ public class ControllerConfiguratore extends ControllerBase {
                 for (ComponenteCategoria foglia2 : foglieRichiesta) {
                     String c2 = foglia2.getNome();
 
-                    if (!c1.equals(c2) && !dati.getFattoreManager().esisteFattore(c1, c2)) {
+                    if (!c1.equals(c2) && !fattoreManager.esisteFattore(c1, c2)) {
                         String messaggio = "Inserisci il fattore di conversione da " 
                                             + c1.toUpperCase() 
                                             + " a " 
@@ -182,7 +185,7 @@ public class ControllerConfiguratore extends ControllerBase {
                                             + ": ";
                         double fattore = view.leggiFattore(messaggio, min, max);
 
-                        dati.getFattoreManager().addFattore(c1, c2, fattore);
+                        fattoreManager.addFattore(c1, c2, fattore);
                         aggiuntoFattore = true;
                     }
                 }
@@ -198,7 +201,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
             GerarchiaCategorie g = sceltaRadice();
             String nome = view.chiediNomeCategorieFoglia(g.getListaFoglie());
-            ArrayList<FattoreConversione> fattoriDaVisualizzare = dati.getFattoreManager().trovaFattore(nome);
+            ArrayList<FattoreConversione> fattoriDaVisualizzare = fattoreManager.trovaFattore(nome);
 
             if (fattoriDaVisualizzare.isEmpty()) {
                 view.mostraMessaggio("Non esistono fattori di conversione per la categoria selezionata\n");
@@ -211,7 +214,7 @@ public class ControllerConfiguratore extends ControllerBase {
     public void visualizzaProposteByFoglia() {
 		if(listaGerarchiaNonVuota()){
             String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
-            ArrayList<Proposta> lista = dati.getPropostaManager().getListaProposte();
+            ArrayList<Proposta> lista = propostaManager.getListaProposte();
             ArrayList<Proposta> listaDaVisualizzare = new ArrayList<>();
             for(Proposta proposta:lista) {
                 if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))
@@ -221,7 +224,7 @@ public class ControllerConfiguratore extends ControllerBase {
             if(listaDaVisualizzare.isEmpty()) {
                 System.out.println("Non esistono proposte legate alla categoria foglia selezionata");
             } else {
-                view.stampaProposte(listaDaVisualizzare);
+                view.visualizzaProposte(listaDaVisualizzare);
             }
         }   
 	}

@@ -62,6 +62,12 @@
           "Albino",
           "Orio"
         ]
+      },
+      {
+        "nome": "e",
+        "comuni": [
+          "r"
+        ]
       }
     ]
   },
@@ -874,7 +880,6 @@
         "stato": "CHIUSA",
         "username": "b"
       }
-    ],
-    "chiusuraProposteStrategy": {}
+    ]
   }
 }

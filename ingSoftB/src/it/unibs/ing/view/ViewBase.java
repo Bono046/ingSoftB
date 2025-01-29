@@ -24,16 +24,6 @@ public class ViewBase {
     }
 
 
-    public String toStringConfig(Configuratore config){
-        return "Configuratore{" +
-                "username='" + config.getUsername()+ '}';
-    }
-
-    public String toStringFruitore(Fruitore fruitore){
-        return "Fruitore{" +
-                "username='" + fruitore.getUsername() + '}';
-    }
-
     public String toStringComprensorio(ComprensorioGeografico comprensorio){
         return "ComprensorioGeografico{" +
                 "nome='" + comprensorio.getNome()+"', "+
@@ -60,21 +50,21 @@ public class ViewBase {
         return InputDati.yesOrNo(messaggio);
     }
 
-    public  String visualizzaComprensori(ComprensorioManager listaComprensori){
+    public  void visualizzaComprensori(ArrayList<ComprensorioGeografico> listaComprensori){
         StringBuilder sb = new StringBuilder();
-        for (ComprensorioGeografico comprensorio : listaComprensori.getLista()) {
+        for (ComprensorioGeografico comprensorio : listaComprensori) {
             sb.append(toStringComprensorio(comprensorio)).append("\n");
         }
-        return sb.toString();
-       }
+        System.out.println(sb.toString());
+    }
 
   
-    public String visualizzaProposte(ArrayList<Proposta> listaProposte){
+    public void visualizzaProposte(ArrayList<Proposta> listaProposte){
         StringBuilder sb = new StringBuilder();
         for (Proposta proposta : listaProposte) {
             sb.append(toStringProposta(proposta)).append("\n");
         }
-        return sb.toString();
+       System.out.println(sb.toString());
     }
     
        
@@ -85,14 +75,8 @@ public class ViewBase {
             T elemento = lista.get(i);
             String descrizione="";
 
-            if (elemento instanceof Fruitore) {
-                descrizione = toStringFruitore((Fruitore) elemento);
-            } else if (elemento instanceof ComprensorioGeografico) {
+            if (elemento instanceof ComprensorioGeografico) {
                 descrizione = toStringComprensorio((ComprensorioGeografico) elemento);
-            } else if (elemento instanceof Configuratore) {
-                descrizione = toStringConfig((Configuratore) elemento);         
-            } else if (elemento instanceof FattoreConversione) {
-                descrizione = toStringFattore((FattoreConversione) elemento); 
             } else if (elemento instanceof CategoriaFoglia) {
                 descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
             }else if (elemento instanceof Proposta) {
