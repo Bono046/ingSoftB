@@ -1,42 +1,42 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.gerarchia;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class GerarchiaCategorie {
-	private ComponenteCategoria radice;
-	private ComponenteCategoria categoriaCorrente;
-    private ArrayList<ComponenteCategoria> listaFoglie = new ArrayList<>();
-    private Stack<ComponenteCategoria> percorso;
+	private ICategoria radice;
+	private ICategoria categoriaCorrente;
+    private ArrayList<ICategoria> listaFoglie = new ArrayList<>();
+    private Stack<ICategoria> percorso;
     
-	public GerarchiaCategorie(ComponenteCategoria radice) {
+	public GerarchiaCategorie(ICategoria radice) {
 		this.radice = radice;
         this.percorso = new Stack<>();
         this.categoriaCorrente = radice;
     }
 	
-	public ComponenteCategoria getCategoriaRadice() {
+	public ICategoria getCategoriaRadice() {
 		return this.radice;
 	}
 	
-   public ArrayList<ComponenteCategoria> getListaFoglie() {
+   public ArrayList<ICategoria> getListaFoglie() {
 		return listaFoglie;
 	}
 
-	public void setListaFoglie(ArrayList<ComponenteCategoria> c) {
+	public void setListaFoglie(ArrayList<ICategoria> c) {
 		
-		for(ComponenteCategoria foglia: c) {
+		for(ICategoria foglia: c) {
             //if(foglia.isFoglia())
 			this.listaFoglie.add(foglia);
         }
 	}
 	
-	public void addToListaFoglie(ComponenteCategoria c) {
+	public void addToListaFoglie(ICategoria c) {
         //if(foglia.isFoglia())
 		this.listaFoglie.add(c);
 	}
 	
-    public ComponenteCategoria getCategoriaCorrente() {
+    public ICategoria getCategoriaCorrente() {
         return categoriaCorrente;
     }
     
@@ -45,7 +45,7 @@ public class GerarchiaCategorie {
     }
     
     
-    public boolean vaiASottocategoria(ComponenteCategoria sottocategoria) {
+    public boolean vaiASottocategoria(ICategoria sottocategoria) {
         if (categoriaCorrente.getSottocategorie() != null &&
             categoriaCorrente.getSottocategorie().containsValue(sottocategoria)) {
             percorso.push(categoriaCorrente);
@@ -56,7 +56,7 @@ public class GerarchiaCategorie {
     }
     
     
-    public Stack<ComponenteCategoria> getPercorso() {
+    public Stack<ICategoria> getPercorso() {
 		return percorso;
 	}
 
@@ -71,8 +71,8 @@ public class GerarchiaCategorie {
 
 	
     
-    public ComponenteCategoria getFogliaDaNome(String nome) {
-    	for(ComponenteCategoria c: listaFoglie) {
+    public ICategoria getFogliaDaNome(String nome) {
+    	for(ICategoria c: listaFoglie) {
     		if(c.getNome().equals(nome))
     			return c;
     	}

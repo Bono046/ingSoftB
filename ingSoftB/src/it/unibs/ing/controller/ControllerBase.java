@@ -4,7 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.unibs.ing.database.FileManager;
 import it.unibs.ing.model.*;
+import it.unibs.ing.model.comprensorio.ComprensorioManager;
+import it.unibs.ing.model.fattore.FattoreManager;
+import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
+import it.unibs.ing.model.gerarchia.GerarchiaManager;
+import it.unibs.ing.model.proposta.PropostaManager;
+import it.unibs.ing.model.user.ConfiguratoreManager;
+import it.unibs.ing.model.user.FruitoreManager;
 import it.unibs.ing.view.ViewBase;
 
 
@@ -60,6 +68,10 @@ public class ControllerBase {
             return listaOggettiGerarchia.get(scelta - 1);
         }
         return null;
+    }
+
+    public Boolean userOk(String username) {
+        return (configuratoreManager.userValido(username) && fruitoreManager.userValido(username));
     }
 
 }

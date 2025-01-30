@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
-import it.unibs.ing.model.FattoreConversione;
-import it.unibs.ing.model.ComponenteCategoria;
+import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.gerarchia.ICategoria;
 
 public class ViewConfiguratore extends ViewBase{
 
@@ -205,7 +205,7 @@ public class ViewConfiguratore extends ViewBase{
 
 
    
-    public void stampaAlbero(String indentazione, ComponenteCategoria c) {
+    public void stampaAlbero(String indentazione, ICategoria c) {
         try {
             StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
             List<String> coppie = new ArrayList<>();
@@ -228,7 +228,7 @@ public class ViewConfiguratore extends ViewBase{
         }
 
         if (!c.isFoglia()) {
-            for (ComponenteCategoria sottocategoria : c.getSottocategorie().values()) {
+            for (ICategoria sottocategoria : c.getSottocategorie().values()) {
                 stampaAlbero(indentazione + "  ", sottocategoria);
             }
         }

@@ -5,6 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import it.unibs.ing.model.*;
+import it.unibs.ing.model.comprensorio.Comprensorio;
+import it.unibs.ing.model.comprensorio.IComprensorio;
+import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.gerarchia.Categoria;
+import it.unibs.ing.model.gerarchia.CategoriaFoglia;
+import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
+import it.unibs.ing.model.gerarchia.ICategoria;
+import it.unibs.ing.model.proposta.Proposta;
+import it.unibs.ing.model.user.Configuratore;
 import it.unibs.ing.view.ViewConfiguratore;
 
 public class ControllerConfiguratore extends ControllerBase {
@@ -25,10 +34,6 @@ public class ControllerConfiguratore extends ControllerBase {
         return Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
     }
 
-    public Boolean userOk(String username) {
-        return configuratoreManager.userValido(username);
-    }
-
     public void registraConfiguratore(String username, String password) {
         Configuratore conf = new Configuratore(username, password);
         configuratoreManager.addToListaConfiguratori(conf);
@@ -40,11 +45,11 @@ public class ControllerConfiguratore extends ControllerBase {
 
 
     public void aggiungiComprensorio(String nome, Set<String> comuni) {
-        ComprensorioGeografico comprensorio = new ComprensorioGeografico(nome, comuni);
+        IComprensorio comprensorio = new Comprensorio(nome, comuni);
         comprensorioManager.addComprensorio(comprensorio);
     }
 
-    public ArrayList<ComprensorioGeografico>  getComprensorioManager() {
+    public ArrayList<IComprensorio> getComprensorioManager() {
         return comprensorioManager.getLista();
     }
 
@@ -57,20 +62,20 @@ public class ControllerConfiguratore extends ControllerBase {
         gerarchiaManager.addGerarchia(g);
     }
 
-    public ComponenteCategoria creaCategoria(boolean isRadice, ComponenteCategoria c) {
+    public ICategoria creaCategoria(boolean isRadice, ICategoria c) {
         String nome = isRadice ? view.getNomeRadice() : getNomeCategoriaValido(c);
         String campo = view.leggiCampo();
         HashMap<String, String> dominio = view.leggiDominio();
         return new Categoria(nome, campo, dominio);
     }
 
-    public ComponenteCategoria creaCategoriaFoglia(ComponenteCategoria radice) {
+    public ICategoria creaCategoriaFoglia(ICategoria radice) {
         String nome = getNomeCategoriaValido(radice); 		
-        ComponenteCategoria categoria = new CategoriaFoglia(nome);
+        ICategoria categoria = new CategoriaFoglia(nome);
         return categoria;
     }
 
-    public String getNomeCategoriaValido(ComponenteCategoria radice) {
+    public String getNomeCategoriaValido(ICategoria radice) {
         boolean nomeValido = false;
         String nome=""; 
         while(!nomeValido) {
@@ -83,16 +88,16 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public void inizializzaGerarchia(){
-        ComponenteCategoria radice = creaCategoria(true, null);
+        ICategoria radice = creaCategoria(true, null);
         GerarchiaCategorie g = new GerarchiaCategorie(radice);
         componiGerarchia(g, radice);
         gerarchiaManager.addGerarchia(g);
     }
 
-    public void componiGerarchia(GerarchiaCategorie g, ComponenteCategoria padre) {		
+    public void componiGerarchia(GerarchiaCategorie g, ICategoria padre) {		
     	
     	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
-        ComponenteCategoria radice = g.getCategoriaRadice();
+        ICategoria radice = g.getCategoriaRadice();
     	
     	for (String dom : listaDominio) {
 
@@ -100,13 +105,13 @@ public class ControllerConfiguratore extends ControllerBase {
             
             switch(choice1) {
                 case 1:
-                    ComponenteCategoria sottocat = creaCategoria(false, radice);
+                    ICategoria sottocat = creaCategoria(false, radice);
                     padre.aggiungiSottocategoria(dom, sottocat);
-                    HashMap<String, ComponenteCategoria> sottocategorie = padre.getSottocategorie();
+                    HashMap<String, ICategoria> sottocategorie = padre.getSottocategorie();
                     componiGerarchia(g, sottocategorie.get(dom));
                     break;
                 case 2:
-                    ComponenteCategoria sottocatF = creaCategoriaFoglia(radice);
+                    ICategoria sottocatF = creaCategoriaFoglia(radice);
                     padre.aggiungiSottocategoria(dom, sottocatF);
                     g.addToListaFoglie(sottocatF);
                     break;
@@ -122,7 +127,7 @@ public class ControllerConfiguratore extends ControllerBase {
     //probabilmente da spostare in ControllerBase
     public void visualizzaGerarchie() {
         if (listaGerarchiaNonVuota()) {
-            for (ComponenteCategoria gerarchia : gerarchiaManager.getListaRadici()) {
+            for (ICategoria gerarchia : gerarchiaManager.getListaRadici()) {
                 view.stampaAlbero("", gerarchia);
             }
         }
@@ -162,19 +167,19 @@ public class ControllerConfiguratore extends ControllerBase {
         else {           
             view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
             GerarchiaCategorie gerarchiaOfferta = sceltaRadice();
-            ArrayList<ComponenteCategoria> foglieOfferta = gerarchiaOfferta.getListaFoglie();
+            ArrayList<ICategoria> foglieOfferta = gerarchiaOfferta.getListaFoglie();
 
             view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
             GerarchiaCategorie gerarchiaRichiesta = sceltaRadice();
-            ArrayList<ComponenteCategoria> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
+            ArrayList<ICategoria> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
 
             double min = FattoreConversione.getMin();
             double max = FattoreConversione.getMax();
             boolean aggiuntoFattore = false;
 
-            for (ComponenteCategoria foglia1 : foglieOfferta) {
+            for (ICategoria foglia1 : foglieOfferta) {
                 String c1 = foglia1.getNome();
-                for (ComponenteCategoria foglia2 : foglieRichiesta) {
+                for (ICategoria foglia2 : foglieRichiesta) {
                     String c2 = foglia2.getNome();
 
                     if (!c1.equals(c2) && !fattoreManager.esisteFattore(c1, c2)) {

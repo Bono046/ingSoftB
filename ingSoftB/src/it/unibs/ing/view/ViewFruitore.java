@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import it.unibs.ing.controller.ControllerFruitore;
-import it.unibs.ing.model.ComprensorioGeografico;
-import it.unibs.ing.model.ComponenteCategoria;
+import it.unibs.ing.model.comprensorio.IComprensorio;
+import it.unibs.ing.model.gerarchia.ICategoria;
 
 
 public class ViewFruitore extends ViewBase {
@@ -30,7 +30,7 @@ public class ViewFruitore extends ViewBase {
 
             switch (scelta) {
                 case 1:
-                ComprensorioGeografico comprensorio = sceltaComprensorio();
+                IComprensorio comprensorio = sceltaComprensorio();
                     if(comprensorio != null)
                         registraFruitore(comprensorio);
                         salvaDati();
@@ -52,10 +52,10 @@ public class ViewFruitore extends ViewBase {
     }
 
 
-    private ComprensorioGeografico sceltaComprensorio() {
-        ComprensorioGeografico comprensorio = null;
+    private IComprensorio sceltaComprensorio() {
+        IComprensorio comprensorio = null;
         try {
-            ArrayList<ComprensorioGeografico> listaComprensori = controllerFruitore.getListaComprensori();    		
+            ArrayList<IComprensorio> listaComprensori = controllerFruitore.getListaComprensori();    		
 	        comprensorio = selezionaDaLista(listaComprensori, "Seleziona comprensorio: ");
 	    } catch (Exception e) { 
     		System.out.println("Nessun comprensorio disponibile.\n"); 
@@ -63,7 +63,7 @@ public class ViewFruitore extends ViewBase {
         return comprensorio;	
     }
 
-    public void registraFruitore(ComprensorioGeografico comprensorio) {
+    public void registraFruitore(IComprensorio comprensorio) {
         Boolean userValido = false;
 		    while (!userValido) {
 		        String username = InputDati.leggiStringaNonVuota("Inserisci nuovo username: ");
@@ -139,7 +139,7 @@ public class ViewFruitore extends ViewBase {
         System.out.println("\nCategoria corrente: " + nomeCategoria);
     }
 
-    public void mostraValoriSottocategorie(Map<String, ComponenteCategoria> sottocategorie) {
+    public void mostraValoriSottocategorie(Map<String, ICategoria> sottocategorie) {
         System.out.println("Valori disponibili:");
         sottocategorie.forEach((k, v) -> System.out.println(k + " -> " + v.getNome()));
     }

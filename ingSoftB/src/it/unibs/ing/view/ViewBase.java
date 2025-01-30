@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.*;
+import it.unibs.ing.model.comprensorio.IComprensorio;
+import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.gerarchia.CategoriaFoglia;
+import it.unibs.ing.model.gerarchia.ICategoria;
+import it.unibs.ing.model.proposta.Proposta;
 
 public class ViewBase {
 
@@ -24,7 +29,7 @@ public class ViewBase {
     }
 
 
-    public String toStringComprensorio(ComprensorioGeografico comprensorio){
+    public String toStringComprensorio(IComprensorio comprensorio){
         return "ComprensorioGeografico{" +
                 "nome='" + comprensorio.getNome()+"', "+
                 "comuni=" + comprensorio.getComuni().toString()
@@ -36,7 +41,7 @@ public class ViewBase {
         ", fattore " + fattore.getFattore() + '}';
     }
 
-    public String toStringCategoriaFoglia(ComponenteCategoria categoria){
+    public String toStringCategoriaFoglia(ICategoria categoria){
         return "CategoriaFoglia{" +
                 "nome='" + categoria.getNome() + '}';
     }
@@ -50,9 +55,9 @@ public class ViewBase {
         return InputDati.yesOrNo(messaggio);
     }
 
-    public  void visualizzaComprensori(ArrayList<ComprensorioGeografico> listaComprensori){
+    public void visualizzaComprensori(ArrayList<IComprensorio> listaComprensori){
         StringBuilder sb = new StringBuilder();
-        for (ComprensorioGeografico comprensorio : listaComprensori) {
+        for (IComprensorio comprensorio : listaComprensori) {
             sb.append(toStringComprensorio(comprensorio)).append("\n");
         }
         System.out.println(sb.toString());
@@ -75,8 +80,8 @@ public class ViewBase {
             T elemento = lista.get(i);
             String descrizione="";
 
-            if (elemento instanceof ComprensorioGeografico) {
-                descrizione = toStringComprensorio((ComprensorioGeografico) elemento);
+            if (elemento instanceof IComprensorio) {
+                descrizione = toStringComprensorio((IComprensorio) elemento);
             } else if (elemento instanceof CategoriaFoglia) {
                 descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
             }else if (elemento instanceof Proposta) {
@@ -121,7 +126,7 @@ public class ViewBase {
         return scelta;
     }
 
-    public String chiediNomeCategorieFoglia(ArrayList<ComponenteCategoria> listaFoglie) {
+    public String chiediNomeCategorieFoglia(ArrayList<ICategoria> listaFoglie) {
         return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
     }
 

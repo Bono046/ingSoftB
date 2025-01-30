@@ -1,10 +1,12 @@
-package it.unibs.ing.controller;
+package it.unibs.ing.main;
 
 import java.io.IOException;
 
 import it.unibs.ing.view.ViewInit;
+import it.unibs.ing.controller.ControllerConfiguratore;
+import it.unibs.ing.controller.ControllerFruitore;
+import it.unibs.ing.database.FileManager;
 import it.unibs.ing.model.Dati;
-import it.unibs.ing.model.FileManager;
 
 
 public class Main {

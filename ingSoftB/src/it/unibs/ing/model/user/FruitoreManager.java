@@ -1,8 +1,10 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.user;
 
 import java.util.ArrayList;
 
-public class FruitoreManager implements ManagerInterface {
+import it.unibs.ing.model.comprensorio.IComprensorio;
+
+public class FruitoreManager {
     private ArrayList<Fruitore> listaFruitori;
 
     public FruitoreManager() {
@@ -34,7 +36,7 @@ public class FruitoreManager implements ManagerInterface {
         return false;
     }
 
-    public ComprensorioGeografico getComprensorioFromUser(String user) {
+    public IComprensorio getComprensorioFromUser(String user) {
         for(Fruitore f : listaFruitori) {
             if(f.getUsername().equals(user))
                 return f.getComprensiorio();
@@ -42,7 +44,7 @@ public class FruitoreManager implements ManagerInterface {
         return null;
     }
 
-    public ArrayList<String> getUserFruitoriFromComprensorio(ComprensorioGeografico c){
+    public ArrayList<String> getUserFruitoriFromComprensorio(IComprensorio c){
         ArrayList<String> lista = new ArrayList<>();
 
         for(Fruitore f : listaFruitori) {

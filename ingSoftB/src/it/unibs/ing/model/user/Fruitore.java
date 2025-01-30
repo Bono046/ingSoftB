@@ -1,13 +1,15 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.user;
+
+import it.unibs.ing.model.comprensorio.IComprensorio;
 
 public class Fruitore {
 
     private String username;
     private String password;
-    private ComprensorioGeografico comprensiorio;
+    private IComprensorio comprensiorio;
     private String mail;
 
-    public Fruitore(String username, String password, ComprensorioGeografico comprensiorio, String mail) {
+    public Fruitore(String username, String password, IComprensorio comprensiorio, String mail) {
         this.username = username;
         this.password = password;
         this.comprensiorio = comprensiorio;
@@ -25,7 +27,7 @@ public class Fruitore {
     }
 
 
-    public ComprensorioGeografico getComprensiorio() {
+    public IComprensorio getComprensiorio() {
         return comprensiorio;
     }
 

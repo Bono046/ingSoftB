@@ -1,8 +1,8 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.user;
 
 import java.util.ArrayList;
 
-public class ConfiguratoreManager implements ManagerInterface {
+public class ConfiguratoreManager {
 
     private ArrayList<Configuratore> listaConfiguratori;
 

@@ -1,5 +1,12 @@
 package it.unibs.ing.model;
 
+import it.unibs.ing.model.comprensorio.ComprensorioManager;
+import it.unibs.ing.model.fattore.FattoreManager;
+import it.unibs.ing.model.gerarchia.GerarchiaManager;
+import it.unibs.ing.model.proposta.PropostaManager;
+import it.unibs.ing.model.user.ConfiguratoreManager;
+import it.unibs.ing.model.user.FruitoreManager;
+
 public class Dati {
 
     private static Dati instance;

@@ -1,4 +1,4 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.proposta;
 
 
 import java.util.ArrayList;

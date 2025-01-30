@@ -6,11 +6,12 @@
 
 6) decidere se tenere interfaccia manager
 
-7) strategy per calcolo fattori 
+7) strategy per chiusura proposte - OK
 
-8) information expert per classi manager 
+8) information expert per classi manager - OK
 
-9) categoria foglia: liskov grazie a composite
+9) categoria foglia: liskov grazie a composite - OK
 
 10) dip: creare interfaccia per le view. i controller dipenderanno dalle implementazioni dell'interfaccia
+    comprensori fatti
 

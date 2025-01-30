@@ -1,6 +1,13 @@
 package it.unibs.ing.controller;
 
 import it.unibs.ing.model.*;
+import it.unibs.ing.model.comprensorio.IComprensorio;
+import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
+import it.unibs.ing.model.gerarchia.ICategoria;
+import it.unibs.ing.model.proposta.ConcreteStrategyProposte;
+import it.unibs.ing.model.proposta.Proposta;
+import it.unibs.ing.model.user.Fruitore;
 import it.unibs.ing.view.ViewFruitore;
 
 import java.util.ArrayList;
@@ -18,18 +25,14 @@ public class ControllerFruitore extends ControllerBase{
         this.view = view;
     }
 
-    public ArrayList<ComprensorioGeografico> getListaComprensori() {
-        ArrayList <ComprensorioGeografico> comprensori = comprensorioManager.getLista();
+    public ArrayList<IComprensorio> getListaComprensori() {
+        ArrayList <IComprensorio> comprensori = comprensorioManager.getLista();
         if(comprensori.isEmpty())
             throw new IllegalArgumentException();
         return comprensori;
     } 
 
-    public Boolean userOk(String username) {
-        return fruitoreManager.userValido(username);
-    }
-
-    public void registraFruitore(String username, String password, ComprensorioGeografico comprensorio, String mail) {
+    public void registraFruitore(String username, String password, IComprensorio comprensorio, String mail) {
         Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
        fruitoreManager.addToListaFruitori(fruitore);
     }
@@ -41,42 +44,43 @@ public class ControllerFruitore extends ControllerBase{
 
     public boolean esploraGerarchia() {
 
-        GerarchiaCategorie g = sceltaRadice();
-        boolean ricerca = true;
-        g.setCategoriaCorrente();
-        while (ricerca) {
-            
-            ComponenteCategoria categoriaCorrente = g.getCategoriaCorrente();
-            view.mostraCategoriaCorrente(categoriaCorrente.getNome());
+        if(listaGerarchiaNonVuota()) {
+            GerarchiaCategorie g = sceltaRadice();
+            boolean ricerca = true;
+            g.setCategoriaCorrente();
+            while (ricerca) {
+                
+                ICategoria categoriaCorrente = g.getCategoriaCorrente();
+                view.mostraCategoriaCorrente(categoriaCorrente.getNome());
 
-            // Controlla se la categoria corrente è una foglia
-            boolean isFoglia = g.getListaFoglie().stream()
-                .anyMatch(foglia -> foglia.getNome().equals(categoriaCorrente.getNome()));
+                // Controlla se la categoria corrente è una foglia
+                boolean isFoglia = g.getListaFoglie().stream()
+                    .anyMatch(foglia -> foglia.getNome().equals(categoriaCorrente.getNome()));
 
-            if (isFoglia) {
-                view.mostraMessaggio("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'esci' per uscire");
-            } else {
-                view.mostraValoriSottocategorie(categoriaCorrente.getSottocategorie());
-                view.mostraMessaggio("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'esci' per uscire)");
-            }
+                if (isFoglia) {
+                    view.mostraMessaggio("Categoria foglia - Premi 0 per tornare indietro nella gerarchia o digita 'esci' per uscire");
+                } else {
+                    view.mostraValoriSottocategorie(categoriaCorrente.getSottocategorie());
+                    view.mostraMessaggio("Inserisci il valore del campo per navigare nella sottocategoria (0 per tornare indietro nella gerarchia - 'esci' per uscire)");
+                }
 
-            String valore = view.leggiValore("");
+                String valore = view.leggiValore("");
 
-            // Logica di navigazione
-            if (valore.equalsIgnoreCase("esci")) {
-                ricerca = false;
-            } else if (valore.equals("0")) {
-                if(g.getCategoriaCorrente().equals(g.getCategoriaRadice()))
+                // Logica di navigazione
+                if (valore.equalsIgnoreCase("esci")) {
                     ricerca = false;
-                g.tornaIndietro();
-            } else if (categoriaCorrente.getSottocategorie().containsKey(valore)) {
-                g.vaiASottocategoria(categoriaCorrente.getSottocategorie().get(valore));
-            } else {
-                view.mostraMessaggio("Valore non valido. Riprovare.");
+                } else if (valore.equals("0")) {
+                    if(g.getCategoriaCorrente().equals(g.getCategoriaRadice()))
+                        ricerca = false;
+                    g.tornaIndietro();
+                } else if (categoriaCorrente.getSottocategorie().containsKey(valore)) {
+                    g.vaiASottocategoria(categoriaCorrente.getSottocategorie().get(valore));
+                } else {
+                    view.mostraMessaggio("Valore non valido. Riprovare.");
+                }
             }
         }
-
-        return false; 
+            return false; 
     }
 
 
@@ -144,7 +148,7 @@ public class ControllerFruitore extends ControllerBase{
 
     private boolean verificaProposta(Proposta proposta) {
         String user = proposta.getUsername();
-	    ComprensorioGeografico comprensorio =fruitoreManager.getComprensorioFromUser(user);
+	    IComprensorio comprensorio =fruitoreManager.getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio =fruitoreManager.getUserFruitoriFromComprensorio(comprensorio);
 	    userFruitoriFromComprensorio.remove(user);
        

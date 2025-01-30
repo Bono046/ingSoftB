@@ -1,13 +1,13 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.gerarchia;
 
 import java.util.HashMap;
 
 
-public class Categoria implements ComponenteCategoria{
+public class Categoria implements ICategoria{
     protected String nome;
     private String campo;
     private HashMap<String, String> dominio;
-    protected HashMap<String, ComponenteCategoria> sottocategorie;
+    protected HashMap<String, ICategoria> sottocategorie;
 
 
     public Categoria(String nome, String campo, HashMap<String, String> dominio) {
@@ -31,7 +31,7 @@ public class Categoria implements ComponenteCategoria{
     }
   
 
-    public void aggiungiSottocategoria(String valore_dominio, ComponenteCategoria sottocategoria) {
+    public void aggiungiSottocategoria(String valore_dominio, ICategoria sottocategoria) {
         if (dominio.containsKey(valore_dominio)) {
                 sottocategorie.put(valore_dominio, sottocategoria);
             } else {
@@ -39,7 +39,7 @@ public class Categoria implements ComponenteCategoria{
             }
     }
 
-    public HashMap<String, ComponenteCategoria> getSottocategorie() {
+    public HashMap<String, ICategoria> getSottocategorie() {
         return sottocategorie;
     }
 
@@ -53,7 +53,7 @@ public class Categoria implements ComponenteCategoria{
 	    }
 	    if(sottocategorie != null) {
            
-		    for (ComponenteCategoria sottocategoria : sottocategorie.values()) {
+		    for (ICategoria sottocategoria : sottocategorie.values()) {
                 
                     
 

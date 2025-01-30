@@ -1,4 +1,4 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.gerarchia;
 
 import java.util.ArrayList;
 
@@ -22,8 +22,8 @@ public class GerarchiaManager {
 		listaOggettiGerarchia.add(g);
 	}
     
-    public ArrayList<ComponenteCategoria> getListaRadici() {
-    	ArrayList<ComponenteCategoria> listaRadici = new ArrayList<>(); 
+    public ArrayList<ICategoria> getListaRadici() {
+    	ArrayList<ICategoria> listaRadici = new ArrayList<>(); 
     	
     	for(GerarchiaCategorie c : listaOggettiGerarchia) {
     		listaRadici.add(c.getCategoriaRadice());
@@ -33,7 +33,7 @@ public class GerarchiaManager {
 
 
     public boolean checkNomeGerarchia(String nome) {
-    	for(ComponenteCategoria c : getListaRadici()) {
+    	for(ICategoria c : getListaRadici()) {
     		if(c.getNome().equals(nome))
     			return false;
     	}

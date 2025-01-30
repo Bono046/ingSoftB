@@ -1,10 +1,10 @@
-package it.unibs.ing.model;
+package it.unibs.ing.model.gerarchia;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class CategoriaFoglia implements ComponenteCategoria {
+public class CategoriaFoglia implements ICategoria {
     
 	String nome;
 
@@ -20,7 +20,7 @@ public class CategoriaFoglia implements ComponenteCategoria {
 	
 	
 	@Override
-	public void aggiungiSottocategoria(String nome, ComponenteCategoria categoria) {
+	public void aggiungiSottocategoria(String nome, ICategoria categoria) {
 	    throw new UnsupportedOperationException("Le foglie non possono avere sottocategorie.");
 	}
 	
@@ -41,7 +41,7 @@ public class CategoriaFoglia implements ComponenteCategoria {
 
 
 	@Override
-	public HashMap<String, ComponenteCategoria> getSottocategorie() {
+	public HashMap<String, ICategoria> getSottocategorie() {
 		throw new UnsupportedOperationException("Unimplemented method 'getSottocategorie'");
 	}
 

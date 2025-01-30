@@ -1,6 +1,4 @@
-package it.unibs.ing.model;
-
-
+package it.unibs.ing.model.fattore;
 
 public class FattoreConversione {
 
