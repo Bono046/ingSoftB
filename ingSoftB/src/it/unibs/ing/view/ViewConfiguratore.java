@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
-import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.fattore.IFattore;
 import it.unibs.ing.model.gerarchia.ICategoria;
 
 public class ViewConfiguratore extends ViewBase{
@@ -244,8 +244,8 @@ public class ViewConfiguratore extends ViewBase{
 
 
 
-    public void mostraFattoriConversione(ArrayList<FattoreConversione> fattori) {
-        for (FattoreConversione f : fattori) {
+    public void mostraFattoriConversione(ArrayList<IFattore> fattori) {
+        for (IFattore f : fattori) {
                 System.out.println(toStringFattore(f));
         }
     }

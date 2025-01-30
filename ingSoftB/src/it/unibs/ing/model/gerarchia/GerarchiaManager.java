@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 public class GerarchiaManager {
 
-    private ArrayList<GerarchiaCategorie> listaOggettiGerarchia;
+    private ArrayList<IGerarchia> listaOggettiGerarchia;
 
     public GerarchiaManager() {
         listaOggettiGerarchia = new ArrayList<>();
     }
 
-    public ArrayList<GerarchiaCategorie> getListaOggettiGerarchia() {
+    public ArrayList<IGerarchia> getListaOggettiGerarchia() {
 		return listaOggettiGerarchia;
 	}
 
-	public void setListaOggettiGerarchia(ArrayList<GerarchiaCategorie> gerarchie) {
+	public void setListaOggettiGerarchia(ArrayList<IGerarchia> gerarchie) {
 		listaOggettiGerarchia = gerarchie;
 	}
 	
-	public void addGerarchia(GerarchiaCategorie g) {
+	public void addGerarchia(IGerarchia g) {
 		listaOggettiGerarchia.add(g);
 	}
     
     public ArrayList<ICategoria> getListaRadici() {
     	ArrayList<ICategoria> listaRadici = new ArrayList<>(); 
     	
-    	for(GerarchiaCategorie c : listaOggettiGerarchia) {
+    	for(IGerarchia c : listaOggettiGerarchia) {
     		listaRadici.add(c.getCategoriaRadice());
     	}
     	return listaRadici;

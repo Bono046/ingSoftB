@@ -8,8 +8,8 @@ import it.unibs.ing.database.FileManager;
 import it.unibs.ing.model.*;
 import it.unibs.ing.model.comprensorio.ComprensorioManager;
 import it.unibs.ing.model.fattore.FattoreManager;
-import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
 import it.unibs.ing.model.gerarchia.GerarchiaManager;
+import it.unibs.ing.model.gerarchia.IGerarchia;
 import it.unibs.ing.model.proposta.PropostaManager;
 import it.unibs.ing.model.user.ConfiguratoreManager;
 import it.unibs.ing.model.user.FruitoreManager;
@@ -55,12 +55,12 @@ public class ControllerBase {
         return true;
     }
 
-    public GerarchiaCategorie sceltaRadice() {
-        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
+    public IGerarchia sceltaRadice() {
+        ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
 
         if (listaGerarchiaNonVuota()) {
             List<String> nomiGerarchie = new ArrayList<>();
-            for (GerarchiaCategorie gerarchia : listaOggettiGerarchia) {
+            for (IGerarchia gerarchia : listaOggettiGerarchia) {
                 nomiGerarchie.add(gerarchia.getCategoriaRadice().getNome());
             }
             int scelta = view.selezionaGerarchia(nomiGerarchie);

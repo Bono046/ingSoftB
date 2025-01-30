@@ -3,7 +3,7 @@ package it.unibs.ing.model.gerarchia;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class GerarchiaCategorie {
+public class GerarchiaCategorie implements IGerarchia {
 	private ICategoria radice;
 	private ICategoria categoriaCorrente;
     private ArrayList<ICategoria> listaFoglie = new ArrayList<>();
@@ -15,15 +15,18 @@ public class GerarchiaCategorie {
         this.categoriaCorrente = radice;
     }
 	
-	public ICategoria getCategoriaRadice() {
+	@Override
+    public ICategoria getCategoriaRadice() {
 		return this.radice;
 	}
 	
-   public ArrayList<ICategoria> getListaFoglie() {
+   @Override
+public ArrayList<ICategoria> getListaFoglie() {
 		return listaFoglie;
 	}
 
-	public void setListaFoglie(ArrayList<ICategoria> c) {
+	@Override
+    public void setListaFoglie(ArrayList<ICategoria> c) {
 		
 		for(ICategoria foglia: c) {
             //if(foglia.isFoglia())
@@ -31,20 +34,24 @@ public class GerarchiaCategorie {
         }
 	}
 	
-	public void addToListaFoglie(ICategoria c) {
+	@Override
+    public void addToListaFoglie(ICategoria c) {
         //if(foglia.isFoglia())
 		this.listaFoglie.add(c);
 	}
 	
+    @Override
     public ICategoria getCategoriaCorrente() {
         return categoriaCorrente;
     }
     
+    @Override
     public void setCategoriaCorrente() { 	
     		categoriaCorrente = radice;
     }
     
     
+    @Override
     public boolean vaiASottocategoria(ICategoria sottocategoria) {
         if (categoriaCorrente.getSottocategorie() != null &&
             categoriaCorrente.getSottocategorie().containsValue(sottocategoria)) {
@@ -56,11 +63,13 @@ public class GerarchiaCategorie {
     }
     
     
+    @Override
     public Stack<ICategoria> getPercorso() {
 		return percorso;
 	}
 
 	
+    @Override
     public boolean tornaIndietro() {
         if (!percorso.isEmpty()) {
             categoriaCorrente = percorso.pop();
@@ -71,6 +80,7 @@ public class GerarchiaCategorie {
 
 	
     
+    @Override
     public ICategoria getFogliaDaNome(String nome) {
     	for(ICategoria c: listaFoglie) {
     		if(c.getNome().equals(nome))

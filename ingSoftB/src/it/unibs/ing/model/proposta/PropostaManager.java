@@ -5,50 +5,50 @@ import java.util.ArrayList;
 
 public class PropostaManager {
 
-    ArrayList<Proposta> listaProposte;
-	ChiusuraProposteStrategy chiusuraProposteStrategy;
+    ArrayList<IProposta> listaProposte;
+	IChiusuraProposteStrategy chiusuraProposteStrategy;
 
     public PropostaManager() {
-        listaProposte = new ArrayList<Proposta>();
+        listaProposte = new ArrayList<IProposta>();
     }
 
-    public ArrayList<Proposta> getListaProposte() {
+    public ArrayList<IProposta> getListaProposte() {
 		return listaProposte;
 	}
 	
-	public void addProposta(Proposta p) {
+	public void addProposta(IProposta p) {
 		listaProposte.add(p);
 	}
 
 
-	public void setListaProposte(ArrayList<Proposta> listaProposte) {
-		for(Proposta p : listaProposte) {
+	public void setListaProposte(ArrayList<IProposta> listaProposte) {
+		for(IProposta p : listaProposte) {
 			listaProposte.add(p);
 		}
 	}
 
-	public void setChiusuraProposteStrategy(ChiusuraProposteStrategy chiusuraProposteStrategy) {
+	public void setChiusuraProposteStrategy(IChiusuraProposteStrategy chiusuraProposteStrategy) {
 		this.chiusuraProposteStrategy = chiusuraProposteStrategy;
 	}
 
-	public boolean verificaProposta(Proposta proposta, ArrayList<Proposta> listaProposte) {
+	public boolean verificaProposta(IProposta proposta, ArrayList<IProposta> listaProposte) {
 		return chiusuraProposteStrategy.execute(proposta, listaProposte);
 	}
 
     
 	
-	public ArrayList<Proposta> getListaProposteUser(String user) {
-		ArrayList<Proposta> lista = new ArrayList<>();
-		for(Proposta p : listaProposte) {
+	public ArrayList<IProposta> getListaProposteUser(String user) {
+		ArrayList<IProposta> lista = new ArrayList<>();
+		for(IProposta p : listaProposte) {
 			if(p.getUsername().equals(user))
 				lista.add(p);
 		}
 		return lista;
 	}
 
-	public ArrayList<Proposta> getListaProposteAperteUser(String user) {
-		ArrayList<Proposta> lista = new ArrayList<>();
-		for(Proposta p : listaProposte) {
+	public ArrayList<IProposta> getListaProposteAperteUser(String user) {
+		ArrayList<IProposta> lista = new ArrayList<>();
+		for(IProposta p : listaProposte) {
 			if(p.getUsername().equals(user)){
 				if(p.isAperto()) {
 					lista.add(p);
@@ -58,10 +58,10 @@ public class PropostaManager {
 		return lista;
 	}
 
-	public ArrayList<Proposta> getProposteAperteFromUsers(ArrayList<String> listaUser) {
-		ArrayList<Proposta> proposteFromComprensorio=new ArrayList<>();
+	public ArrayList<IProposta> getProposteAperteFromUsers(ArrayList<String> listaUser) {
+		ArrayList<IProposta> proposteFromComprensorio=new ArrayList<>();
 		for(String user:listaUser) {
-			for(Proposta p:listaProposte) {
+			for(IProposta p:listaProposte) {
 				if(user.equals(p.getUsername()) && (p.isAperto())) {
 					proposteFromComprensorio.add(p);
 				}

@@ -2,14 +2,13 @@ package it.unibs.ing.model.proposta;
 
 
 
-public class Proposta {
+public class Proposta implements IProposta {
 	private String richiesta;
 	private String offerta;
 	private int durataRichiesta;
 	private int durataOfferta;
 	private StatoProposta stato;
 	private String username;
-	private enum StatoProposta {SOSPESO, APERTA, CHIUSA, RITIRATA}; 
 
 	
 	public Proposta(String richiesta, String offerta, int durataRichiesta, int durataOfferta, String username) {
@@ -23,46 +22,31 @@ public class Proposta {
 	}
 
 
+	@Override
 	public String getRichiesta() {
 		return richiesta;
 	}
 
 
-	public void setRichiesta(String richiesta) {
-		this.richiesta = richiesta;
-	}
-
-
+	@Override
 	public String getOfferta() {
 		return offerta;
 	}
 
 
-	public void setOfferta(String offerta) {
-		this.offerta = offerta;
-	}
-
-
+	@Override
 	public int getDurataRichiesta() {
 		return durataRichiesta;
 	}
 
 
-	public void setDurataRichiesta(int durataRichiesta) {
-		this.durataRichiesta = durataRichiesta;
-	}
-
-
+	@Override
 	public int getDurataOfferta() {
 		return durataOfferta;
 	}
 
 
-	public void setDurataOfferta(int durataOfferta) {
-		this.durataOfferta = durataOfferta;
-	}
-
-
+	@Override
 	public Boolean isAperto() {
 		if(this.stato.equals(StatoProposta.APERTA))
 			return true;
@@ -70,42 +54,42 @@ public class Proposta {
 	}
 
 
-
+	@Override
 	public StatoProposta getStato() {
 		return stato;
 	}
 	
 
-
+	@Override
 	public String getUsername() {
 		return username;
 	}
 	
 	
-	
+	@Override
 	public void chiudiProposta() {
 		this.stato=StatoProposta.CHIUSA;
-		//statiProposta.add(StatoProposta.CHIUSA);
 	}
 	
+	@Override
 	public void accettaProposta() {
 		this.stato = StatoProposta.APERTA;
-		//statiProposta.add(StatoProposta.APERTA);
 	}
 	
+	@Override
 	public void ritiraProposta() {
 		this.stato = StatoProposta.RITIRATA;
-		//statiProposta.add(StatoProposta.RITIRATA);
 	}
 	
 	
-
-	public boolean soddisfaRichiestaDi(Proposta altraProposta) {
+	@Override
+	public boolean soddisfaRichiestaDi(IProposta altraProposta) {
 	    return this.getOfferta().equals(altraProposta.getRichiesta())
 	        && this.getDurataOfferta() == altraProposta.getDurataRichiesta();
 	}
 
-	public boolean richiestaSoddisfattaDa(Proposta altraProposta) {
+	@Override
+	public boolean richiestaSoddisfattaDa(IProposta altraProposta) {
 	    return this.getRichiesta().equals(altraProposta.getOfferta())
 	        && this.getDurataRichiesta() == altraProposta.getDurataOfferta();
 	}

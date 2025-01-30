@@ -2,18 +2,18 @@ package it.unibs.ing.model.proposta;
 
 import java.util.ArrayList;
 
-public class ConcreteStrategyProposte implements ChiusuraProposteStrategy {
+public class ConcreteStrategyProposte implements IChiusuraProposteStrategy {
 
-    public boolean execute(Proposta proposta, ArrayList<Proposta> proposteAperteFromComprensorio) {
+    public boolean execute(IProposta proposta, ArrayList<IProposta> proposteAperteFromComprensorio) {
  	    
-	    for (Proposta p : proposteAperteFromComprensorio) {
+	    for (IProposta p : proposteAperteFromComprensorio) {
 	        if (proposta.soddisfaRichiestaDi(p)) {
 	            if (proposta.richiestaSoddisfattaDa(p)) {
 	                proposta.chiudiProposta();
 	                p.chiudiProposta();
 	                return true; 
 	            } else {	              
-	                ArrayList<Proposta> percorso = new ArrayList<>();
+	                ArrayList<IProposta> percorso = new ArrayList<>();
 	                percorso.add(proposta);
 
 	                if (verificaTransitivaCiclo(proposta, p, percorso, proposteAperteFromComprensorio)) {
@@ -28,14 +28,14 @@ public class ConcreteStrategyProposte implements ChiusuraProposteStrategy {
 	}
 
 	
-	private boolean verificaTransitivaCiclo(Proposta propostaDaChiudere, Proposta propostaAperta, ArrayList<Proposta> catenaProposte, ArrayList<Proposta> elencoProposte) {
+	private boolean verificaTransitivaCiclo(IProposta propostaDaChiudere, IProposta propostaAperta, ArrayList<IProposta> catenaProposte, ArrayList<IProposta> elencoProposte) {
 	    catenaProposte.add(propostaAperta);
 
 	    if (catenaProposte.size() > 2 && propostaAperta.soddisfaRichiestaDi(propostaDaChiudere)) {
 	        return true;
-	        }
+	    }
 
-	    for (Proposta prossimaProposta : elencoProposte) {
+	    for (IProposta prossimaProposta : elencoProposte) {
 	        if (!catenaProposte.contains(prossimaProposta) && propostaAperta.soddisfaRichiestaDi(prossimaProposta)) {
 	            if (verificaTransitivaCiclo(propostaDaChiudere, prossimaProposta, catenaProposte, elencoProposte)) {
 	                return true;
@@ -46,8 +46,8 @@ public class ConcreteStrategyProposte implements ChiusuraProposteStrategy {
 	    return false;
 	}
     
-    private void chiudiProposte(ArrayList<Proposta> percorso) {
-	    for (Proposta proposta : percorso) {
+    private void chiudiProposte(ArrayList<IProposta> percorso) {
+	    for (IProposta proposta : percorso) {
 	        proposta.chiudiProposta();
 	    }
 	}

@@ -2,10 +2,11 @@ package it.unibs.ing.controller;
 
 import it.unibs.ing.model.*;
 import it.unibs.ing.model.comprensorio.IComprensorio;
-import it.unibs.ing.model.fattore.FattoreConversione;
-import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
+import it.unibs.ing.model.fattore.IFattore;
 import it.unibs.ing.model.gerarchia.ICategoria;
+import it.unibs.ing.model.gerarchia.IGerarchia;
 import it.unibs.ing.model.proposta.ConcreteStrategyProposte;
+import it.unibs.ing.model.proposta.IProposta;
 import it.unibs.ing.model.proposta.Proposta;
 import it.unibs.ing.model.user.Fruitore;
 import it.unibs.ing.view.ViewFruitore;
@@ -45,7 +46,7 @@ public class ControllerFruitore extends ControllerBase{
     public boolean esploraGerarchia() {
 
         if(listaGerarchiaNonVuota()) {
-            GerarchiaCategorie g = sceltaRadice();
+            IGerarchia g = sceltaRadice();
             boolean ricerca = true;
             g.setCategoriaCorrente();
             while (ricerca) {
@@ -90,11 +91,11 @@ public class ControllerFruitore extends ControllerBase{
         boolean categorieValide = false;
         do {
             view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
-            GerarchiaCategorie gerarchiaRichiesta = sceltaRadice(); 
+            IGerarchia gerarchiaRichiesta = sceltaRadice(); 
             richiesta = view.chiediNomeCategorieFoglia(gerarchiaRichiesta.getListaFoglie());
 
             view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
-            GerarchiaCategorie gerarchiaOfferta = sceltaRadice(); 
+            IGerarchia gerarchiaOfferta = sceltaRadice(); 
             offerta = view.chiediNomeCategorieFoglia(gerarchiaOfferta.getListaFoglie());
             if (richiesta.equals(offerta)) {
                 view.mostraMessaggio("Non può essere selezionata la stessa categoria. Riprovare.");
@@ -136,7 +137,7 @@ public class ControllerFruitore extends ControllerBase{
     private int calcolaDurataOfferta(String richiesta, String offerta, int durataRichiesta) {
         int durataOfferta=0;
         try {
-            FattoreConversione f = fattoreManager.trovaFattore(richiesta, offerta);
+            IFattore f = fattoreManager.trovaFattore(richiesta, offerta);
             durataOfferta = (int) Math.round(durataRichiesta * f.getFattore());
             return durataOfferta;
         } catch (NullPointerException e) {
@@ -146,13 +147,13 @@ public class ControllerFruitore extends ControllerBase{
     }
 
 
-    private boolean verificaProposta(Proposta proposta) {
+    private boolean verificaProposta(IProposta proposta) {
         String user = proposta.getUsername();
 	    IComprensorio comprensorio =fruitoreManager.getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio =fruitoreManager.getUserFruitoriFromComprensorio(comprensorio);
 	    userFruitoriFromComprensorio.remove(user);
        
-        ArrayList<Proposta> proposteAperteFromComprensorio = propostaManager.getProposteAperteFromUsers(userFruitoriFromComprensorio);  
+        ArrayList<IProposta> proposteAperteFromComprensorio = propostaManager.getProposteAperteFromUsers(userFruitoriFromComprensorio);  
         propostaManager.setChiusuraProposteStrategy(new ConcreteStrategyProposte());
         boolean chiusura = propostaManager.verificaProposta(proposta, proposteAperteFromComprensorio);
         return chiusura;
@@ -160,7 +161,7 @@ public class ControllerFruitore extends ControllerBase{
 
 
     public void visualizzaProposteByUser(String user) {
-	    ArrayList<Proposta> list = propostaManager.getListaProposteUser(user);
+	    ArrayList<IProposta> list = propostaManager.getListaProposteUser(user);
 	    if (list.isEmpty()) {
             view.mostraMessaggio("Non sono presenti proposte da visualizzare.");
 	    } else {
@@ -170,14 +171,14 @@ public class ControllerFruitore extends ControllerBase{
 
     public void ritiraProposta(String user) {
 	    
-	    ArrayList<Proposta> list = propostaManager.getListaProposteAperteUser(user);
+	    ArrayList<IProposta> list = propostaManager.getListaProposteAperteUser(user);
 
 	    if (list.isEmpty()) {
 	        view.mostraMessaggio("Non sono presenti proposte da ritirare.");
 	        return;
 	    }
 
-	    Proposta propostaDaRitirare = view.selezionaDaLista(list, "Seleziona il numero della proposta da ritirare:");
+	    IProposta propostaDaRitirare = view.selezionaDaLista(list, "Seleziona il numero della proposta da ritirare:");
 
 	    propostaDaRitirare.ritiraProposta();
 	    view.mostraMessaggio("La proposta è stata ritirata con successo.");

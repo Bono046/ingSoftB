@@ -1,6 +1,6 @@
 package it.unibs.ing.model.fattore;
 
-public class FattoreConversione {
+public class FattoreConversione implements IFattore {
 
 	private String c1;
 	private String c2;
@@ -15,30 +15,25 @@ public class FattoreConversione {
 		this.fattore = fattore;
 	}
 
+	@Override
 	public String getC1() {
 		return c1;
 	}
 
-	public void setC1(String c1) {
-		this.c1 = c1;
-	}
 
+	@Override
 	public String getC2() {
 		return c2;
 	}
 
-	public void setC2(String c2) {
-		this.c2 = c2;
-	}
 
+	@Override
 	public double getFattore() {
 		return fattore;
 	}
+	
 
-	public void setFattore(double fattore) {
-		this.fattore = fattore;
-	}
-
+	@Override
 	public FattoreConversione creaFattoreInverso () {
 		String c1 = getC1();
 		String c2 = getC2();

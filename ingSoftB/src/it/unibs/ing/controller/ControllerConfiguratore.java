@@ -12,9 +12,11 @@ import it.unibs.ing.model.gerarchia.Categoria;
 import it.unibs.ing.model.gerarchia.CategoriaFoglia;
 import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
 import it.unibs.ing.model.gerarchia.ICategoria;
-import it.unibs.ing.model.proposta.Proposta;
+import it.unibs.ing.model.gerarchia.IGerarchia;
 import it.unibs.ing.model.user.Configuratore;
 import it.unibs.ing.view.ViewConfiguratore;
+import it.unibs.ing.model.proposta.IProposta;
+import it.unibs.ing.model.fattore.IFattore;
 
 public class ControllerConfiguratore extends ControllerBase {
 
@@ -94,7 +96,7 @@ public class ControllerConfiguratore extends ControllerBase {
         gerarchiaManager.addGerarchia(g);
     }
 
-    public void componiGerarchia(GerarchiaCategorie g, ICategoria padre) {		
+    public void componiGerarchia(IGerarchia g, ICategoria padre) {		
     	
     	ArrayList<String> listaDominio = new ArrayList<>(padre.getDominio().keySet());
         ICategoria radice = g.getCategoriaRadice();
@@ -142,12 +144,12 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
 
-    public GerarchiaCategorie sceltaRadice() {
-        ArrayList<GerarchiaCategorie> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
+    public IGerarchia sceltaRadice() {
+        ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
 
         if (listaGerarchiaNonVuota()) {
             List<String> nomiGerarchie = new ArrayList<>();
-            for (GerarchiaCategorie gerarchia : listaOggettiGerarchia) {
+            for (IGerarchia gerarchia : listaOggettiGerarchia) {
                 nomiGerarchie.add(gerarchia.getCategoriaRadice().getNome());
             }
             int scelta = view.selezionaGerarchia(nomiGerarchie);
@@ -166,11 +168,11 @@ public class ControllerConfiguratore extends ControllerBase {
                 view.logErroreGerarchia();
         else {           
             view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
-            GerarchiaCategorie gerarchiaOfferta = sceltaRadice();
+            IGerarchia gerarchiaOfferta = sceltaRadice();
             ArrayList<ICategoria> foglieOfferta = gerarchiaOfferta.getListaFoglie();
 
             view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
-            GerarchiaCategorie gerarchiaRichiesta = sceltaRadice();
+            IGerarchia gerarchiaRichiesta = sceltaRadice();
             ArrayList<ICategoria> foglieRichiesta = gerarchiaRichiesta.getListaFoglie();
 
             double min = FattoreConversione.getMin();
@@ -204,9 +206,9 @@ public class ControllerConfiguratore extends ControllerBase {
     public void visualizzaFattoriConversione() {
         if (listaGerarchiaNonVuota()) {
 
-            GerarchiaCategorie g = sceltaRadice();
+            IGerarchia g = sceltaRadice();
             String nome = view.chiediNomeCategorieFoglia(g.getListaFoglie());
-            ArrayList<FattoreConversione> fattoriDaVisualizzare = fattoreManager.trovaFattore(nome);
+            ArrayList<IFattore> fattoriDaVisualizzare = fattoreManager.trovaFattore(nome);
 
             if (fattoriDaVisualizzare.isEmpty()) {
                 view.mostraMessaggio("Non esistono fattori di conversione per la categoria selezionata\n");
@@ -219,9 +221,9 @@ public class ControllerConfiguratore extends ControllerBase {
     public void visualizzaProposteByFoglia() {
 		if(listaGerarchiaNonVuota()){
             String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
-            ArrayList<Proposta> lista = propostaManager.getListaProposte();
-            ArrayList<Proposta> listaDaVisualizzare = new ArrayList<>();
-            for(Proposta proposta:lista) {
+            ArrayList<IProposta> lista = propostaManager.getListaProposte();
+            ArrayList<IProposta> listaDaVisualizzare = new ArrayList<>();
+            for(IProposta proposta:lista) {
                 if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))
                     listaDaVisualizzare.add(proposta);                
                 }

@@ -4,12 +4,12 @@ package it.unibs.ing.view;
 import java.util.ArrayList;
 import java.util.List;
 import it.unibs.ing.controller.ControllerBase;
-import it.unibs.ing.model.*;
 import it.unibs.ing.model.comprensorio.IComprensorio;
-import it.unibs.ing.model.fattore.FattoreConversione;
+import it.unibs.ing.model.fattore.IFattore;
 import it.unibs.ing.model.gerarchia.CategoriaFoglia;
 import it.unibs.ing.model.gerarchia.ICategoria;
 import it.unibs.ing.model.proposta.Proposta;
+import it.unibs.ing.model.proposta.IProposta;
 
 public class ViewBase {
 
@@ -36,7 +36,7 @@ public class ViewBase {
                 + '}';
     }
 
-    public String toStringFattore(FattoreConversione fattore){
+    public String toStringFattore(IFattore fattore){
         return "FattoreConversione{Richiesta:  " + fattore.getC1() + ", Offerta " + fattore.getC2() + 
         ", fattore " + fattore.getFattore() + '}';
     }
@@ -46,7 +46,7 @@ public class ViewBase {
                 "nome='" + categoria.getNome() + '}';
     }
 
-    public String toStringProposta(Proposta p){
+    public String toStringProposta(IProposta p){
         return "Proposta{" +"richiesta: " + p.getRichiesta() +", durata: " + p.getDurataRichiesta()
 				+ "; offerta: " + p.getOfferta() + ", durata: " + p.getDurataOfferta() + ", stato: " + p.getStato();    
     }
@@ -64,9 +64,9 @@ public class ViewBase {
     }
 
   
-    public void visualizzaProposte(ArrayList<Proposta> listaProposte){
+    public void visualizzaProposte(ArrayList<IProposta> listaProposte){
         StringBuilder sb = new StringBuilder();
-        for (Proposta proposta : listaProposte) {
+        for (IProposta proposta : listaProposte) {
             sb.append(toStringProposta(proposta)).append("\n");
         }
        System.out.println(sb.toString());
@@ -84,7 +84,7 @@ public class ViewBase {
                 descrizione = toStringComprensorio((IComprensorio) elemento);
             } else if (elemento instanceof CategoriaFoglia) {
                 descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
-            }else if (elemento instanceof Proposta) {
+            }else if (elemento instanceof IProposta) {
                     descrizione = toStringProposta((Proposta) elemento); 
             }
             System.out.println((i + 1) + ". " + descrizione);

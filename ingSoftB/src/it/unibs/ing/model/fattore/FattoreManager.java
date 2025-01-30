@@ -4,27 +4,27 @@ import java.util.ArrayList;
 
 public class FattoreManager {
     
-    private ArrayList<FattoreConversione> listaFattori = new ArrayList<>();
+    private ArrayList<IFattore> listaFattori = new ArrayList<>();
     
 
-    public ArrayList<FattoreConversione> getListaFattori() {
+    public ArrayList<IFattore> getListaFattori() {
 		return listaFattori;
 	}
 	
 	
 	public void addFattore (String c1, String c3, double f13) {
 		
-		FattoreConversione fattore = new FattoreConversione(c1, c3, f13);
-		FattoreConversione f_inverso = fattore.creaFattoreInverso();
+		IFattore fattore = new FattoreConversione(c1, c3, f13);
+		IFattore f_inverso = fattore.creaFattoreInverso();
 		
-		 ArrayList<FattoreConversione> fattoriDaAggiungere = new ArrayList<>();
+		 ArrayList<IFattore> fattoriDaAggiungere = new ArrayList<>();
 		 double valoreFattore;
 		 
 		if(listaFattori.isEmpty()) {		
 			listaFattori.add(fattore);
 			listaFattori.add(f_inverso);
 		} else {
-			for(FattoreConversione fact : listaFattori) {
+			for(IFattore fact : listaFattori) {
 				String c2 = fact.getC2();
 				if(fact.getC1().equals(c1)) {
 					if(!esisteFattore(c3, c2)) {
@@ -55,7 +55,7 @@ public class FattoreManager {
 	
 	public Boolean esisteFattore(String c1, String c2) {
 		
-		for(FattoreConversione f: listaFattori) {
+		for(IFattore f: listaFattori) {
 			String foglia1 = f.getC1();
 			String foglia2 = f.getC2();
 			
@@ -68,9 +68,9 @@ public class FattoreManager {
 	}
 
 
-    public  ArrayList<FattoreConversione> trovaFattore(String s) {
-		ArrayList<FattoreConversione> fattoriDaVisualizzare = new ArrayList<>();
-		for(FattoreConversione f: listaFattori) {
+    public  ArrayList<IFattore> trovaFattore(String s) {
+		ArrayList<IFattore> fattoriDaVisualizzare = new ArrayList<>();
+		for(IFattore f: listaFattori) {
 			if( f.getC1().equals(s) || f.getC2().equals(s) )
 				fattoriDaVisualizzare.add(f);
 		}
@@ -78,8 +78,8 @@ public class FattoreManager {
 	}
 	
 	
-	public FattoreConversione trovaFattore(String foglia1, String foglia2) {
-		for(FattoreConversione f: listaFattori) {
+	public IFattore trovaFattore(String foglia1, String foglia2) {
+		for(IFattore f: listaFattori) {
 			if( f.getC1().equals(foglia1) && f.getC2().equals(foglia2) )
 				return f;
 		}	

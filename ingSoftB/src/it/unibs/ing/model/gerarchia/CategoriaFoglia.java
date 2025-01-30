@@ -1,7 +1,6 @@
 package it.unibs.ing.model.gerarchia;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class CategoriaFoglia implements ICategoria {
