@@ -14,6 +14,7 @@ import it.unibs.ing.model.gerarchia.GerarchiaCategorie;
 import it.unibs.ing.model.gerarchia.ICategoria;
 import it.unibs.ing.model.gerarchia.IGerarchia;
 import it.unibs.ing.model.user.Configuratore;
+import it.unibs.ing.model.user.IConfiguratore;
 import it.unibs.ing.view.ViewConfiguratore;
 import it.unibs.ing.model.proposta.IProposta;
 import it.unibs.ing.model.fattore.IFattore;
@@ -26,18 +27,17 @@ public class ControllerConfiguratore extends ControllerBase {
         super(dati); 
     }
 
-
-
     public void registraView(ViewConfiguratore view) {
         this.view = view;
     }
 
     public Boolean verificaCredenzialiPrimoAccesso(String usernamePredefinito, String passwordPredefinita) {
-        return Configuratore.verificaPrimoAccesso(usernamePredefinito, passwordPredefinita);
+        IConfiguratore c = new Configuratore(usernamePredefinito, passwordPredefinita);
+        return c.verificaPrimoAccesso();
     }
 
     public void registraConfiguratore(String username, String password) {
-        Configuratore conf = new Configuratore(username, password);
+        IConfiguratore conf = new Configuratore(username, password);
         configuratoreManager.addToListaConfiguratori(conf);
     }
 
@@ -48,7 +48,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
     public void aggiungiComprensorio(String nome, Set<String> comuni) {
         IComprensorio comprensorio = new Comprensorio(nome, comuni);
-        comprensorioManager.addComprensorio(comprensorio);
+        comprensorioManager.addElemento(comprensorio);
     }
 
     public ArrayList<IComprensorio> getComprensorioManager() {

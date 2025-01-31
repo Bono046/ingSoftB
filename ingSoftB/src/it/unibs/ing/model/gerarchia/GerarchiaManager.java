@@ -14,9 +14,6 @@ public class GerarchiaManager {
 		return listaOggettiGerarchia;
 	}
 
-	public void setListaOggettiGerarchia(ArrayList<IGerarchia> gerarchie) {
-		listaOggettiGerarchia = gerarchie;
-	}
 	
 	public void addGerarchia(IGerarchia g) {
 		listaOggettiGerarchia.add(g);

@@ -25,6 +25,7 @@ public class Dati {
         gerarchiaManager = new GerarchiaManager();
         fattoreManager = new FattoreManager();
         propostaManager = new PropostaManager();
+ 
     }
 
     public static Dati getInstance() {

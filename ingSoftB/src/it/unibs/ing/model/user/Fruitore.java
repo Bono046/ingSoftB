@@ -2,7 +2,7 @@ package it.unibs.ing.model.user;
 
 import it.unibs.ing.model.comprensorio.IComprensorio;
 
-public class Fruitore {
+public class Fruitore implements IFruitore {
 
     private String username;
     private String password;
@@ -22,8 +22,11 @@ public class Fruitore {
     }
 
 
-    protected String getPassword() {
-        return password;
+    public boolean login(String username, String password) {
+        if (this.username.equals(username) && this.password.equals(password)) {
+            return true;
+        }
+    return false;
     }
 
 

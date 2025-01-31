@@ -21,12 +21,6 @@ public class PropostaManager {
 	}
 
 
-	public void setListaProposte(ArrayList<IProposta> listaProposte) {
-		for(IProposta p : listaProposte) {
-			listaProposte.add(p);
-		}
-	}
-
 	public void setChiusuraProposteStrategy(IChiusuraProposteStrategy chiusuraProposteStrategy) {
 		this.chiusuraProposteStrategy = chiusuraProposteStrategy;
 	}

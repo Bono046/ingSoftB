@@ -4,33 +4,32 @@ import java.util.ArrayList;
 
 public class ConfiguratoreManager {
 
-    private ArrayList<Configuratore> listaConfiguratori;
+    private ArrayList<IConfiguratore> listaConfiguratori;
 
 
     public ConfiguratoreManager() {
         listaConfiguratori = new ArrayList<>();
     }
 
-    public ArrayList<Configuratore> getLista() {
+    public ArrayList<IConfiguratore> getLista() {
         return listaConfiguratori;
     }
 
-    public void addToListaConfiguratori(Configuratore conf) {
+    public void addToListaConfiguratori(IConfiguratore conf) {
         listaConfiguratori.add(conf);
     }
 
     public boolean userValido(String user) {
-        for (Configuratore conf : listaConfiguratori) {
+        for (IConfiguratore conf : listaConfiguratori) {
             if (conf.getUsername().equals(user))
                 return false;
         }
         return true;
     }
 
-
     public boolean loginConfiguratore(String username, String password) {
-        for (Configuratore conf : listaConfiguratori) {
-            if (conf.getUsername().equals(username) && conf.getPassword().equals(password)) {
+        for (IConfiguratore conf : listaConfiguratori) {
+            if (conf.login(username, password)) {
                 return true;
             }
         }

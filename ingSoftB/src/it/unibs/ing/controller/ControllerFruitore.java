@@ -9,6 +9,7 @@ import it.unibs.ing.model.proposta.ConcreteStrategyProposte;
 import it.unibs.ing.model.proposta.IProposta;
 import it.unibs.ing.model.proposta.Proposta;
 import it.unibs.ing.model.user.Fruitore;
+import it.unibs.ing.model.user.IFruitore;
 import it.unibs.ing.view.ViewFruitore;
 
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class ControllerFruitore extends ControllerBase{
     } 
 
     public void registraFruitore(String username, String password, IComprensorio comprensorio, String mail) {
-        Fruitore fruitore = new Fruitore(username, password, comprensorio, mail);
-       fruitoreManager.addToListaFruitori(fruitore);
+        IFruitore fruitore = new Fruitore(username, password, comprensorio, mail);
+        fruitoreManager.addToListaFruitori(fruitore);
     }
 
     public Boolean loginFruitore(String username, String password) {
@@ -86,52 +87,56 @@ public class ControllerFruitore extends ControllerBase{
 
 
     public void creaProposta(String user) {
-        String richiesta;
-        String offerta;
-        boolean categorieValide = false;
-        do {
-            view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
-            IGerarchia gerarchiaRichiesta = sceltaRadice(); 
-            richiesta = view.chiediNomeCategorieFoglia(gerarchiaRichiesta.getListaFoglie());
+        
+        if(listaGerarchiaNonVuota()) {
+            String richiesta;
+            String offerta;
+            boolean categorieValide = false;
+            do {
+                view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
+                IGerarchia gerarchiaRichiesta = sceltaRadice(); 
+                richiesta = view.chiediNomeCategorieFoglia(gerarchiaRichiesta.getListaFoglie());
 
-            view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
-            IGerarchia gerarchiaOfferta = sceltaRadice(); 
-            offerta = view.chiediNomeCategorieFoglia(gerarchiaOfferta.getListaFoglie());
-            if (richiesta.equals(offerta)) {
-                view.mostraMessaggio("Non può essere selezionata la stessa categoria. Riprovare.");
-            } else {
-                categorieValide = true;
-            }
-        } while (!categorieValide);
-
-        int durataRichiesta = view.leggiValoreIntero("Quante ore per la richiesta? ");
-        int durataOfferta = calcolaDurataOfferta(richiesta, offerta, durataRichiesta);
-
-        if (durataOfferta == 0) {
-            view.mostraMessaggio("Un configuratore deve ancora definire il fattore di conversione corrispondente.");
-            return;
-        }
-        Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, durataOfferta, user);
-    
-        view.mostraMessaggio(view.toStringProposta(proposta));
-
-        boolean confermato = false;
-        while (!confermato) {
-            Boolean conferma = view.chiediConferma("Vuoi confermare la proposta? ");
-            if (conferma) {
-                proposta.accettaProposta();
-                propostaManager.addProposta(proposta);
-                view.mostraMessaggio("Proposta confermata.");
-                confermato = true;
-
-                if (verificaProposta(proposta)) {
-                    view.mostraMessaggio("La proposta è stata chiusa! Riceverai una mail per i dettagli.");
+                view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
+                IGerarchia gerarchiaOfferta = sceltaRadice(); 
+                offerta = view.chiediNomeCategorieFoglia(gerarchiaOfferta.getListaFoglie());
+                if (richiesta.equals(offerta)) {
+                    view.mostraMessaggio("Non può essere selezionata la stessa categoria. Riprovare.");
+                } else {
+                    categorieValide = true;
                 }
-            } else {
-                view.mostraMessaggio("Proposta non confermata.");
+            } while (!categorieValide);
+
+            int durataRichiesta = view.leggiValoreIntero("Quante ore per la richiesta? ");
+            int durataOfferta = calcolaDurataOfferta(richiesta, offerta, durataRichiesta);
+
+            if (durataOfferta == 0) {
+                view.mostraMessaggio("Un configuratore deve ancora definire il fattore di conversione corrispondente.");
                 return;
-            } 
-        }}
+            }
+            Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, durataOfferta, user);
+        
+            view.mostraMessaggio(view.toStringProposta(proposta));
+
+            boolean confermato = false;
+            while (!confermato) {
+                Boolean conferma = view.chiediConferma("Vuoi confermare la proposta? ");
+                if (conferma) {
+                    proposta.accettaProposta();
+                    propostaManager.addProposta(proposta);
+                    view.mostraMessaggio("Proposta confermata.");
+                    confermato = true;
+
+                    if (verificaProposta(proposta)) {
+                        view.mostraMessaggio("La proposta è stata chiusa! Riceverai una mail per i dettagli.");
+                    }
+                } else {
+                    view.mostraMessaggio("Proposta non confermata.");
+                    return;
+                } 
+            }
+        }
+    }
 
 
     private int calcolaDurataOfferta(String richiesta, String offerta, int durataRichiesta) {

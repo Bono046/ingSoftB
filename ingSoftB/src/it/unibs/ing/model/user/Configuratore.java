@@ -1,6 +1,6 @@
 package it.unibs.ing.model.user;
 
-public class Configuratore {
+public class Configuratore implements IConfiguratore {
 
     private static final String USERNAME_PREDEFINITO = "user";
     private static final String PASSWORD_PREDEFINITO = "password";
@@ -14,16 +14,21 @@ public class Configuratore {
     }
 
 
-    public static Boolean verificaPrimoAccesso(String user, String pass) {
-        return user.equals(USERNAME_PREDEFINITO) && pass.equals(PASSWORD_PREDEFINITO);
+    @Override
+    public Boolean verificaPrimoAccesso() {
+        return this.username.equals(USERNAME_PREDEFINITO) && this.password.equals(PASSWORD_PREDEFINITO);
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
-    protected String getPassword() {
-        return password;
+    public boolean login(String username, String password) {
+        if (this.username.equals(username) && this.password.equals(password)) {
+            return true;
+        }
+    return false;
     }
 
 

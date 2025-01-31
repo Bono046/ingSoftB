@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import it.unibs.ing.model.comprensorio.IComprensorio;
 
 public class FruitoreManager {
-    private ArrayList<Fruitore> listaFruitori;
+    private ArrayList<IFruitore> listaFruitori;
 
     public FruitoreManager() {
         listaFruitori = new ArrayList<>();
     }
 
-    public ArrayList<Fruitore> getLista() {
+    public ArrayList<IFruitore> getLista() {
         return listaFruitori;
     }
 
-    public void addToListaFruitori(Fruitore f) {
+    public void addToListaFruitori(IFruitore f) {
         listaFruitori.add(f);
     }
 
     public boolean userValido(String username) {
-        for (Fruitore user : listaFruitori) {
+        for (IFruitore user : listaFruitori) {
             if (user.getUsername().equals(username))
                 return false;
         }
@@ -28,8 +28,8 @@ public class FruitoreManager {
     }
 
     public boolean loginFruitore(String username, String password) {
-        for (Fruitore user : listaFruitori) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+        for (IFruitore user : listaFruitori) {
+            if (user.login(username, password)) {
                 return true;
             }
         }
@@ -37,7 +37,7 @@ public class FruitoreManager {
     }
 
     public IComprensorio getComprensorioFromUser(String user) {
-        for(Fruitore f : listaFruitori) {
+        for(IFruitore f : listaFruitori) {
             if(f.getUsername().equals(user))
                 return f.getComprensiorio();
         }
@@ -47,7 +47,7 @@ public class FruitoreManager {
     public ArrayList<String> getUserFruitoriFromComprensorio(IComprensorio c){
         ArrayList<String> lista = new ArrayList<>();
 
-        for(Fruitore f : listaFruitori) {
+        for(IFruitore f : listaFruitori) {
             if(f.getComprensiorio().getNome().equals(c.getNome()))
                 lista.add(f.getUsername());
         }

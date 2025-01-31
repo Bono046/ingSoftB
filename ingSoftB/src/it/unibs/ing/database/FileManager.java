@@ -14,6 +14,10 @@ import it.unibs.ing.model.proposta.AdapterChiusuraStrategy;
 import it.unibs.ing.model.proposta.AdapterIProposta;
 import it.unibs.ing.model.proposta.IChiusuraProposteStrategy;
 import it.unibs.ing.model.proposta.IProposta;
+import it.unibs.ing.model.user.AdapterIConfiguratore;
+import it.unibs.ing.model.user.AdapterIFruitore;
+import it.unibs.ing.model.user.IConfiguratore;
+import it.unibs.ing.model.user.IFruitore;
 import it.unibs.ing.model.fattore.AdapterIFattore;
 
 import java.io.*;
@@ -32,6 +36,8 @@ public class FileManager {
                 .registerTypeAdapter(IGerarchia.class, new AdapterIGerarchia())
                 .registerTypeAdapter(IProposta.class, new AdapterIProposta())
                 .registerTypeAdapter(IChiusuraProposteStrategy.class, new AdapterChiusuraStrategy())
+                .registerTypeAdapter(IConfiguratore.class, new AdapterIConfiguratore())
+                .registerTypeAdapter(IFruitore.class, new AdapterIFruitore())
                 .create();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_DATI))) {
             writer.write(gson.toJson(dati));
@@ -46,6 +52,8 @@ public class FileManager {
                 .registerTypeAdapter(IGerarchia.class, new AdapterIGerarchia())
                 .registerTypeAdapter(IProposta.class, new AdapterIProposta())
                 .registerTypeAdapter(IChiusuraProposteStrategy.class, new AdapterChiusuraStrategy())
+                .registerTypeAdapter(IConfiguratore.class, new AdapterIConfiguratore())
+                .registerTypeAdapter(IFruitore.class, new AdapterIFruitore())
                 .create();
         File file = new File(FILE_DATI);
         if (!file.exists() || file.length() == 0) {
