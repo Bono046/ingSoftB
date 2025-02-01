@@ -2,7 +2,7 @@ package it.unibs.ing.model.user;
 
 import java.util.ArrayList;
 
-public class ConfiguratoreManager {
+public class ConfiguratoreManager implements IConfiguratoreManager {
 
     private ArrayList<IConfiguratore> listaConfiguratori;
 
@@ -11,14 +11,17 @@ public class ConfiguratoreManager {
         listaConfiguratori = new ArrayList<>();
     }
 
+    @Override
     public ArrayList<IConfiguratore> getLista() {
         return listaConfiguratori;
     }
 
-    public void addToListaConfiguratori(IConfiguratore conf) {
+    @Override
+    public void addElemento(IConfiguratore conf) {
         listaConfiguratori.add(conf);
     }
 
+    @Override
     public boolean userValido(String user) {
         for (IConfiguratore conf : listaConfiguratori) {
             if (conf.getUsername().equals(user))
@@ -27,6 +30,7 @@ public class ConfiguratoreManager {
         return true;
     }
 
+    @Override
     public boolean loginConfiguratore(String username, String password) {
         for (IConfiguratore conf : listaConfiguratori) {
             if (conf.login(username, password)) {

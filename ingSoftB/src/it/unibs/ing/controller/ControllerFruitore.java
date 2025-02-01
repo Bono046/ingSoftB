@@ -27,16 +27,11 @@ public class ControllerFruitore extends ControllerBase{
         this.view = view;
     }
 
-    public ArrayList<IComprensorio> getListaComprensori() {
-        ArrayList <IComprensorio> comprensori = comprensorioManager.getLista();
-        if(comprensori.isEmpty())
-            throw new IllegalArgumentException();
-        return comprensori;
-    } 
+
 
     public void registraFruitore(String username, String password, IComprensorio comprensorio, String mail) {
         IFruitore fruitore = new Fruitore(username, password, comprensorio, mail);
-        fruitoreManager.addToListaFruitori(fruitore);
+        fruitoreManager.addElemento(fruitore);
     }
 
     public Boolean loginFruitore(String username, String password) {
@@ -123,7 +118,7 @@ public class ControllerFruitore extends ControllerBase{
                 Boolean conferma = view.chiediConferma("Vuoi confermare la proposta? ");
                 if (conferma) {
                     proposta.accettaProposta();
-                    propostaManager.addProposta(proposta);
+                    propostaManager.addElemento(proposta);
                     view.mostraMessaggio("Proposta confermata.");
                     confermato = true;
 

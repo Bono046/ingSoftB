@@ -6,26 +6,28 @@ import java.util.List;
 
 import it.unibs.ing.database.FileManager;
 import it.unibs.ing.model.*;
-import it.unibs.ing.model.comprensorio.ComprensorioManager;
-import it.unibs.ing.model.fattore.FattoreManager;
-import it.unibs.ing.model.gerarchia.GerarchiaManager;
+import it.unibs.ing.model.fattore.IFattoreManager;
+import it.unibs.ing.model.gerarchia.ICategoria;
 import it.unibs.ing.model.gerarchia.IGerarchia;
-import it.unibs.ing.model.proposta.PropostaManager;
-import it.unibs.ing.model.user.ConfiguratoreManager;
-import it.unibs.ing.model.user.FruitoreManager;
+import it.unibs.ing.model.gerarchia.IGerarchiaManager;
+import it.unibs.ing.model.proposta.IPropostaManager;
+import it.unibs.ing.model.user.IConfiguratoreManager;
+import it.unibs.ing.model.user.IFruitoreManager;
 import it.unibs.ing.view.ViewBase;
+import it.unibs.ing.model.comprensorio.IComprensorio;
+import it.unibs.ing.model.comprensorio.IComprensorioManager;
 
 
 public class ControllerBase {
 
     Dati dati;
     ViewBase view = new ViewBase(this);
-    ConfiguratoreManager configuratoreManager;
-    FruitoreManager fruitoreManager;
-    GerarchiaManager gerarchiaManager;
-    ComprensorioManager comprensorioManager;
-    FattoreManager fattoreManager;
-    PropostaManager propostaManager;
+    IConfiguratoreManager configuratoreManager;
+    IFruitoreManager fruitoreManager;
+    IGerarchiaManager gerarchiaManager;
+    IComprensorioManager comprensorioManager;
+    IFattoreManager fattoreManager;
+    IPropostaManager propostaManager;
 
 
 
@@ -47,6 +49,19 @@ public class ControllerBase {
         } 
     }
 
+
+    public Boolean userOk(String username) {
+        return (configuratoreManager.userValido(username) && fruitoreManager.userValido(username));
+    }
+
+    public ArrayList<IComprensorio> getListaComprensori() {
+        ArrayList <IComprensorio> comprensori = comprensorioManager.getLista();
+        if(comprensori.isEmpty())
+            throw new IllegalArgumentException();
+        return comprensori;
+    } 
+
+
     public boolean listaGerarchiaNonVuota() {
         if (gerarchiaManager.getListaRadici().isEmpty()) {
             view.logErroreGerarchia();
@@ -56,7 +71,7 @@ public class ControllerBase {
     }
 
     public IGerarchia sceltaRadice() {
-        ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
+        ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getLista();
 
         if (listaGerarchiaNonVuota()) {
             List<String> nomiGerarchie = new ArrayList<>();
@@ -70,8 +85,15 @@ public class ControllerBase {
         return null;
     }
 
-    public Boolean userOk(String username) {
-        return (configuratoreManager.userValido(username) && fruitoreManager.userValido(username));
-    }
+    
+    public void visualizzaGerarchie() {
+        if (listaGerarchiaNonVuota()) {
+            for (ICategoria gerarchia : gerarchiaManager.getListaRadici()) {
+                view.stampaAlbero("", gerarchia);
+            }
+        }
+    }   
+
+
 
 }

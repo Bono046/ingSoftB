@@ -18,8 +18,7 @@ public class Main {
             dati = FileManager.caricaDati();
         } catch (IOException e) {
             System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
-            dati = 
-            Dati.getInstance();
+            dati = Dati.getInstance();
         } 
         
         ControllerConfiguratore controllerConfiguratore = new ControllerConfiguratore(dati);

@@ -2,21 +2,27 @@ package it.unibs.ing.model;
 
 import it.unibs.ing.model.comprensorio.ComprensorioManager;
 import it.unibs.ing.model.fattore.FattoreManager;
+import it.unibs.ing.model.fattore.IFattoreManager;
 import it.unibs.ing.model.gerarchia.GerarchiaManager;
+import it.unibs.ing.model.gerarchia.IGerarchiaManager;
+import it.unibs.ing.model.proposta.IPropostaManager;
 import it.unibs.ing.model.proposta.PropostaManager;
 import it.unibs.ing.model.user.ConfiguratoreManager;
 import it.unibs.ing.model.user.FruitoreManager;
+import it.unibs.ing.model.user.IConfiguratoreManager;
+import it.unibs.ing.model.user.IFruitoreManager;
+import it.unibs.ing.model.comprensorio.IComprensorioManager;
 
 public class Dati {
 
     private static Dati instance;
 
-    private ConfiguratoreManager configuratoreManager;
-    private FruitoreManager fruitoreManager;
-    private ComprensorioManager comprensorioManager;
-    private GerarchiaManager gerarchiaManager;
-    private FattoreManager fattoreManager;
-    private PropostaManager propostaManager;
+    private IConfiguratoreManager configuratoreManager;
+    private IFruitoreManager fruitoreManager;
+    private IComprensorioManager comprensorioManager;
+    private IGerarchiaManager gerarchiaManager;
+    private IFattoreManager fattoreManager;
+    private IPropostaManager propostaManager;
 
     private Dati() {
         configuratoreManager = new ConfiguratoreManager();
@@ -35,27 +41,27 @@ public class Dati {
         return instance;
     }
 
-    public ConfiguratoreManager getConfiguratoreManager() {
+    public IConfiguratoreManager getConfiguratoreManager() {
         return configuratoreManager;
     }
 
-    public FruitoreManager getFruitoreManager() {
+    public IFruitoreManager getFruitoreManager() {
         return fruitoreManager;
     }
 
-    public ComprensorioManager getComprensorioManager() {
+    public IComprensorioManager getComprensorioManager() {
         return comprensorioManager;
     }
 
-    public GerarchiaManager getGerarchiaCategorieManager() {
+    public IGerarchiaManager getGerarchiaCategorieManager() {
         return gerarchiaManager;
     }
 
-    public FattoreManager getFattoreManager() {
+    public IFattoreManager getFattoreManager() {
         return fattoreManager;
     }
 
-    public PropostaManager getPropostaManager() {
+    public IPropostaManager getPropostaManager() {
         return propostaManager;
     }
 }

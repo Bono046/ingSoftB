@@ -2,9 +2,9 @@ package it.unibs.ing.model.comprensorio;
 
 import java.util.ArrayList;
 
-import it.unibs.ing.model.IManager;
 
-public class ComprensorioManager implements IManager<IComprensorio> {
+
+public class ComprensorioManager implements IComprensorioManager {
     
     private ArrayList<IComprensorio> listaComprensori;
     
@@ -20,6 +20,8 @@ public class ComprensorioManager implements IManager<IComprensorio> {
     @Override   
     public void addElemento(IComprensorio comprensorio) {
         listaComprensori.add(comprensorio);
-        
     }
+
+
+
 }

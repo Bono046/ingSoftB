@@ -2,7 +2,6 @@ package it.unibs.ing.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 import it.unibs.ing.model.*;
 import it.unibs.ing.model.comprensorio.Comprensorio;
@@ -38,7 +37,7 @@ public class ControllerConfiguratore extends ControllerBase {
 
     public void registraConfiguratore(String username, String password) {
         IConfiguratore conf = new Configuratore(username, password);
-        configuratoreManager.addToListaConfiguratori(conf);
+        configuratoreManager.addElemento(conf);
     }
 
     public Boolean loginConfiguratore(String username, String password) {
@@ -51,17 +50,13 @@ public class ControllerConfiguratore extends ControllerBase {
         comprensorioManager.addElemento(comprensorio);
     }
 
-    public ArrayList<IComprensorio> getComprensorioManager() {
-        return comprensorioManager.getLista();
-    }
-
 
     public boolean checkNomeGerarchia(String nome) {
         return gerarchiaManager.checkNomeGerarchia(nome);
     }
 
     public void addGerarchia(GerarchiaCategorie g) {
-        gerarchiaManager.addGerarchia(g);
+        gerarchiaManager.addElemento(g);
     }
 
     public ICategoria creaCategoria(boolean isRadice, ICategoria c) {
@@ -93,7 +88,7 @@ public class ControllerConfiguratore extends ControllerBase {
         ICategoria radice = creaCategoria(true, null);
         GerarchiaCategorie g = new GerarchiaCategorie(radice);
         componiGerarchia(g, radice);
-        gerarchiaManager.addGerarchia(g);
+        gerarchiaManager.addElemento(g);
     }
 
     public void componiGerarchia(IGerarchia g, ICategoria padre) {		
@@ -124,43 +119,6 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
 
- 
-
-    //probabilmente da spostare in ControllerBase
-    public void visualizzaGerarchie() {
-        if (listaGerarchiaNonVuota()) {
-            for (ICategoria gerarchia : gerarchiaManager.getListaRadici()) {
-                view.stampaAlbero("", gerarchia);
-            }
-        }
-    }
-
-    public boolean listaGerarchiaNonVuota() {
-        if (gerarchiaManager.getListaRadici().isEmpty()) {
-            view.logErroreGerarchia();
-            return false;
-        } 
-        return true;
-    }
-
-
-    public IGerarchia sceltaRadice() {
-        ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getListaOggettiGerarchia();
-
-        if (listaGerarchiaNonVuota()) {
-            List<String> nomiGerarchie = new ArrayList<>();
-            for (IGerarchia gerarchia : listaOggettiGerarchia) {
-                nomiGerarchie.add(gerarchia.getCategoriaRadice().getNome());
-            }
-            int scelta = view.selezionaGerarchia(nomiGerarchie);
-
-            return listaOggettiGerarchia.get(scelta - 1);
-        }
-        return null;
-    }
-
-
-    
 
     public void setFattoriConversione() {
         
@@ -221,7 +179,7 @@ public class ControllerConfiguratore extends ControllerBase {
     public void visualizzaProposteByFoglia() {
 		if(listaGerarchiaNonVuota()){
             String foglia = view.chiediNomeCategorieFoglia(sceltaRadice().getListaFoglie());
-            ArrayList<IProposta> lista = propostaManager.getListaProposte();
+            ArrayList<IProposta> lista = propostaManager.getLista();
             ArrayList<IProposta> listaDaVisualizzare = new ArrayList<>();
             for(IProposta proposta:lista) {
                 if(proposta.getOfferta().equals(foglia) || proposta.getRichiesta().equals(foglia))

@@ -3,12 +3,10 @@ package it.unibs.ing.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.model.fattore.IFattore;
-import it.unibs.ing.model.gerarchia.ICategoria;
+
 
 public class ViewConfiguratore extends ViewBase{
 
@@ -119,7 +117,7 @@ public class ViewConfiguratore extends ViewBase{
                     salvaDati();
                     break;
                 case 4:
-                    visualizzaComprensori(controllerConfiguratore.getComprensorioManager());
+                    visualizzaComprensori(controllerConfiguratore.getListaComprensori());
                     break;
                 case 5:
                     controllerConfiguratore.visualizzaGerarchie();
@@ -205,34 +203,7 @@ public class ViewConfiguratore extends ViewBase{
 
 
    
-    public void stampaAlbero(String indentazione, ICategoria c) {
-        try {
-            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
-            List<String> coppie = new ArrayList<>();
-            for (Map.Entry<String, String> dominio : c.getDominio().entrySet()) {
-                String chiave = dominio.getKey();
-                String valore = dominio.getValue();
-                
-                if (valore.isEmpty()) {
-                    coppie.add(chiave);
-                } else {
-                    coppie.add(chiave + ": " + valore);
-                }
-            }
-            result.append(String.join(", ", coppie));
-            result.append("])");
-            System.out.println(result.toString());
 
-        } catch (NullPointerException e) {
-            System.out.println(indentazione + "- " + c.getNome());
-        }
-
-        if (!c.isFoglia()) {
-            for (ICategoria sottocategoria : c.getSottocategorie().values()) {
-                stampaAlbero(indentazione + "  ", sottocategoria);
-            }
-        }
-    }
 
    
 

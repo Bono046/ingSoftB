@@ -4,21 +4,24 @@ import java.util.ArrayList;
 
 import it.unibs.ing.model.comprensorio.IComprensorio;
 
-public class FruitoreManager {
+public class FruitoreManager implements IFruitoreManager {
     private ArrayList<IFruitore> listaFruitori;
 
     public FruitoreManager() {
         listaFruitori = new ArrayList<>();
     }
 
+    @Override
     public ArrayList<IFruitore> getLista() {
         return listaFruitori;
     }
 
-    public void addToListaFruitori(IFruitore f) {
+    @Override
+    public void addElemento(IFruitore f) {
         listaFruitori.add(f);
     }
 
+    @Override
     public boolean userValido(String username) {
         for (IFruitore user : listaFruitori) {
             if (user.getUsername().equals(username))
@@ -27,6 +30,7 @@ public class FruitoreManager {
         return true;
     }
 
+    @Override
     public boolean loginFruitore(String username, String password) {
         for (IFruitore user : listaFruitori) {
             if (user.login(username, password)) {
@@ -36,6 +40,7 @@ public class FruitoreManager {
         return false;
     }
 
+    @Override
     public IComprensorio getComprensorioFromUser(String user) {
         for(IFruitore f : listaFruitori) {
             if(f.getUsername().equals(user))
@@ -44,6 +49,7 @@ public class FruitoreManager {
         return null;
     }
 
+    @Override
     public ArrayList<String> getUserFruitoriFromComprensorio(IComprensorio c){
         ArrayList<String> lista = new ArrayList<>();
 

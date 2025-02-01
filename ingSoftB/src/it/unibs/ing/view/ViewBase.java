@@ -3,6 +3,8 @@ package it.unibs.ing.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.comprensorio.IComprensorio;
 import it.unibs.ing.model.fattore.IFattore;
@@ -128,6 +130,35 @@ public class ViewBase {
 
     public String chiediNomeCategorieFoglia(ArrayList<ICategoria> listaFoglie) {
         return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
+    }
+
+        public void stampaAlbero(String indentazione, ICategoria c) {
+        try {
+            StringBuilder result = new StringBuilder(indentazione + "- " + c.getNome() + " (" + c.getCampo() + "= [");
+            List<String> coppie = new ArrayList<>();
+            for (Map.Entry<String, String> dominio : c.getDominio().entrySet()) {
+                String chiave = dominio.getKey();
+                String valore = dominio.getValue();
+                
+                if (valore.isEmpty()) {
+                    coppie.add(chiave);
+                } else {
+                    coppie.add(chiave + ": " + valore);
+                }
+            }
+            result.append(String.join(", ", coppie));
+            result.append("])");
+            System.out.println(result.toString());
+
+        } catch (NullPointerException e) {
+            System.out.println(indentazione + "- " + c.getNome());
+        }
+
+        if (!c.isFoglia()) {
+            for (ICategoria sottocategoria : c.getSottocategorie().values()) {
+                stampaAlbero(indentazione + "  ", sottocategoria);
+            }
+        }
     }
 
 

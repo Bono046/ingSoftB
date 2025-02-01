@@ -2,7 +2,7 @@ package it.unibs.ing.model.gerarchia;
 
 import java.util.ArrayList;
 
-public class GerarchiaManager {
+public class GerarchiaManager implements IGerarchiaManager {
 
     private ArrayList<IGerarchia> listaOggettiGerarchia;
 
@@ -10,16 +10,19 @@ public class GerarchiaManager {
         listaOggettiGerarchia = new ArrayList<>();
     }
 
-    public ArrayList<IGerarchia> getListaOggettiGerarchia() {
+    @Override
+	public ArrayList<IGerarchia> getLista() {
 		return listaOggettiGerarchia;
 	}
 
 	
-	public void addGerarchia(IGerarchia g) {
+	@Override
+	public void addElemento(IGerarchia g) {
 		listaOggettiGerarchia.add(g);
 	}
     
-    public ArrayList<ICategoria> getListaRadici() {
+    @Override
+	public ArrayList<ICategoria> getListaRadici() {
     	ArrayList<ICategoria> listaRadici = new ArrayList<>(); 
     	
     	for(IGerarchia c : listaOggettiGerarchia) {
@@ -29,7 +32,8 @@ public class GerarchiaManager {
     }
 
 
-    public boolean checkNomeGerarchia(String nome) {
+    @Override
+	public boolean checkNomeGerarchia(String nome) {
     	for(ICategoria c : getListaRadici()) {
     		if(c.getNome().equals(nome))
     			return false;

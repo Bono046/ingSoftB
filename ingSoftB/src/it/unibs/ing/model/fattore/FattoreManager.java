@@ -2,16 +2,23 @@ package it.unibs.ing.model.fattore;
 
 import java.util.ArrayList;
 
-public class FattoreManager {
+public class FattoreManager implements IFattoreManager {
     
     private ArrayList<IFattore> listaFattori = new ArrayList<>();
     
 
-    public ArrayList<IFattore> getListaFattori() {
+    @Override
+	public ArrayList<IFattore> getLista() {
 		return listaFattori;
+	}
+
+	@Override
+	public void addElemento(IFattore fattore) {
+		listaFattori.add(fattore);
 	}
 	
 	
+	@Override
 	public void addFattore (String c1, String c3, double f13) {
 		
 		IFattore fattore = new FattoreConversione(c1, c3, f13);
@@ -53,6 +60,7 @@ public class FattoreManager {
 	}
 	
 	
+	@Override
 	public Boolean esisteFattore(String c1, String c2) {
 		
 		for(IFattore f: listaFattori) {
@@ -68,7 +76,8 @@ public class FattoreManager {
 	}
 
 
-    public  ArrayList<IFattore> trovaFattore(String s) {
+    @Override
+	public  ArrayList<IFattore> trovaFattore(String s) {
 		ArrayList<IFattore> fattoriDaVisualizzare = new ArrayList<>();
 		for(IFattore f: listaFattori) {
 			if( f.getC1().equals(s) || f.getC2().equals(s) )
@@ -78,6 +87,7 @@ public class FattoreManager {
 	}
 	
 	
+	@Override
 	public IFattore trovaFattore(String foglia1, String foglia2) {
 		for(IFattore f: listaFattori) {
 			if( f.getC1().equals(foglia1) && f.getC2().equals(foglia2) )
