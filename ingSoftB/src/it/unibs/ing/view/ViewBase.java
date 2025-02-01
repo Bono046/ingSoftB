@@ -128,8 +128,8 @@ public class ViewBase {
         return scelta;
     }
 
-    public String chiediNomeCategorieFoglia(ArrayList<ICategoria> listaFoglie) {
-        return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia: ").getNome();
+    public String chiediNomeCategorieFoglia(ArrayList<ICategoria> listaFoglie, String messaggio) {
+        return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia" + messaggio + ": ").getNome();
     }
 
         public void stampaAlbero(String indentazione, ICategoria c) {

@@ -94,6 +94,10 @@ public class ControllerBase {
         }
     }   
 
-
+    public String selezionaCategoria(String messaggio) {
+        IGerarchia gerarchia = sceltaRadice();
+        ArrayList<ICategoria> listaFoglie = gerarchia.getListaFoglie();
+        return view.chiediNomeCategorieFoglia(listaFoglie, messaggio);
+    }
 
 }

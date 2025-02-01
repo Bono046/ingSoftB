@@ -11,9 +11,7 @@ import it.unibs.ing.model.proposta.Proposta;
 import it.unibs.ing.model.user.Fruitore;
 import it.unibs.ing.model.user.IFruitore;
 import it.unibs.ing.view.ViewFruitore;
-
 import java.util.ArrayList;
-
 
 public class ControllerFruitore extends ControllerBase{    
     
@@ -27,8 +25,6 @@ public class ControllerFruitore extends ControllerBase{
         this.view = view;
     }
 
-
-
     public void registraFruitore(String username, String password, IComprensorio comprensorio, String mail) {
         IFruitore fruitore = new Fruitore(username, password, comprensorio, mail);
         fruitoreManager.addElemento(fruitore);
@@ -37,7 +33,6 @@ public class ControllerFruitore extends ControllerBase{
     public Boolean loginFruitore(String username, String password) {
         return fruitoreManager.loginFruitore(username, password);
     }
-
 
     public boolean esploraGerarchia() {
 
@@ -49,8 +44,6 @@ public class ControllerFruitore extends ControllerBase{
                 
                 ICategoria categoriaCorrente = g.getCategoriaCorrente();
                 view.mostraCategoriaCorrente(categoriaCorrente.getNome());
-
-                // Controlla se la categoria corrente è una foglia
                 boolean isFoglia = g.getListaFoglie().stream()
                     .anyMatch(foglia -> foglia.getNome().equals(categoriaCorrente.getNome()));
 
@@ -63,7 +56,6 @@ public class ControllerFruitore extends ControllerBase{
 
                 String valore = view.leggiValore("");
 
-                // Logica di navigazione
                 if (valore.equalsIgnoreCase("esci")) {
                     ricerca = false;
                 } else if (valore.equals("0")) {
@@ -80,60 +72,58 @@ public class ControllerFruitore extends ControllerBase{
             return false; 
     }
 
-
     public void creaProposta(String user) {
-        
-        if(listaGerarchiaNonVuota()) {
-            String richiesta;
-            String offerta;
-            boolean categorieValide = false;
-            do {
-                view.mostraMessaggio("Seleziona la gerarchia per l'offerta ");
-                IGerarchia gerarchiaRichiesta = sceltaRadice(); 
-                richiesta = view.chiediNomeCategorieFoglia(gerarchiaRichiesta.getListaFoglie());
-
-                view.mostraMessaggio("Seleziona la gerarchia per la richiesta ");
-                IGerarchia gerarchiaOfferta = sceltaRadice(); 
-                offerta = view.chiediNomeCategorieFoglia(gerarchiaOfferta.getListaFoglie());
-                if (richiesta.equals(offerta)) {
-                    view.mostraMessaggio("Non può essere selezionata la stessa categoria. Riprovare.");
-                } else {
-                    categorieValide = true;
-                }
-            } while (!categorieValide);
-
-            int durataRichiesta = view.leggiValoreIntero("Quante ore per la richiesta? ");
-            int durataOfferta = calcolaDurataOfferta(richiesta, offerta, durataRichiesta);
-
-            if (durataOfferta == 0) {
-                view.mostraMessaggio("Un configuratore deve ancora definire il fattore di conversione corrispondente.");
-                return;
-            }
-            Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, durataOfferta, user);
-        
-            view.mostraMessaggio(view.toStringProposta(proposta));
-
-            boolean confermato = false;
-            while (!confermato) {
-                Boolean conferma = view.chiediConferma("Vuoi confermare la proposta? ");
-                if (conferma) {
-                    proposta.accettaProposta();
-                    propostaManager.addElemento(proposta);
-                    view.mostraMessaggio("Proposta confermata.");
-                    confermato = true;
-
-                    if (verificaProposta(proposta)) {
-                        view.mostraMessaggio("La proposta è stata chiusa! Riceverai una mail per i dettagli.");
-                    }
-                } else {
-                    view.mostraMessaggio("Proposta non confermata.");
-                    return;
-                } 
-            }
+        if (!listaGerarchiaNonVuota()) {
+            return;
         }
+        
+        String[] categorie = selezionaCategorie();
+        String richiesta = categorie[0];
+        String offerta = categorie[1];
+        
+        int durataRichiesta = view.leggiValoreIntero("Quante ore per la richiesta? ");
+        int durataOfferta = calcolaDurataOfferta(richiesta, offerta, durataRichiesta);
+        
+        if (durataOfferta == 0) {
+            view.mostraMessaggio("Un configuratore deve ancora definire il fattore di conversione corrispondente.");
+            return;
+        }
+        
+        Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, durataOfferta, user);
+        confermaProposta(proposta);
     }
 
+    private void confermaProposta(Proposta proposta) {
+        view.mostraMessaggio(view.toStringProposta(proposta));
+        boolean confermaProposta = view.chiediConferma("Vuoi confermare la proposta? ");
 
+        if (!confermaProposta) {
+            view.mostraMessaggio("Proposta non confermata.");
+            return;
+        }
+        
+        proposta.accettaProposta();
+        propostaManager.addElemento(proposta);
+        view.mostraMessaggio("Proposta confermata.");
+        
+        if (verificaProposta(proposta)) {
+            view.mostraMessaggio("La proposta è stata chiusa! Riceverai una mail per i dettagli.");
+        }
+    }
+    
+    private String[] selezionaCategorie() {
+        String richiesta;
+        String offerta;
+        do {
+            richiesta = selezionaCategoria(" per l'offerta");
+            offerta = selezionaCategoria(" per la richiesta");
+            if (richiesta.equals(offerta)) {
+                view.mostraMessaggio("Non può essere selezionata la stessa categoria. Riprovare.");
+            }
+        } while (richiesta.equals(offerta));
+        return new String[]{richiesta, offerta};
+    }
+    
     private int calcolaDurataOfferta(String richiesta, String offerta, int durataRichiesta) {
         int durataOfferta=0;
         try {
@@ -152,7 +142,6 @@ public class ControllerFruitore extends ControllerBase{
 	    IComprensorio comprensorio =fruitoreManager.getComprensorioFromUser(user);
 	    ArrayList<String> userFruitoriFromComprensorio =fruitoreManager.getUserFruitoriFromComprensorio(comprensorio);
 	    userFruitoriFromComprensorio.remove(user);
-       
         ArrayList<IProposta> proposteAperteFromComprensorio = propostaManager.getProposteAperteFromUsers(userFruitoriFromComprensorio);  
         propostaManager.setChiusuraProposteStrategy(new ConcreteStrategyProposte());
         boolean chiusura = propostaManager.verificaProposta(proposta, proposteAperteFromComprensorio);
@@ -170,16 +159,12 @@ public class ControllerFruitore extends ControllerBase{
     }   
 
     public void ritiraProposta(String user) {
-	    
 	    ArrayList<IProposta> list = propostaManager.getListaProposteAperteUser(user);
-
 	    if (list.isEmpty()) {
 	        view.mostraMessaggio("Non sono presenti proposte da ritirare.");
 	        return;
 	    }
-
 	    IProposta propostaDaRitirare = view.selezionaDaLista(list, "Seleziona il numero della proposta da ritirare:");
-
 	    propostaDaRitirare.ritiraProposta();
 	    view.mostraMessaggio("La proposta è stata ritirata con successo.");
 	    }

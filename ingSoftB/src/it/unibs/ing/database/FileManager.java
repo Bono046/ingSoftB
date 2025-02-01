@@ -1,7 +1,6 @@
 package it.unibs.ing.database;
 
 import com.google.gson.*;
-
 import it.unibs.ing.model.Dati;
 import it.unibs.ing.model.comprensorio.AdapterIComprensorio;
 import it.unibs.ing.model.comprensorio.IComprensorio;
