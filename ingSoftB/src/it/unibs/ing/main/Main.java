@@ -2,6 +2,8 @@ package it.unibs.ing.main;
 
 import java.io.IOException;
 
+import com.google.gson.JsonParseException;
+
 import it.unibs.ing.view.ViewInit;
 import it.unibs.ing.controller.ControllerConfiguratore;
 import it.unibs.ing.controller.ControllerFruitore;
@@ -18,6 +20,12 @@ public class Main {
             dati = FileManager.caricaDati();
         } catch (IOException e) {
             System.out.println("Errore nel caricamento dei dati: " + e.getMessage());
+            dati = Dati.getInstance();
+        } catch (IllegalStateException e ) {
+            System.out.println(e.getMessage()+": verificare la correttezza del file json o procedere per sovrascrivere i dati");
+            dati = Dati.getInstance();
+        } catch(JsonParseException e){
+            System.out.println(e.getMessage()+": verificare la correttezza del file json o procedere per sovrascrivere i dati");
             dati = Dati.getInstance();
         } 
         

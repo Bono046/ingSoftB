@@ -2,8 +2,6 @@ package it.unibs.ing.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import it.unibs.ing.database.FileManager;
 import it.unibs.ing.model.*;
 import it.unibs.ing.model.fattore.IFattoreManager;
@@ -73,16 +71,10 @@ public class ControllerBase {
     public IGerarchia sceltaRadice() {
         ArrayList<IGerarchia> listaOggettiGerarchia = gerarchiaManager.getLista();
 
-        if (listaGerarchiaNonVuota()) {
-            List<String> nomiGerarchie = new ArrayList<>();
-            for (IGerarchia gerarchia : listaOggettiGerarchia) {
-                nomiGerarchie.add(gerarchia.getCategoriaRadice().getNome());
-            }
-            int scelta = view.selezionaGerarchia(nomiGerarchie);
-
-            return listaOggettiGerarchia.get(scelta - 1);
+        if (!listaGerarchiaNonVuota()) {
+            return null;
         }
-        return null;
+        return view.selezionaDaLista(listaOggettiGerarchia, "Seleziona gerarchia");
     }
 
     

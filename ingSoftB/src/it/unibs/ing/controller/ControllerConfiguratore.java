@@ -162,7 +162,7 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public void visualizzaFattoriConversione() {
-        if (listaGerarchiaNonVuota()) {
+        if (!listaGerarchiaNonVuota()) {
             return;
         }
         String nome = selezionaCategoria("");
@@ -177,7 +177,7 @@ public class ControllerConfiguratore extends ControllerBase {
     }
 
     public void visualizzaProposteByFoglia() {
-		if(listaGerarchiaNonVuota()){
+		if(!listaGerarchiaNonVuota()){
             return;
         } 
         String foglia = selezionaCategoria("");

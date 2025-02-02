@@ -1,0 +1,1235 @@
+{
+  "configuratoreManager": {
+    "listaConfiguratori": [
+      {
+        "username": "andrea",
+        "password": "bonomi",
+        "type": "concreteConfiguratore"
+      },
+      {
+        "username": "nicola",
+        "password": "pasolini",
+        "type": "concreteConfiguratore"
+      }
+    ],
+    "type": "configuratoreManager"
+  },
+  "fruitoreManager": {
+    "listaFruitori": [
+      {
+        "username": "giorgio",
+        "password": "bucella",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ],
+          "type": "concreteComprensorio"
+        },
+        "mail": "g@studenti.it",
+        "type": "concreteFruitore"
+      },
+      {
+        "username": "luca",
+        "password": "freschi",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ],
+          "type": "concreteComprensorio"
+        },
+        "mail": "l.studenti.it",
+        "type": "concreteFruitore"
+      },
+      {
+        "username": "riccardo",
+        "password": "rossi",
+        "comprensiorio": {
+          "nome": "Brescia",
+          "comuni": [
+            "Orzinuovi",
+            "Mazzano"
+          ],
+          "type": "concreteComprensorio"
+        },
+        "mail": "r.studenti.it",
+        "type": "concreteFruitore"
+      }
+    ],
+    "type": "fruitoreManager"
+  },
+  "comprensorioManager": {
+    "listaComprensori": [
+      {
+        "nome": "Brescia",
+        "comuni": [
+          "Orzinuovi",
+          "Mazzano"
+        ],
+        "type": "concreteComprensorio"
+      },
+      {
+        "nome": "Bergamo",
+        "comuni": [
+          "Albino",
+          "Orio"
+        ],
+        "type": "concreteComprensorio"
+      }
+    ],
+    "type": "comprensorioManager"
+  },
+  "gerarchiaManager": {
+    "listaOggettiGerarchia": [
+      {
+        "radice": {
+          "nome": "lezioni di musica",
+          "campo": "tipo",
+          "dominio": {
+            "teoria": "",
+            "strumento": ""
+          },
+          "sottocategorie": {
+            "teoria": {
+              "nome": "lezioni di teoria musicale",
+              "campo": "materia",
+              "dominio": {
+                "storia": "",
+                "solfeggio": ""
+              },
+              "sottocategorie": {
+                "storia": {
+                  "nome": "lezioni di storia della musica",
+                  "type": "foglia"
+                },
+                "solfeggio": {
+                  "nome": "lezioni di solfeggio",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
+            },
+            "strumento": {
+              "nome": "lezioni di strumenti musicali",
+              "campo": "strumento",
+              "dominio": {
+                "chitarra": "",
+                "pianoforte": ""
+              },
+              "sottocategorie": {
+                "chitarra": {
+                  "nome": "lezioni di chitarra",
+                  "type": "foglia"
+                },
+                "pianoforte": {
+                  "nome": "lezioni di pianoforte",
+                  "type": "foglia"
+                }
+              },
+              "type": "categoria"
+            }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di teoria musicale",
+          "campo": "materia",
+          "dominio": {
+            "storia": "",
+            "solfeggio": ""
+          },
+          "sottocategorie": {
+            "storia": {
+              "nome": "lezioni di storia della musica",
+              "type": "foglia"
+            },
+            "solfeggio": {
+              "nome": "lezioni di solfeggio",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
+        },
+        "listaFoglie": [
+          {
+            "nome": "lezioni di storia della musica",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di solfeggio",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di chitarra",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di pianoforte",
+            "type": "foglia"
+          }
+        ],
+        "percorso": [
+          {
+            "nome": "lezioni di musica",
+            "campo": "tipo",
+            "dominio": {
+              "teoria": "",
+              "strumento": ""
+            },
+            "sottocategorie": {
+              "teoria": {
+                "nome": "lezioni di teoria musicale",
+                "campo": "materia",
+                "dominio": {
+                  "storia": "",
+                  "solfeggio": ""
+                },
+                "sottocategorie": {
+                  "storia": {
+                    "nome": "lezioni di storia della musica",
+                    "type": "foglia"
+                  },
+                  "solfeggio": {
+                    "nome": "lezioni di solfeggio",
+                    "type": "foglia"
+                  }
+                },
+                "type": "categoria"
+              },
+              "strumento": {
+                "nome": "lezioni di strumenti musicali",
+                "campo": "strumento",
+                "dominio": {
+                  "chitarra": "",
+                  "pianoforte": ""
+                },
+                "sottocategorie": {
+                  "chitarra": {
+                    "nome": "lezioni di chitarra",
+                    "type": "foglia"
+                  },
+                  "pianoforte": {
+                    "nome": "lezioni di pianoforte",
+                    "type": "foglia"
+                  }
+                },
+                "type": "categoria"
+              }
+            },
+            "type": "categoria"
+          }
+        ],
+        "type": "gerarchia"
+      },
+      {
+        "radice": {
+          "nome": "lezioni di karate",
+          "campo": "livello",
+          "dominio": {
+            "principiante": "",
+            "intermedio": "",
+            "avanzato": ""
+          },
+          "sottocategorie": {
+            "principiante": {
+              "nome": "lezioni di cintura bianca",
+              "type": "foglia"
+            },
+            "intermedio": {
+              "nome": "lezioni di cintura verde",
+              "type": "foglia"
+            },
+            "avanzato": {
+              "nome": "lezioni di cintura nera",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di karate",
+          "campo": "livello",
+          "dominio": {
+            "principiante": "",
+            "intermedio": "avanzato",
+            "avanzato": ""
+          },
+          "sottocategorie": {
+            "principiante": {
+              "nome": "lezioni di cintura bianca",
+              "type": "foglia"
+            },
+            "intermedio": {
+              "nome": "lezioni di cintura verde",
+              "type": "foglia"
+            },
+            "avanzato": {
+              "nome": "lezioni di cintura nera",
+              "type": "foglia"
+            }
+          },
+          "type": "categoria"
+        },
+        "listaFoglie": [
+          {
+            "nome": "lezioni di cintura bianca",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di cintura verde",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di cintura nera",
+            "type": "foglia"
+          }
+        ],
+        "percorso": [],
+        "type": "gerarchia"
+      },
+      {
+        "radice": {
+          "nome": "lezioni di cucina",
+          "campo": "tipo",
+          "dominio": {
+            "etnica": ""
+          },
+          "sottocategorie": {
+            "etnica": {
+              "nome": "lezioni di cucina etnica",
+              "campo": "provenienza",
+              "dominio": {
+                "occidentale": "",
+                "orientale": ""
+              },
+              "sottocategorie": {
+                "occidentale": {
+                  "nome": "lezioni di cucina occidentale",
+                  "campo": "portata",
+                  "dominio": {
+                    "dolci": "",
+                    "principali": ""
+                  },
+                  "sottocategorie": {
+                    "dolci": {
+                      "nome": "lezioni di dolci occidentali",
+                      "type": "foglia"
+                    },
+                    "principali": {
+                      "nome": "lezioni di portate principali occidentali",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                },
+                "orientale": {
+                  "nome": "lezioni di cucina orientale",
+                  "campo": "portata",
+                  "dominio": {
+                    "dolci": "",
+                    "principali": ""
+                  },
+                  "sottocategorie": {
+                    "dolci": {
+                      "nome": "lezioni di dolci orientali",
+                      "type": "foglia"
+                    },
+                    "principali": {
+                      "nome": "lezioni di portate principali orientali",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                }
+              },
+              "type": "categoria"
+            }
+          },
+          "type": "categoria"
+        },
+        "categoriaCorrente": {
+          "nome": "lezioni di cucina",
+          "campo": "tipo",
+          "dominio": {
+            "etnica": ""
+          },
+          "sottocategorie": {
+            "etnica": {
+              "nome": "lezioni di cucina etnica",
+              "campo": "provenienza",
+              "dominio": {
+                "occidentale": "",
+                "orientale": ""
+              },
+              "sottocategorie": {
+                "occidentale": {
+                  "nome": "lezioni di cucina occidentale",
+                  "campo": "portata",
+                  "dominio": {
+                    "dolci": "",
+                    "principali": ""
+                  },
+                  "sottocategorie": {
+                    "dolci": {
+                      "nome": "lezioni di dolci occidentali",
+                      "type": "foglia"
+                    },
+                    "principali": {
+                      "nome": "lezioni di portate principali occidentali",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                },
+                "orientale": {
+                  "nome": "lezioni di cucina orientale",
+                  "campo": "portata",
+                  "dominio": {
+                    "dolci": "",
+                    "principali": ""
+                  },
+                  "sottocategorie": {
+                    "dolci": {
+                      "nome": "lezioni di dolci orientali",
+                      "type": "foglia"
+                    },
+                    "principali": {
+                      "nome": "lezioni di portate principali orientali",
+                      "type": "foglia"
+                    }
+                  },
+                  "type": "categoria"
+                }
+              },
+              "type": "categoria"
+            }
+          },
+          "type": "categoria"
+        },
+        "listaFoglie": [
+          {
+            "nome": "lezioni di dolci occidentali",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di portate principali occidentali",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di dolci orientali",
+            "type": "foglia"
+          },
+          {
+            "nome": "lezioni di portate principali orientali",
+            "type": "foglia"
+          }
+        ],
+        "percorso": [],
+        "type": "gerarchia"
+      }
+    ],
+    "type": "GerarchiaManager"
+  },
+  "fattoreManager": {
+    "listaFattori": [
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.8,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.25,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.87,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.15,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di storia della musica",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.3,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 0.77,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.8,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 0.56,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.38,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.72,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.1,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di storia della musica",
+        "fattore": 0.91,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.38,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.72,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.57,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.64,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 0.55,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di pianoforte",
+        "fattore": 1.82,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di storia della musica",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.98,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di storia della musica",
+        "fattore": 0.51,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.8,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di solfeggio",
+        "fattore": 1.25,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.92,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di chitarra",
+        "fattore": 1.09,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di cintura verde",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.1,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.91,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.9,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.53,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di cintura nera",
+        "fattore": 0.95,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di pianoforte",
+        "fattore": 1.05,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.1,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 0.91,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.98,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 0.51,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.79,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.27,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.3,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.77,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.69,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.59,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di cintura nera",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.85,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.94,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 1.06,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.83,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 1.2,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.85,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.1,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 0.91,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di cintura nera",
+        "fattore": 1.98,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 0.51,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.79,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.27,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.7,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.43,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 0.85,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di cintura bianca",
+        "fattore": 1.3,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura bianca",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.77,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di cintura verde",
+        "fattore": 1.69,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura verde",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.59,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di cintura nera",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di cintura nera",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di storia della musica",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di storia della musica",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.85,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di solfeggio",
+        "fattore": 0.94,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di solfeggio",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 1.06,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di chitarra",
+        "fattore": 0.83,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di chitarra",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 1.2,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di pianoforte",
+        "fattore": 2.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di pianoforte",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.5,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di dolci occidentali",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci occidentali",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.85,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di portate principali occidentali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali occidentali",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 1.0,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di portate principali orientali",
+        "c2": "lezioni di dolci orientali",
+        "fattore": 1.18,
+        "type": "fattore"
+      },
+      {
+        "c1": "lezioni di dolci orientali",
+        "c2": "lezioni di portate principali orientali",
+        "fattore": 0.85,
+        "type": "fattore"
+      }
+    ],
+    "type": "fattoreManager"
+  },
+  "propostaManager": {
+    "listaProposte": [
+      {
+        "richiesta": "lezioni di storia della musica",
+        "offerta": "lezioni di dolci occidentali",
+        "durataRichiesta": 10,
+        "durataOfferta": 10,
+        "stato": "APERTA",
+        "username": "giorgio",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di solfeggio",
+        "offerta": "lezioni di portate principali occidentali",
+        "durataRichiesta": 15,
+        "durataOfferta": 16,
+        "stato": "APERTA",
+        "username": "giorgio",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di chitarra",
+        "offerta": "lezioni di dolci orientali",
+        "durataRichiesta": 12,
+        "durataOfferta": 17,
+        "stato": "APERTA",
+        "username": "giorgio",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di pianoforte",
+        "offerta": "lezioni di portate principali orientali",
+        "durataRichiesta": 15,
+        "durataOfferta": 8,
+        "stato": "APERTA",
+        "username": "giorgio",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di cintura bianca",
+        "offerta": "lezioni di pianoforte",
+        "durataRichiesta": 10,
+        "durataOfferta": 18,
+        "stato": "APERTA",
+        "username": "luca",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di cintura verde",
+        "offerta": "lezioni di chitarra",
+        "durataRichiesta": 12,
+        "durataOfferta": 13,
+        "stato": "CHIUSA",
+        "username": "luca",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di cintura nera",
+        "offerta": "lezioni di dolci occidentali",
+        "durataRichiesta": 14,
+        "durataOfferta": 7,
+        "stato": "APERTA",
+        "username": "luca",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di cintura verde",
+        "offerta": "lezioni di portate principali occidentali",
+        "durataRichiesta": 15,
+        "durataOfferta": 9,
+        "stato": "RITIRATA",
+        "username": "luca",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di dolci occidentali",
+        "offerta": "lezioni di pianoforte",
+        "durataRichiesta": 13,
+        "durataOfferta": 26,
+        "stato": "RITIRATA",
+        "username": "riccardo",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di portate principali occidentali",
+        "offerta": "lezioni di solfeggio",
+        "durataRichiesta": 14,
+        "durataOfferta": 13,
+        "stato": "CHIUSA",
+        "username": "riccardo",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di dolci orientali",
+        "offerta": "lezioni di cintura verde",
+        "durataRichiesta": 18,
+        "durataOfferta": 26,
+        "stato": "APERTA",
+        "username": "riccardo",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di portate principali orientali",
+        "offerta": "lezioni di cintura nera",
+        "durataRichiesta": 15,
+        "durataOfferta": 30,
+        "stato": "APERTA",
+        "username": "riccardo",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di solfeggio",
+        "offerta": "lezioni di portate principali occidentali",
+        "durataRichiesta": 13,
+        "durataOfferta": 14,
+        "stato": "CHIUSA",
+        "username": "giorgio",
+        "type": "proposta"
+      },
+      {
+        "richiesta": "lezioni di chitarra",
+        "offerta": "lezioni di cintura verde",
+        "durataRichiesta": 13,
+        "durataOfferta": 12,
+        "stato": "CHIUSA",
+        "username": "giorgio",
+        "type": "proposta"
+      }
+    ],
+    "chiusuraProposteStrategy": {
+      "type": "concreteStrategy"
+    },
+    "type": "propostaManager"
+  }
+}

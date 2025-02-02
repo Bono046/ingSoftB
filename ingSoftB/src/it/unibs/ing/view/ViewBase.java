@@ -4,13 +4,11 @@ package it.unibs.ing.view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import it.unibs.ing.controller.ControllerBase;
 import it.unibs.ing.model.comprensorio.IComprensorio;
 import it.unibs.ing.model.fattore.IFattore;
-import it.unibs.ing.model.gerarchia.CategoriaFoglia;
 import it.unibs.ing.model.gerarchia.ICategoria;
-import it.unibs.ing.model.proposta.Proposta;
+import it.unibs.ing.model.gerarchia.IGerarchia;
 import it.unibs.ing.model.proposta.IProposta;
 
 public class ViewBase {
@@ -32,25 +30,27 @@ public class ViewBase {
 
 
     public String toStringComprensorio(IComprensorio comprensorio){
-        return "ComprensorioGeografico{" +
-                "nome='" + comprensorio.getNome()+"', "+
-                "comuni=" + comprensorio.getComuni().toString()
-                + '}';
+        return "Nome:'" + comprensorio.getNome()+"', "+
+                "Comuni: " + comprensorio.getComuni().toString();
+                
     }
 
-    public String toStringFattore(IFattore fattore){
-        return "FattoreConversione{Richiesta:  " + fattore.getC1() + ", Offerta " + fattore.getC2() + 
-        ", fattore " + fattore.getFattore() + '}';
+    public String toStringFattore(IFattore fattore) {
+        return String.format("Richiesta: %-35s Offerta: %-35s Fattore: %.2f", 
+                             fattore.getC1(), fattore.getC2(), fattore.getFattore());
     }
 
     public String toStringCategoriaFoglia(ICategoria categoria){
-        return "CategoriaFoglia{" +
-                "nome='" + categoria.getNome() + '}';
+        return categoria.getNome();
     }
 
     public String toStringProposta(IProposta p){
-        return "Proposta{" +"richiesta: " + p.getRichiesta() +", durata: " + p.getDurataRichiesta()
-				+ "; offerta: " + p.getOfferta() + ", durata: " + p.getDurataOfferta() + ", stato: " + p.getStato();    
+        return "Richiesta: " + p.getRichiesta() +", durata: " + p.getDurataRichiesta()
+				+ "; Offerta: " + p.getOfferta() + ", durata: " + p.getDurataOfferta() + "; Stato: " + p.getStato();    
+    }
+
+    public String toStringGerarchia(IGerarchia g) {
+        return g.getCategoriaRadice().getNome();
     }
 
     public boolean chiediConferma(String messaggio) {
@@ -84,10 +84,12 @@ public class ViewBase {
 
             if (elemento instanceof IComprensorio) {
                 descrizione = toStringComprensorio((IComprensorio) elemento);
-            } else if (elemento instanceof CategoriaFoglia) {
-                descrizione = toStringCategoriaFoglia((CategoriaFoglia) elemento); 
+            } else if (elemento instanceof IGerarchia) {
+                descrizione = toStringGerarchia((IGerarchia) elemento);
+            } else if (elemento instanceof ICategoria) {
+                descrizione = toStringCategoriaFoglia((ICategoria) elemento); 
             }else if (elemento instanceof IProposta) {
-                    descrizione = toStringProposta((Proposta) elemento); 
+                    descrizione = toStringProposta((IProposta) elemento); 
             }
             System.out.println((i + 1) + ". " + descrizione);
         }
@@ -120,13 +122,6 @@ public class ViewBase {
         return InputDati.leggiIntero(messaggio);
     } 
 
-    public int selezionaGerarchia(List<String> nomiGerarchie) {
-        for (int i = 0; i < nomiGerarchie.size(); i++) {
-            System.out.println((i + 1) + ". " + nomiGerarchie.get(i));
-        }
-        int scelta = InputDati.leggiIntero("Scegli una gerarchia: ", 1, nomiGerarchie.size());
-        return scelta;
-    }
 
     public String chiediNomeCategorieFoglia(ArrayList<ICategoria> listaFoglie, String messaggio) {
         return selezionaDaLista(listaFoglie, "Seleziona una categoria foglia" + messaggio + ": ").getNome();

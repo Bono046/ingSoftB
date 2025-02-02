@@ -77,7 +77,7 @@ public class ControllerFruitore extends ControllerBase{
             return;
         }
         
-        String[] categorie = selezionaCategorie();
+        String[] categorie = selezionaCategorieProposta();
         String richiesta = categorie[0];
         String offerta = categorie[1];
         
@@ -111,7 +111,7 @@ public class ControllerFruitore extends ControllerBase{
         }
     }
     
-    private String[] selezionaCategorie() {
+    private String[] selezionaCategorieProposta() {
         String richiesta;
         String offerta;
         do {

@@ -23,6 +23,7 @@ public class ViewFruitore extends ViewBase {
 
         int scelta = -1;
         do {
+            System.out.println("\nMenu Principale:");
             System.out.println("1. Primo accesso fruitore");	
             System.out.println("2. Autenticazione fruitore");
             System.out.println("0. Esci dal programma");
