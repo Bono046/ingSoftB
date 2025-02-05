@@ -82,18 +82,21 @@ public class ControllerFruitore extends ControllerBase{
         String offerta = categorie[1];
         
         int durataRichiesta = view.leggiValoreIntero("Quante ore per la richiesta? ");
-        int durataOfferta = calcolaDurataOfferta(richiesta, offerta, durataRichiesta);
-        
-        if (durataOfferta == 0) {
+
+        IProposta proposta = new Proposta(richiesta, offerta, durataRichiesta, user);
+        IFattore f;
+
+        try{
+            f = fattoreManager.trovaFattore(richiesta, offerta);
+        } catch(NullPointerException e) {
             view.mostraMessaggio("Un configuratore deve ancora definire il fattore di conversione corrispondente.");
             return;
         }
-        
-        Proposta proposta = new Proposta(richiesta, offerta, durataRichiesta, durataOfferta, user);
+        proposta.calcolaDurataOfferta(f.getFattore());
         confermaProposta(proposta);
     }
 
-    private void confermaProposta(Proposta proposta) {
+    private void confermaProposta(IProposta proposta) {
         view.mostraMessaggio(view.toStringProposta(proposta));
         boolean confermaProposta = view.chiediConferma("Vuoi confermare la proposta? ");
 
@@ -124,17 +127,7 @@ public class ControllerFruitore extends ControllerBase{
         return new String[]{richiesta, offerta};
     }
     
-    private int calcolaDurataOfferta(String richiesta, String offerta, int durataRichiesta) {
-        int durataOfferta=0;
-        try {
-            IFattore f = fattoreManager.trovaFattore(richiesta, offerta);
-            durataOfferta = (int) Math.round(durataRichiesta * f.getFattore());
-            return durataOfferta;
-        } catch (NullPointerException e) {
-            System.out.println("non esiste questo fattore di conversione");
-            return 0;
-        }
-    }
+
 
 
     private boolean verificaProposta(IProposta proposta) {
@@ -144,8 +137,7 @@ public class ControllerFruitore extends ControllerBase{
 	    userFruitoriFromComprensorio.remove(user);
         ArrayList<IProposta> proposteAperteFromComprensorio = propostaManager.getProposteAperteFromUsers(userFruitoriFromComprensorio);  
         propostaManager.setChiusuraProposteStrategy(new ConcreteStrategyProposte());
-        boolean chiusura = propostaManager.verificaProposta(proposta, proposteAperteFromComprensorio);
-        return chiusura;
+        return propostaManager.verificaProposta(proposta, proposteAperteFromComprensorio);
     }
 
 
@@ -154,7 +146,7 @@ public class ControllerFruitore extends ControllerBase{
 	    if (list.isEmpty()) {
             view.mostraMessaggio("Non sono presenti proposte da visualizzare.");
 	    } else {
-            view.visualizzaProposte(list);;
+            view.visualizzaProposte(list);
     	}
     }   
 

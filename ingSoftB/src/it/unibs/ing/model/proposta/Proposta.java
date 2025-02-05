@@ -11,12 +11,11 @@ public class Proposta implements IProposta {
 	private String username;
 
 	
-	public Proposta(String richiesta, String offerta, int durataRichiesta, int durataOfferta, String username) {
+	public Proposta(String richiesta, String offerta, int durataRichiesta,String username) {
 		super();
 		this.richiesta = richiesta;
 		this.offerta = offerta;
 		this.durataRichiesta = durataRichiesta;
-		this.durataOfferta = durataOfferta;
 		this.username = username;
 		this.stato = StatoProposta.SOSPESO;
 	}
@@ -45,13 +44,15 @@ public class Proposta implements IProposta {
 		return durataOfferta;
 	}
 
+	public void setDurataOfferta(int durataOfferta) {
+		this.durataOfferta = durataOfferta;
+	}
+
 
 	@Override
 	public Boolean isAperto() {
-		if(this.stato.equals(StatoProposta.APERTA))
-			return true;
-		return false;
-	}
+        return this.stato.equals(StatoProposta.APERTA);
+    }
 
 
 	@Override
@@ -92,6 +93,11 @@ public class Proposta implements IProposta {
 	public boolean richiestaSoddisfattaDa(IProposta altraProposta) {
 	    return this.getRichiesta().equals(altraProposta.getOfferta())
 	        && this.getDurataRichiesta() == altraProposta.getDurataOfferta();
+	}
+
+	public void calcolaDurataOfferta(double f) {
+		int durataOfferta= (int) Math.round(durataRichiesta * f);
+		this.setDurataOfferta(durataOfferta);
 	}
 	
 }

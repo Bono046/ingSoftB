@@ -1,5 +1,6 @@
 package it.unibs.ing.model.proposta;
 
+
 public interface IProposta {
 
     String getRichiesta();
@@ -26,4 +27,5 @@ public interface IProposta {
 
     boolean richiestaSoddisfattaDa(IProposta altraProposta);
 
+    void calcolaDurataOfferta(double f);
 }

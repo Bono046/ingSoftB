@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class PropostaManager implements IPropostaManager {
 
     ArrayList<IProposta> listaProposte;
-	IChiusuraProposteStrategy chiusuraProposteStrategy;
+	public IChiusuraProposteStrategy chiusuraProposteStrategy;
 
     public PropostaManager() {
         listaProposte = new ArrayList<IProposta>();
@@ -49,12 +49,10 @@ public class PropostaManager implements IPropostaManager {
 	public ArrayList<IProposta> getListaProposteAperteUser(String user) {
 		ArrayList<IProposta> lista = new ArrayList<>();
 		for(IProposta p : listaProposte) {
-			if(p.getUsername().equals(user)){
-				if(p.isAperto()) {
+			if(p.getUsername().equals(user) && p.isAperto()){
 					lista.add(p);
 				}
 			}
-		}
 		return lista;
 	}
 
@@ -62,11 +60,8 @@ public class PropostaManager implements IPropostaManager {
 	public ArrayList<IProposta> getProposteAperteFromUsers(ArrayList<String> listaUser) {
 		ArrayList<IProposta> proposteFromComprensorio=new ArrayList<>();
 		for(String user:listaUser) {
-			for(IProposta p:listaProposte) {
-				if(user.equals(p.getUsername()) && (p.isAperto())) {
-					proposteFromComprensorio.add(p);
-				}
-			}
+			ArrayList<IProposta> list = getListaProposteAperteUser(user);
+			proposteFromComprensorio.addAll(list);
 		}
 		return proposteFromComprensorio;
 	}
