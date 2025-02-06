@@ -23,7 +23,7 @@ public class ViewFruitore extends ViewBase {
 
         int scelta = -1;
         do {
-            System.out.println("\nMenu Principale:");
+            System.out.println("\nMENU FRUITORE");
             System.out.println("1. Primo accesso fruitore");	
             System.out.println("2. Autenticazione fruitore");
             System.out.println("0. Esci dal programma");
@@ -100,7 +100,7 @@ public class ViewFruitore extends ViewBase {
 
     private void mostraMenuPrincipaleFruitore(String user) {
     	while (true) {
-            System.out.println("\nMENU");
+            System.out.println("\nMENU FRUITORE");
             System.out.println("1. Esplora gerarchie");
             System.out.println("2. Formula proposta scambio");
             System.out.println("3. Visualizza proposte di scambio");

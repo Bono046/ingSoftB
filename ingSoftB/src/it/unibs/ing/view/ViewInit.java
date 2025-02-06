@@ -16,7 +16,7 @@ public class ViewInit {
     public void start() {
         int scelta = -1;
         do {
-            System.out.println("Menu Principale:");
+            System.out.println("MENU");
             System.out.println("1. Accesso configuratore");
             System.out.println("2. Accesso fruitore");
             System.out.println("0. Esci dal programma");

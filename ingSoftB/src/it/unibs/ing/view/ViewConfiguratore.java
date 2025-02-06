@@ -22,7 +22,7 @@ public class ViewConfiguratore extends ViewBase{
         int scelta = -1;
         do {
             
-            System.out.println("\nMenu Principale:");
+            System.out.println("\nMENU CONFIGURATORE");
             System.out.println("1. Primo accesso Configuratore");
             System.out.println("2. Autenticazione Configuratore");
             System.out.println("0. Esci dal programma");
